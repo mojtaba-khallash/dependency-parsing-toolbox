@@ -1,0 +1,101 @@
+<!--Default English feature set -->
+<feature_template>
+	<cutoff label="4" ngram="2" extra="0"/>
+
+	<ngram n="1" f0="l:f"/>
+	<ngram n="1" f0="b:f"/>
+	<ngram n="1" f0="l:m"/>
+	<ngram n="1" f0="b:m"/>
+	<ngram n="1" f0="l:p"/>
+	<ngram n="1" f0="b:p"/>
+
+	<ngram n="2" t="upm" f0="l:p" f1="l:m"/>
+	<ngram n="2" t="upm" f0="b:p" f1="b:m"/>
+		
+	<ngram n="2" f0="l:p" f1="b:p"/>
+	<ngram n="2" f0="l:p" f1="b:m"/>
+	<ngram n="2" f0="l:m" f1="b:p"/>
+	<ngram n="2" f0="l:m" f1="b:m"/>
+
+	<ngram n="1" f0="l-2:f"/>
+	<ngram n="1" f0="l-1:f"/>
+	<ngram n="1" f0="l+1:f"/>
+	<ngram n="1" f0="l+2:f"/>
+	<ngram n="1" f0="b-2:f"/>
+	<ngram n="1" f0="b-1:f"/>
+	<ngram n="1" f0="b+1:f"/>
+	<ngram n="1" f0="b+2:f"/>
+	<ngram n="1" f0="l-3:f" visible="false"/>
+	<ngram n="1" f0="b+3:f" visible="false"/>
+
+	<ngram n="2" f0="l-1:p" f1="l:p"/>
+	<ngram n="2" f0="l:p"   f1="l+1:p"/>
+	<ngram n="2" f0="l+1:p" f1="b:p"/>
+	<ngram n="2" f0="l-1:p" f1="b:p"   visible="false"/>
+	<ngram n="2" f0="l:p"   f1="b-1:p" visible="false"/>
+	<ngram n="2" f0="b-1:p" f1="b:p"   visible="false"/>
+	<ngram n="2" f0="l:p"   f1="b+1:p" visible="false"/>
+	<ngram n="2" f0="b:p"   f1="b+1:p" visible="false"/>
+
+	<ngram n="2" f0="l:m"   f1="l+1:p"/>
+	<ngram n="2" f0="l:m"   f1="b-1:p"/>
+	<ngram n="2" f0="l:m"   f1="b+1:p"/>
+	<ngram n="2" f0="l-1:p" f1="l:m" visible="false"/>
+	
+	<ngram n="2" f0="l-1:p" f1="b:m"/>
+	<ngram n="2" f0="l+1:p" f1="b:m"/>
+	<ngram n="2" f0="b-1:p" f1="b:m"/>
+	<ngram n="2" f0="b:m"   f1="b+1:p"/>
+
+	<ngram n="2" f0="l-1:m" f1="b:p"/>
+	<ngram n="2" f0="l+1:m" f1="b:p"/>
+	<ngram n="2" f0="l:p"   f1="b-1:m" visible="false"/>
+	<ngram n="2" f0="l:p"   f1="b+1:m" visible="false"/>
+	
+	<ngram n="2" f0="l-1:m" f1="l:m"/>
+	<ngram n="2" f0="l+1:m" f1="b:m"/>
+	<ngram n="2" f0="b:m"   f1="b+1:m"/>
+	<ngram n="2" f0="l:m"   f1="l+1:m"  visible="false"/>
+	<ngram n="2" f0="l:m"   f1="b-1:m"  visible="false"/>
+	<ngram n="2" f0="l:m"   f1="b+1:m"  visible="false"/>
+	<ngram n="2" f0="l-1:m" f1="b:m"    visible="false"/>
+	<ngram n="2" f0="b-1:m" f1="b:m"    visible="false"/>
+	
+	<ngram n="3" f0="l-2:p" f1="l-1:p" f2="l:p"/>
+	<ngram n="3" f0="l-1:p" f1="l:p"   f2="l+1:p"/>
+	<ngram n="3" f0="l:p"   f1="l+1:p" f2="l+2:p"/>
+	<ngram n="3" f0="l-3:p" f1="l:p"   f2="b:p"/>
+	<ngram n="3" f0="l-2:p" f1="l:p"   f2="b:p"/>
+	<ngram n="3" f0="l:p"   f1="l+1:p" f2="b:p"/>
+	<ngram n="3" f0="l:p"   f1="l+2:p" f2="b:p"/>
+	<ngram n="3" f0="l:p"   f1="b-2:p" f2="b:p"/>
+	<ngram n="3" f0="l:p"   f1="b-1:p" f2="b:p"/>
+	<ngram n="3" f0="l:p"   f1="b:p"   f2="b+1:p"/>
+	<ngram n="3" f0="l:p"   f1="b:p"   f2="b+3:p"/>
+	<ngram n="3" f0="b-1:p" f1="b:p"   f2="b+1:p"/>
+	<ngram n="3" f0="b:p"   f1="b+1:p" f2="b+2:p"/>
+	<ngram n="3" f0="l-1:p" f1="l:p"   f2="b:p"   visible="false"/>
+	<ngram n="3" f0="l:p"   f1="b:p"   f2="b+2:p" visible="false"/>
+	<ngram n="3" f0="b-2:p" f1="b-1:p" f2="b:p"   visible="false"/>
+
+	<ngram n="1" f0="l:d"/>
+	<ngram n="1" f0="b:d"/>
+	<ngram n="1" f0="l_lm:d"/>
+	<ngram n="1" f0="l_rm:d" visible="false"/>
+	<ngram n="1" f0="b_lm:d" visible="false"/>
+
+	<ngram n="2" f0="l_hd:m" f1="l:p"/>
+	<ngram n="2" f0="b_hd:m" f1="b:p" visible="false"/>
+
+	<ngram n="2" f0="l:m" f1="b_rm:m"/>
+	<ngram n="2" f0="b:m" f1="b_rm:m"/>
+	<ngram n="2" f0="l:p" f1="b_rm:m" visible="false"/>
+	<ngram n="2" f0="b:p" f1="b_rm:m" visible="false"/>
+
+	<ngram n="3" f0="l_hd:p" f1="l:p"    f2="b:p"/>
+	<ngram n="3" f0="l_lm:p" f1="l:p"    f2="b:p"/>
+	<ngram n="3" f0="l:p"    f1="b_lm:p" f2="b:p"/>
+	<ngram n="3" f0="l:p"    f1="l_rm:p" f2="b:p"    visible="false"/>
+	<ngram n="3" f0="l:p"    f1="b_hd:p" f2="b:p"    visible="false"/>
+	<ngram n="3" f0="l:p"    f1="b:p"    f2="b_rm:p" visible="false"/>
+</feature_template>

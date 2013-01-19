@@ -1,0 +1,16 @@
+<configuration>
+	<common>
+		<language>en</language>
+		<format>dep</format>
+		<parser>shift-pop</parser>
+	</common>
+	<classify>
+		<algorithm name="lib" l="1" c="0.1" e="0.1" b="-1"/>
+		<threads>2</threads>
+	</classify>
+	<predict>
+		<tok_model>model/en_tok_opennlp.jar</tok_model>
+		<pos_model>model/en_pos_ontonotes.jar</pos_model>
+		<morph_dict>model/en_dict-1.0.jar</morph_dict>
+	</predict>
+</configuration>

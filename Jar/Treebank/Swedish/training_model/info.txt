@@ -1,0 +1,1 @@
+Single Malt configurations (model0.mco and model1.mco) to parse input file "talbanken05_test.conll"

@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<treebank xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:treebank="http://www.msi.vxu.se/~rics/treebank" 
+	xsi:schemaLocation="http://www.msi.vxu.se/~rics/treebank treebank.xsd" id="Talbanken">
+	<head>
+		<annotation>
+			<attribute name="form"/>
+			<attribute name="head"/>
+			<attribute name="postag">
+				<value name="ab"/>
+				<value name="ab.kom"/>
+				<value name="ab.pos"/>
+				<value name="ab.sms"/>
+				<value name="ab.suv"/>
+				<value name="dt.mas.sin.ind/def"/>
+				<value name="dt.neu.sin.def"/>
+				<value name="dt.neu.sin.ind"/>
+				<value name="dt.neu.sin.ind/def"/>
+				<value name="dt.utr.sin.def"/>
+				<value name="dt.utr.sin.ind"/>
+				<value name="dt.utr.sin.ind/def"/>
+				<value name="dt.utr/neu.plu.def"/>
+				<value name="dt.utr/neu.plu.ind"/>
+				<value name="dt.utr/neu.plu.ind/def"/>
+				<value name="dt.utr/neu.sin.def"/>
+				<value name="dt.utr/neu.sin.ind"/>
+				<value name="dt.utr/neu.sin/plu.ind"/>
+				<value name="ha"/>
+				<value name="hd.neu.sin.ind"/>
+				<value name="hd.utr.sin.ind"/>
+				<value name="hd.utr/neu.plu.ind"/>
+				<value name="hp.-.-.-"/>
+				<value name="hp.neu.sin.ind"/>
+				<value name="hp.neu.sin.ind.sms"/>
+				<value name="hp.utr.sin.ind"/>
+				<value name="hp.utr/neu.plu.ind"/>
+				<value name="hs.def"/>
+				<value name="ie"/>
+				<value name="in"/>
+				<value name="jj.gen"/>
+				<value name="jj.kom.sms"/>
+				<value name="jj.kom.utr/neu.sin/plu.ind/def.nom"/>
+				<value name="jj.pos.mas.sin.def.nom"/>
+				<value name="jj.pos.neu.sin.ind.nom"/>
+				<value name="jj.pos.neu.sin.ind/def.nom"/>
+				<value name="jj.pos.utr.-.-.sms"/>
+				<value name="jj.pos.utr.sin.ind.nom"/>
+				<value name="jj.pos.utr.sin.ind/def.nom"/>
+				<value name="jj.pos.utr/neu.-.-.sms"/>
+				<value name="jj.pos.utr/neu.plu.ind.nom"/>
+				<value name="jj.pos.utr/neu.plu.ind/def.nom"/>
+				<value name="jj.pos.utr/neu.sin.def.nom"/>
+				<value name="jj.pos.utr/neu.sin/plu.ind/def.nom"/>
+				<value name="jj.suv.mas.sin.def.nom"/>
+				<value name="jj.suv.utr/neu.plu.def.nom"/>
+				<value name="jj.suv.utr/neu.sin/plu.def.nom"/>
+				<value name="jj.suv.utr/neu.sin/plu.ind.nom"/>
+				<value name="kn"/>
+				<value name="mad"/>
+				<value name="mid"/>
+				<value name="nn"/>
+				<value name="nn.-.-.-.-"/>
+				<value name="nn.-.-.-.sms"/>
+				<value name="nn.neu.-.-.-"/>
+				<value name="nn.neu.-.-.sms"/>
+				<value name="nn.neu.plu.def.gen"/>
+				<value name="nn.neu.plu.def.nom"/>
+				<value name="nn.neu.plu.ind.gen"/>
+				<value name="nn.neu.plu.ind.nom"/>
+				<value name="nn.neu.sin.def.gen"/>
+				<value name="nn.neu.sin.def.nom"/>
+				<value name="nn.neu.sin.def.nom.set"/>
+				<value name="nn.neu.sin.ind.gen"/>
+				<value name="nn.neu.sin.ind.nom"/>
+				<value name="nn.neu.sin.ind.nom.set"/>
+				<value name="nn.utr.-.-.-"/>
+				<value name="nn.utr.-.-.sms"/>
+				<value name="nn.utr.plu.def.gen"/>
+				<value name="nn.utr.plu.def.nom"/>
+				<value name="nn.utr.plu.ind.gen"/>
+				<value name="nn.utr.plu.ind.nom"/>
+				<value name="nn.utr.sin.def.gen"/>
+				<value name="nn.utr.sin.def.nom"/>
+				<value name="nn.utr.sin.def.nom.dat"/>
+				<value name="nn.utr.sin.def.nom.set"/>
+				<value name="nn.utr.sin.ind.gen"/>
+				<value name="nn.utr.sin.ind.nom"/>
+				<value name="nn.utr.sin.ind.nom.dat"/>
+				<value name="nn.utr.sin.ind.nom.set"/>
+				<value name="pad"/>
+				<value name="pc.gen"/>
+				<value name="pc.prs.utr/neu.sin/plu.ind/def.nom"/>
+				<value name="pl"/>
+				<value name="pm.gen"/>
+				<value name="pm.nom"/>
+				<value name="pm.sms"/>
+				<value name="pn.mas.sin.def.sub/obj"/>
+				<value name="pn.neu.sin.def.sub/obj"/>
+				<value name="pn.neu.sin.ind.sub/obj"/>
+				<value name="pn.utr.plu.def.obj"/>
+				<value name="pn.utr.plu.def.sub"/>
+				<value name="pn.utr.sin.def.obj"/>
+				<value name="pn.utr.sin.def.sub"/>
+				<value name="pn.utr.sin.def.sub/obj"/>
+				<value name="pn.utr.sin.ind.sub"/>
+				<value name="pn.utr.sin.ind.sub/obj"/>
+				<value name="pn.utr/neu.plu.def.obj"/>
+				<value name="pn.utr/neu.plu.def.sub"/>
+				<value name="pn.utr/neu.plu.def.sub/obj"/>
+				<value name="pn.utr/neu.plu.ind.sub/obj"/>
+				<value name="pn.utr/neu.sin/plu.def.obj"/>
+				<value name="pp"/>
+				<value name="ps.neu.sin.def"/>
+				<value name="ps.utr.sin.def"/>
+				<value name="ps.utr/neu.plu.def"/>
+				<value name="ps.utr/neu.sin/plu.def"/>
+				<value name="rg.gen"/>
+				<value name="rg.neu.sin.ind.nom"/>
+				<value name="rg.nom"/>
+				<value name="rg.sin.nom"/>
+				<value name="rg.sms"/>
+				<value name="rg.utr.sin.ind.nom"/>
+				<value name="ro.gen"/>
+				<value name="ro.mas.sin.ind/def.gen"/>
+				<value name="ro.mas.sin.ind/def.nom"/>
+				<value name="ro.nom"/>
+				<value name="ro.sin.nom"/>
+				<value name="ro.sms"/>
+				<value name="sn"/>
+				<value name="uo"/>
+				<value name="vb"/>
+				<value name="vb.imp"/>
+				<value name="vb.imp.akt.aux"/>
+				<value name="vb.imp.akt.kop"/>
+				<value name="vb.imp.akt.mod"/>
+				<value name="vb.inf.akt"/>
+				<value name="vb.inf.akt.aux"/>
+				<value name="vb.inf.akt.kop"/>
+				<value name="vb.inf.akt.mod"/>
+				<value name="vb.inf.sfo"/>
+				<value name="vb.kon.prs.akt"/>
+				<value name="vb.kon.prt"/>
+				<value name="vb.prs.akt"/>
+				<value name="vb.prs.akt.aux"/>
+				<value name="vb.prs.akt.kop"/>
+				<value name="vb.prs.akt.mod"/>
+				<value name="vb.prs.sfo"/>
+				<value name="vb.prs.sfo.kop"/>
+				<value name="vb.prt.akt"/>
+				<value name="vb.prt.akt.aux"/>
+				<value name="vb.prt.akt.kop"/>
+				<value name="vb.prt.akt.mod"/>
+				<value name="vb.prt.sfo"/>
+				<value name="vb.prt.sfo.kop"/>
+				<value name="vb.sms"/>
+				<value name="vb.sup.akt"/>
+				<value name="vb.sup.akt.kop"/>
+				<value name="vb.sup.akt.mod"/>
+				<value name="vb.sup.sfo"/>
+			</attribute>
+			<attribute name="deprel">
+				<value name="ROOT"/>
+				<value name="ADV"/>
+				<value name="APP"/>
+				<value name="ATT"/>
+				<value name="CC"/>
+				<value name="DET"/>
+				<value name="ID"/>
+				<value name="IM"/>
+				<value name="INF"/>
+				<value name="IP"/>
+				<value name="OBJ"/>
+				<value name="PR"/>
+				<value name="PRD"/>
+				<value name="SUB"/>
+				<value name="UK"/>
+				<value name="VC"/>
+				<value name="XX"/>
+			</attribute>
+		</annotation>
+	</head>
+	<body>
+		<sentence id="1" user="" date="">
+			<word id="1" form="Sådana" postag="jj.pos.utr/neu.plu.ind.nom" head="2" deprel="DET"/>
+			<word id="2" form="B-inkomster" postag="nn.utr.plu.ind.nom" head="3" deprel="PRD"/>
+			<word id="3" form="är" postag="vb.prs.akt.kop" head="0" deprel="ROOT"/>
+			<word id="4" form="t." postag="pm.nom" head="3" deprel="ADV"/>
+			<word id="5" form="ex." postag="ab" head="4" deprel="ID"/>
+			<word id="6" form="inkomst" postag="nn.utr.sin.ind.nom" head="3" deprel="SUB"/>
+			<word id="7" form="av" postag="pp" head="6" deprel="ATT"/>
+			<word id="8" form="kapital" postag="nn.neu.sin.ind.nom" head="7" deprel="PR"/>
+			<word id="9" form="," postag="mid" head="8" deprel="CC"/>
+			<word id="10" form="tillfällig" postag="jj.pos.utr.sin.ind.nom" head="11" deprel="ATT"/>
+			<word id="11" form="förvärvsverksamhet" postag="nn.utr.sin.ind.nom" head="9" deprel="CC"/>
+			<word id="12" form="," postag="mid" head="6" deprel="CC"/>
+			<word id="13" form="periodiskt" postag="ab.pos" head="14" deprel="ATT"/>
+			<word id="14" form="understöd" postag="nn.neu.plu.ind.nom" head="12" deprel="CC"/>
+			<word id="15" form="." postag="mad" head="3" deprel="IP"/>
+		</sentence>
+		<sentence id="2" user="" date="">
+			<word id="1" form="Barns" postag="nn.neu.plu.ind.gen" head="2" deprel="DET"/>
+			<word id="2" form="ålder" postag="nn.utr.sin.ind.nom" head="3" deprel="SUB"/>
+			<word id="3" form="räknas" postag="vb.prs.sfo" head="0" deprel="ROOT"/>
+			<word id="4" form="efter" postag="pp" head="3" deprel="ADV"/>
+			<word id="5" form="förhållandet" postag="nn.neu.sin.def.nom" head="4" deprel="PR"/>
+			<word id="6" form="den" postag="dt.utr.sin.def" head="8" deprel="DET"/>
+			<word id="7" form="1" postag="ro.sin.nom" head="8" deprel="DET"/>
+			<word id="8" form="november" postag="nn.utr.sin.ind.nom.dat" head="5" deprel="ATT"/>
+			<word id="9" form="under" postag="pp" head="8" deprel="ATT"/>
+			<word id="10" form="inkomståret" postag="nn.neu.sin.def.nom" head="9" deprel="PR"/>
+			<word id="11" form="." postag="mad" head="3" deprel="IP"/>
+		</sentence>
+		<sentence id="3" user="" date="">
+			<word id="1" form="Som" postag="kn" head="3" deprel="PRD"/>
+			<word id="2" form="bevis" postag="nn.neu.sin.ind.nom" head="1" deprel="UK"/>
+			<word id="3" form="torde" postag="vb.prt.akt.mod" head="0" deprel="ROOT"/>
+			<word id="4" form="godtas" postag="vb.prs.sfo" head="3" deprel="VC"/>
+			<word id="5" form="dom" postag="pn.utr/neu.plu.def.sub/obj" head="4" deprel="SUB"/>
+			<word id="6" form="eller" postag="kn" head="5" deprel="CC"/>
+			<word id="7" form="avtal" postag="nn.neu.sin.ind.nom" head="6" deprel="CC"/>
+			<word id="8" form="om" postag="pp" head="7" deprel="ATT"/>
+			<word id="9" form="underhållsskyldighet" postag="nn.utr.sin.ind.nom" head="8" deprel="PR"/>
+			<word id="10" form="jämte" postag="pp" head="7" deprel="ATT"/>
+			<word id="11" form="kvitto" postag="nn.neu.sin.ind.nom" head="10" deprel="PR"/>
+			<word id="12" form="på" postag="pp" head="11" deprel="ATT"/>
+			<word id="13" form="betalt" postag="jj.pos.neu.sin.ind.nom" head="14" deprel="ATT"/>
+			<word id="14" form="belopp" postag="nn.neu.sin.ind.nom" head="12" deprel="PR"/>
+			<word id="15" form="eller" postag="kn" head="11" deprel="CC"/>
+			<word id="16" form="intyg" postag="nn.neu.sin.ind.nom" head="15" deprel="CC"/>
+			<word id="17" form="från" postag="pp" head="16" deprel="ATT"/>
+			<word id="18" form="trovärdig" postag="jj.pos.utr.sin.ind.nom" head="19" deprel="ATT"/>
+			<word id="19" form="person" postag="nn.utr.sin.ind.nom" head="17" deprel="PR"/>
+			<word id="20" form="." postag="mad" head="4" deprel="IP"/>
+		</sentence>
+	</body>
+</treebank>

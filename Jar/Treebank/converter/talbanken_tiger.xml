@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<corpus id="Talbanken">
+	<head>
+		<annotation>
+			<feature name="form" domain="FREC"/>
+			<feature name="postag" domain="FREC">
+				<value name="ab"/>
+				<value name="ab.kom"/>
+				<value name="ab.pos"/>
+				<value name="ab.sms"/>
+				<value name="ab.suv"/>
+				<value name="dt.mas.sin.ind/def"/>
+				<value name="dt.neu.sin.def"/>
+				<value name="dt.neu.sin.ind"/>
+				<value name="dt.neu.sin.ind/def"/>
+				<value name="dt.utr.sin.def"/>
+				<value name="dt.utr.sin.ind"/>
+				<value name="dt.utr.sin.ind/def"/>
+				<value name="dt.utr/neu.plu.def"/>
+				<value name="dt.utr/neu.plu.ind"/>
+				<value name="dt.utr/neu.plu.ind/def"/>
+				<value name="dt.utr/neu.sin.def"/>
+				<value name="dt.utr/neu.sin.ind"/>
+				<value name="dt.utr/neu.sin/plu.ind"/>
+				<value name="ha"/>
+				<value name="hd.neu.sin.ind"/>
+				<value name="hd.utr.sin.ind"/>
+				<value name="hd.utr/neu.plu.ind"/>
+				<value name="hp.-.-.-"/>
+				<value name="hp.neu.sin.ind"/>
+				<value name="hp.neu.sin.ind.sms"/>
+				<value name="hp.utr.sin.ind"/>
+				<value name="hp.utr/neu.plu.ind"/>
+				<value name="hs.def"/>
+				<value name="ie"/>
+				<value name="in"/>
+				<value name="jj.gen"/>
+				<value name="jj.kom.sms"/>
+				<value name="jj.kom.utr/neu.sin/plu.ind/def.nom"/>
+				<value name="jj.pos.mas.sin.def.nom"/>
+				<value name="jj.pos.neu.sin.ind.nom"/>
+				<value name="jj.pos.neu.sin.ind/def.nom"/>
+				<value name="jj.pos.utr.-.-.sms"/>
+				<value name="jj.pos.utr.sin.ind.nom"/>
+				<value name="jj.pos.utr.sin.ind/def.nom"/>
+				<value name="jj.pos.utr/neu.-.-.sms"/>
+				<value name="jj.pos.utr/neu.plu.ind.nom"/>
+				<value name="jj.pos.utr/neu.plu.ind/def.nom"/>
+				<value name="jj.pos.utr/neu.sin.def.nom"/>
+				<value name="jj.pos.utr/neu.sin/plu.ind/def.nom"/>
+				<value name="jj.suv.mas.sin.def.nom"/>
+				<value name="jj.suv.utr/neu.plu.def.nom"/>
+				<value name="jj.suv.utr/neu.sin/plu.def.nom"/>
+				<value name="jj.suv.utr/neu.sin/plu.ind.nom"/>
+				<value name="kn"/>
+				<value name="mad"/>
+				<value name="mid"/>
+				<value name="nn"/>
+				<value name="nn.-.-.-.-"/>
+				<value name="nn.-.-.-.sms"/>
+				<value name="nn.neu.-.-.-"/>
+				<value name="nn.neu.-.-.sms"/>
+				<value name="nn.neu.plu.def.gen"/>
+				<value name="nn.neu.plu.def.nom"/>
+				<value name="nn.neu.plu.ind.gen"/>
+				<value name="nn.neu.plu.ind.nom"/>
+				<value name="nn.neu.sin.def.gen"/>
+				<value name="nn.neu.sin.def.nom"/>
+				<value name="nn.neu.sin.def.nom.set"/>
+				<value name="nn.neu.sin.ind.gen"/>
+				<value name="nn.neu.sin.ind.nom"/>
+				<value name="nn.neu.sin.ind.nom.set"/>
+				<value name="nn.utr.-.-.-"/>
+				<value name="nn.utr.-.-.sms"/>
+				<value name="nn.utr.plu.def.gen"/>
+				<value name="nn.utr.plu.def.nom"/>
+				<value name="nn.utr.plu.ind.gen"/>
+				<value name="nn.utr.plu.ind.nom"/>
+				<value name="nn.utr.sin.def.gen"/>
+				<value name="nn.utr.sin.def.nom"/>
+				<value name="nn.utr.sin.def.nom.dat"/>
+				<value name="nn.utr.sin.def.nom.set"/>
+				<value name="nn.utr.sin.ind.gen"/>
+				<value name="nn.utr.sin.ind.nom"/>
+				<value name="nn.utr.sin.ind.nom.dat"/>
+				<value name="nn.utr.sin.ind.nom.set"/>
+				<value name="pad"/>
+				<value name="pc.gen"/>
+				<value name="pc.prs.utr/neu.sin/plu.ind/def.nom"/>
+				<value name="pl"/>
+				<value name="pm.gen"/>
+				<value name="pm.nom"/>
+				<value name="pm.sms"/>
+				<value name="pn.mas.sin.def.sub/obj"/>
+				<value name="pn.neu.sin.def.sub/obj"/>
+				<value name="pn.neu.sin.ind.sub/obj"/>
+				<value name="pn.utr.plu.def.obj"/>
+				<value name="pn.utr.plu.def.sub"/>
+				<value name="pn.utr.sin.def.obj"/>
+				<value name="pn.utr.sin.def.sub"/>
+				<value name="pn.utr.sin.def.sub/obj"/>
+				<value name="pn.utr.sin.ind.sub"/>
+				<value name="pn.utr.sin.ind.sub/obj"/>
+				<value name="pn.utr/neu.plu.def.obj"/>
+				<value name="pn.utr/neu.plu.def.sub"/>
+				<value name="pn.utr/neu.plu.def.sub/obj"/>
+				<value name="pn.utr/neu.plu.ind.sub/obj"/>
+				<value name="pn.utr/neu.sin/plu.def.obj"/>
+				<value name="pp"/>
+				<value name="ps.neu.sin.def"/>
+				<value name="ps.utr.sin.def"/>
+				<value name="ps.utr/neu.plu.def"/>
+				<value name="ps.utr/neu.sin/plu.def"/>
+				<value name="rg.gen"/>
+				<value name="rg.neu.sin.ind.nom"/>
+				<value name="rg.nom"/>
+				<value name="rg.sin.nom"/>
+				<value name="rg.sms"/>
+				<value name="rg.utr.sin.ind.nom"/>
+				<value name="ro.gen"/>
+				<value name="ro.mas.sin.ind/def.gen"/>
+				<value name="ro.mas.sin.ind/def.nom"/>
+				<value name="ro.nom"/>
+				<value name="ro.sin.nom"/>
+				<value name="ro.sms"/>
+				<value name="sn"/>
+				<value name="uo"/>
+				<value name="vb"/>
+				<value name="vb.imp"/>
+				<value name="vb.imp.akt.aux"/>
+				<value name="vb.imp.akt.kop"/>
+				<value name="vb.imp.akt.mod"/>
+				<value name="vb.inf.akt"/>
+				<value name="vb.inf.akt.aux"/>
+				<value name="vb.inf.akt.kop"/>
+				<value name="vb.inf.akt.mod"/>
+				<value name="vb.inf.sfo"/>
+				<value name="vb.kon.prs.akt"/>
+				<value name="vb.kon.prt"/>
+				<value name="vb.prs.akt"/>
+				<value name="vb.prs.akt.aux"/>
+				<value name="vb.prs.akt.kop"/>
+				<value name="vb.prs.akt.mod"/>
+				<value name="vb.prs.sfo"/>
+				<value name="vb.prs.sfo.kop"/>
+				<value name="vb.prt.akt"/>
+				<value name="vb.prt.akt.aux"/>
+				<value name="vb.prt.akt.kop"/>
+				<value name="vb.prt.akt.mod"/>
+				<value name="vb.prt.sfo"/>
+				<value name="vb.prt.sfo.kop"/>
+				<value name="vb.sms"/>
+				<value name="vb.sup.akt"/>
+				<value name="vb.sup.akt.kop"/>
+				<value name="vb.sup.akt.mod"/>
+				<value name="vb.sup.sfo"/>
+			</feature>
+			<edgelabel>
+				<value name="--"/>
+				<value name="ADV"/>
+				<value name="APP"/>
+				<value name="ATT"/>
+				<value name="CC"/>
+				<value name="DET"/>
+				<value name="ID"/>
+				<value name="IM"/>
+				<value name="INF"/>
+				<value name="IP"/>
+				<value name="OBJ"/>
+				<value name="PR"/>
+				<value name="PRD"/>
+				<value name="SUB"/>
+				<value name="UK"/>
+				<value name="VC"/>
+				<value name="XX"/>
+			</edgelabel>
+		</annotation>
+	</head>
+	<body>
+		<s id="s1">
+			<graph root="p1_3">
+				<terminals>
+					<t id="w1_1" form="Sådana" postag="jj.pos.utr/neu.plu.ind.nom"/>
+					<t id="w1_2" form="B-inkomster" postag="nn.utr.plu.ind.nom"/>
+					<t id="w1_3" form="är" postag="vb.prs.akt.kop"/>
+					<t id="w1_4" form="t." postag="pm.nom"/>
+					<t id="w1_5" form="ex." postag="ab"/>
+					<t id="w1_6" form="inkomst" postag="nn.utr.sin.ind.nom"/>
+					<t id="w1_7" form="av" postag="pp"/>
+					<t id="w1_8" form="kapital" postag="nn.neu.sin.ind.nom"/>
+					<t id="w1_9" form="," postag="mid"/>
+					<t id="w1_10" form="tillfällig" postag="jj.pos.utr.sin.ind.nom"/>
+					<t id="w1_11" form="förvärvsverksamhet" postag="nn.utr.sin.ind.nom"/>
+					<t id="w1_12" form="," postag="mid"/>
+					<t id="w1_13" form="periodiskt" postag="ab.pos"/>
+					<t id="w1_14" form="understöd" postag="nn.neu.plu.ind.nom"/>
+					<t id="w1_15" form="." postag="mad"/>
+				</terminals>
+				<nonterminals>
+					<nt id="p1_1" form="Sådana" postag="jj.pos.utr/neu.plu.ind.nom">
+						<edge idref="w1_1" label="--" />
+					</nt>
+					<nt id="p1_2" form="B-inkomster" postag="nn.utr.plu.ind.nom">
+						<edge idref="w1_2" label="--" />
+						<edge idref="p1_1" label="DET" />
+					</nt>
+					<nt id="p1_3" form="är" postag="vb.prs.akt.kop">
+						<edge idref="w1_3" label="--" />
+						<edge idref="p1_2" label="PRD" />
+						<edge idref="p1_4" label="ADV" />
+						<edge idref="p1_6" label="SUB" />
+						<edge idref="p1_15" label="IP" />
+					</nt>
+					<nt id="p1_4" form="t." postag="pm.nom">
+						<edge idref="w1_4" label="--" />
+						<edge idref="p1_5" label="ID" />
+					</nt>
+					<nt id="p1_5" form="ex." postag="ab">
+						<edge idref="w1_5" label="--" />
+					</nt>
+					<nt id="p1_6" form="inkomst" postag="nn.utr.sin.ind.nom">
+						<edge idref="w1_6" label="--" />
+						<edge idref="p1_7" label="ATT" />
+						<edge idref="p1_12" label="CC" />
+					</nt>
+					<nt id="p1_7" form="av" postag="pp">
+						<edge idref="w1_7" label="--" />
+						<edge idref="p1_8" label="PR" />
+					</nt>
+					<nt id="p1_8" form="kapital" postag="nn.neu.sin.ind.nom">
+						<edge idref="w1_8" label="--" />
+						<edge idref="p1_9" label="CC" />
+					</nt>
+					<nt id="p1_9" form="," postag="mid">
+						<edge idref="w1_9" label="--" />
+						<edge idref="p1_11" label="CC" />
+					</nt>
+					<nt id="p1_10" form="tillfällig" postag="jj.pos.utr.sin.ind.nom">
+						<edge idref="w1_10" label="--" />
+					</nt>
+					<nt id="p1_11" form="förvärvsverksamhet" postag="nn.utr.sin.ind.nom">
+						<edge idref="w1_11" label="--" />
+						<edge idref="p1_10" label="ATT" />
+					</nt>
+					<nt id="p1_12" form="," postag="mid">
+						<edge idref="w1_12" label="--" />
+						<edge idref="p1_14" label="CC" />
+					</nt>
+					<nt id="p1_13" form="periodiskt" postag="ab.pos">
+						<edge idref="w1_13" label="--" />
+					</nt>
+					<nt id="p1_14" form="understöd" postag="nn.neu.plu.ind.nom">
+						<edge idref="w1_14" label="--" />
+						<edge idref="p1_13" label="ATT" />
+					</nt>
+					<nt id="p1_15" form="." postag="mad">
+						<edge idref="w1_15" label="--" />
+					</nt>
+				</nonterminals>
+			</graph>
+		</s>
+		<s id="s2">
+			<graph root="p2_3">
+				<terminals>
+					<t id="w2_1" form="Barns" postag="nn.neu.plu.ind.gen"/>
+					<t id="w2_2" form="ålder" postag="nn.utr.sin.ind.nom"/>
+					<t id="w2_3" form="räknas" postag="vb.prs.sfo"/>
+					<t id="w2_4" form="efter" postag="pp"/>
+					<t id="w2_5" form="förhållandet" postag="nn.neu.sin.def.nom"/>
+					<t id="w2_6" form="den" postag="dt.utr.sin.def"/>
+					<t id="w2_7" form="1" postag="ro.sin.nom"/>
+					<t id="w2_8" form="november" postag="nn.utr.sin.ind.nom.dat"/>
+					<t id="w2_9" form="under" postag="pp"/>
+					<t id="w2_10" form="inkomståret" postag="nn.neu.sin.def.nom"/>
+					<t id="w2_11" form="." postag="mad"/>
+				</terminals>
+				<nonterminals>
+					<nt id="p2_1" form="Barns" postag="nn.neu.plu.ind.gen">
+						<edge idref="w2_1" label="--" />
+					</nt>
+					<nt id="p2_2" form="ålder" postag="nn.utr.sin.ind.nom">
+						<edge idref="w2_2" label="--" />
+						<edge idref="p2_1" label="DET" />
+					</nt>
+					<nt id="p2_3" form="räknas" postag="vb.prs.sfo">
+						<edge idref="w2_3" label="--" />
+						<edge idref="p2_2" label="SUB" />
+						<edge idref="p2_4" label="ADV" />
+						<edge idref="p2_11" label="IP" />
+					</nt>
+					<nt id="p2_4" form="efter" postag="pp">
+						<edge idref="w2_4" label="--" />
+						<edge idref="p2_5" label="PR" />
+					</nt>
+					<nt id="p2_5" form="förhållandet" postag="nn.neu.sin.def.nom">
+						<edge idref="w2_5" label="--" />
+						<edge idref="p2_8" label="ATT" />
+					</nt>
+					<nt id="p2_6" form="den" postag="dt.utr.sin.def">
+						<edge idref="w2_6" label="--" />
+					</nt>
+					<nt id="p2_7" form="1" postag="ro.sin.nom">
+						<edge idref="w2_7" label="--" />
+					</nt>
+					<nt id="p2_8" form="november" postag="nn.utr.sin.ind.nom.dat">
+						<edge idref="w2_8" label="--" />
+						<edge idref="p2_6" label="DET" />
+						<edge idref="p2_7" label="DET" />
+						<edge idref="p2_9" label="ATT" />
+					</nt>
+					<nt id="p2_9" form="under" postag="pp">
+						<edge idref="w2_9" label="--" />
+						<edge idref="p2_10" label="PR" />
+					</nt>
+					<nt id="p2_10" form="inkomståret" postag="nn.neu.sin.def.nom">
+						<edge idref="w2_10" label="--" />
+					</nt>
+					<nt id="p2_11" form="." postag="mad">
+						<edge idref="w2_11" label="--" />
+					</nt>
+				</nonterminals>
+			</graph>
+		</s>
+		<s id="s3">
+			<graph root="p3_3">
+				<terminals>
+					<t id="w3_1" form="Som" postag="kn"/>
+					<t id="w3_2" form="bevis" postag="nn.neu.sin.ind.nom"/>
+					<t id="w3_3" form="torde" postag="vb.prt.akt.mod"/>
+					<t id="w3_4" form="godtas" postag="vb.prs.sfo"/>
+					<t id="w3_5" form="dom" postag="pn.utr/neu.plu.def.sub/obj"/>
+					<t id="w3_6" form="eller" postag="kn"/>
+					<t id="w3_7" form="avtal" postag="nn.neu.sin.ind.nom"/>
+					<t id="w3_8" form="om" postag="pp"/>
+					<t id="w3_9" form="underhållsskyldighet" postag="nn.utr.sin.ind.nom"/>
+					<t id="w3_10" form="jämte" postag="pp"/>
+					<t id="w3_11" form="kvitto" postag="nn.neu.sin.ind.nom"/>
+					<t id="w3_12" form="på" postag="pp"/>
+					<t id="w3_13" form="betalt" postag="jj.pos.neu.sin.ind.nom"/>
+					<t id="w3_14" form="belopp" postag="nn.neu.sin.ind.nom"/>
+					<t id="w3_15" form="eller" postag="kn"/>
+					<t id="w3_16" form="intyg" postag="nn.neu.sin.ind.nom"/>
+					<t id="w3_17" form="från" postag="pp"/>
+					<t id="w3_18" form="trovärdig" postag="jj.pos.utr.sin.ind.nom"/>
+					<t id="w3_19" form="person" postag="nn.utr.sin.ind.nom"/>
+					<t id="w3_20" form="." postag="mad"/>
+				</terminals>
+				<nonterminals>
+					<nt id="p3_1" form="Som" postag="kn">
+						<edge idref="w3_1" label="--" />
+						<edge idref="p3_2" label="UK" />
+					</nt>
+					<nt id="p3_2" form="bevis" postag="nn.neu.sin.ind.nom">
+						<edge idref="w3_2" label="--" />
+					</nt>
+					<nt id="p3_3" form="torde" postag="vb.prt.akt.mod">
+						<edge idref="w3_3" label="--" />
+						<edge idref="p3_1" label="PRD" />
+						<edge idref="p3_4" label="VC" />
+					</nt>
+					<nt id="p3_4" form="godtas" postag="vb.prs.sfo">
+						<edge idref="w3_4" label="--" />
+						<edge idref="p3_5" label="SUB" />
+						<edge idref="p3_20" label="IP" />
+					</nt>
+					<nt id="p3_5" form="dom" postag="pn.utr/neu.plu.def.sub/obj">
+						<edge idref="w3_5" label="--" />
+						<edge idref="p3_6" label="CC" />
+					</nt>
+					<nt id="p3_6" form="eller" postag="kn">
+						<edge idref="w3_6" label="--" />
+						<edge idref="p3_7" label="CC" />
+					</nt>
+					<nt id="p3_7" form="avtal" postag="nn.neu.sin.ind.nom">
+						<edge idref="w3_7" label="--" />
+						<edge idref="p3_8" label="ATT" />
+						<edge idref="p3_10" label="ATT" />
+					</nt>
+					<nt id="p3_8" form="om" postag="pp">
+						<edge idref="w3_8" label="--" />
+						<edge idref="p3_9" label="PR" />
+					</nt>
+					<nt id="p3_9" form="underhållsskyldighet" postag="nn.utr.sin.ind.nom">
+						<edge idref="w3_9" label="--" />
+					</nt>
+					<nt id="p3_10" form="jämte" postag="pp">
+						<edge idref="w3_10" label="--" />
+						<edge idref="p3_11" label="PR" />
+					</nt>
+					<nt id="p3_11" form="kvitto" postag="nn.neu.sin.ind.nom">
+						<edge idref="w3_11" label="--" />
+						<edge idref="p3_12" label="ATT" />
+						<edge idref="p3_15" label="CC" />
+					</nt>
+					<nt id="p3_12" form="på" postag="pp">
+						<edge idref="w3_12" label="--" />
+						<edge idref="p3_14" label="PR" />
+					</nt>
+					<nt id="p3_13" form="betalt" postag="jj.pos.neu.sin.ind.nom">
+						<edge idref="w3_13" label="--" />
+					</nt>
+					<nt id="p3_14" form="belopp" postag="nn.neu.sin.ind.nom">
+						<edge idref="w3_14" label="--" />
+						<edge idref="p3_13" label="ATT" />
+					</nt>
+					<nt id="p3_15" form="eller" postag="kn">
+						<edge idref="w3_15" label="--" />
+						<edge idref="p3_16" label="CC" />
+					</nt>
+					<nt id="p3_16" form="intyg" postag="nn.neu.sin.ind.nom">
+						<edge idref="w3_16" label="--" />
+						<edge idref="p3_17" label="ATT" />
+					</nt>
+					<nt id="p3_17" form="från" postag="pp">
+						<edge idref="w3_17" label="--" />
+						<edge idref="p3_19" label="PR" />
+					</nt>
+					<nt id="p3_18" form="trovärdig" postag="jj.pos.utr.sin.ind.nom">
+						<edge idref="w3_18" label="--" />
+					</nt>
+					<nt id="p3_19" form="person" postag="nn.utr.sin.ind.nom">
+						<edge idref="w3_19" label="--" />
+						<edge idref="p3_18" label="ATT" />
+					</nt>
+					<nt id="p3_20" form="." postag="mad">
+						<edge idref="w3_20" label="--" />
+					</nt>
+				</nonterminals>
+			</graph>
+		</s>
+	</body>
+</corpus>

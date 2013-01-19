@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<mapping id="DDT">
+    <annotation>
+      <feature from="form" to="word"/>
+      <feature from="postag" to="msd">
+        <value from="AC---U=--"></value>
+        <value from="ANA---=-R"></value>
+        <value from="ANA[CN][SP]U=DU"></value>
+        <value from="ANC---=-R"></value>
+        <value from="ANC[CN]PU=[DI]U"></value>
+        <value from="ANC[CN]SU=IU"></value>
+        <value from="ANC[CN][SP]G=[DI]U"></value>
+        <value from="ANC[CN][SP]U=[DI]U"></value>
+        <value from="ANP---=-R"></value>
+        <value from="ANPCSU=IU"></value>
+        <value from="ANPCSU=[DI]U"></value>
+        <value from="ANPNSU=IU"></value>
+        <value from="ANPNSU=[DI]U"></value>
+        <value from="ANP[CN]PG=[DI]U"></value>
+        <value from="ANP[CN]PU=[DI]U"></value>
+        <value from="ANP[CN]SG=DU"></value>
+        <value from="ANP[CN]SU=DU"></value>
+        <value from="ANP[CN]SU=IU"></value>
+        <value from="ANP[CN]SU=[DI]U"></value>
+        <value from="ANP[CN][SP]U=[DI]U"></value>
+        <value from="ANS---=-R"></value>
+        <value from="ANS[CN]PU=DU"></value>
+        <value from="ANS[CN]PU=[DI]U"></value>
+        <value from="ANS[CN]SU=DU"></value>
+        <value from="ANS[CN]SU=IU"></value>
+        <value from="ANS[CN][SP]U=DU"></value>
+        <value from="ANS[CN][SP]U=[DI]U"></value>
+        <value from="AO---U=--"></value>
+        <value from="CC"></value>
+        <value from="CS"></value>
+        <value from="I="></value>
+        <value from="NCCPG==D"></value>
+        <value from="NCCPG==I"></value>
+        <value from="NCCPU==D"></value>
+        <value from="NCCPU==I"></value>
+        <value from="NCCPU==[DI]"></value>
+        <value from="NCCSG==D"></value>
+        <value from="NCCSG==I"></value>
+        <value from="NCCSU==D"></value>
+        <value from="NCCSU==I"></value>
+        <value from="NCNPG==D"></value>
+        <value from="NCNPG==I"></value>
+        <value from="NCNPU==D"></value>
+        <value from="NCNPU==I"></value>
+        <value from="NCNSG==D"></value>
+        <value from="NCNSG==I"></value>
+        <value from="NCNSU==D"></value>
+        <value from="NCNSU==I"></value>
+        <value from="NC[CN]PU==D"></value>
+        <value from="NC[CN]PU==I"></value>
+        <value from="NC[CN]SU==I"></value>
+        <value from="NC[CN][SP]G==[DI]"></value>
+        <value from="NC[CN][SP]U==I"></value>
+        <value from="NC[CN][SP]U==[DI]"></value>
+        <value from="NP--G==-"></value>
+        <value from="NP--U==-"></value>
+        <value from="PC--PG---"></value>
+        <value from="PC--PU---"></value>
+        <value from="PD-CSG--U"></value>
+        <value from="PD-CSU--U"></value>
+        <value from="PD-NSU--U"></value>
+        <value from="PD-[CN]PU--U"></value>
+        <value from="PD-[CN][SP]U--U"></value>
+        <value from="PI-CSG--U"></value>
+        <value from="PI-CSU--U"></value>
+        <value from="PI-C[SP]N--U"></value>
+        <value from="PI-NSU--U"></value>
+        <value from="PI-[CN]PG--U"></value>
+        <value from="PI-[CN]PU--O"></value>
+        <value from="PI-[CN]PU--U"></value>
+        <value from="PO1CSUPNF"></value>
+        <value from="PO1CSUSNU"></value>
+        <value from="PO1NSUPNF"></value>
+        <value from="PO1NSUSNU"></value>
+        <value from="PO1[CN]PUPNF"></value>
+        <value from="PO1[CN]PUSNU"></value>
+        <value from="PO1[CN][SP]UPNU"></value>
+        <value from="PO2CSUSNU"></value>
+        <value from="PO2NSUSNU"></value>
+        <value from="PO2[CN]PUSNU"></value>
+        <value from="PO2[CN][SP]UPNU"></value>
+        <value from="PO2[CN][SP]U[SP]NP"></value>
+        <value from="PO3CSUSYU"></value>
+        <value from="PO3NSUSYU"></value>
+        <value from="PO3[CN]PUSYU"></value>
+        <value from="PO3[CN][SP]UPNU"></value>
+        <value from="PO3[CN][SP]USNU"></value>
+        <value from="PP1CPN-NU"></value>
+        <value from="PP1CPU-[YN]U"></value>
+        <value from="PP1CSN-NU"></value>
+        <value from="PP1CSU-[YN]U"></value>
+        <value from="PP2CPN-NU"></value>
+        <value from="PP2CPU-[YN]U"></value>
+        <value from="PP2CSN-NU"></value>
+        <value from="PP2CSU-[YN]U"></value>
+        <value from="PP2C[SP]N-NP"></value>
+        <value from="PP2C[SP]U-[YN]P"></value>
+        <value from="PP3CSN-NU"></value>
+        <value from="PP3CSU-NU"></value>
+        <value from="PP3NSU-NU"></value>
+        <value from="PP3[CN]PN-NU"></value>
+        <value from="PP3[CN]PU-NU"></value>
+        <value from="PP3[CN][SP]U-YU"></value>
+        <value from="PT-CSU--U"></value>
+        <value from="PT-C[SP]U--U"></value>
+        <value from="PT-NSU--U"></value>
+        <value from="PT-[CN]PU--U"></value>
+        <value from="PT-[CN]SU--U"></value>
+        <value from="PT-[CN][SP]G--U"></value>
+        <value from="RGA"></value>
+        <value from="RGC"></value>
+        <value from="RGP"></value>
+        <value from="RGS"></value>
+        <value from="RGU"></value>
+        <value from="SP"></value>
+        <value from="U="></value>
+        <value from="VADA=----A-"></value>
+        <value from="VADA=----P-"></value>
+        <value from="VADR=----A-"></value>
+        <value from="VADR=----P-"></value>
+        <value from="VAF-=----A-"></value>
+        <value from="VAF-=----P-"></value>
+        <value from="VAG-=SCI--U"></value>
+        <value from="VAM-=------"></value>
+        <value from="VAPA=P[CN][DI]A-G"></value>
+        <value from="VAPA=P[CN][DI]A-U"></value>
+        <value from="VAPA=SCDA-U"></value>
+        <value from="VAPA=S[CN]DA-U"></value>
+        <value from="VAPA=S[CN]IA-U"></value>
+        <value from="VAPA=S[CN]I[ARU]-U"></value>
+        <value from="VAPR=---R--"></value>
+        <value from="VAPR=[SP][CN][DI]A-U"></value>
+        <value from="VAPR=[SP][CN][DI][ARU]-U"></value>
+        <value from="VEDA=----A-"></value>
+        <value from="VEDR=----A-"></value>
+        <value from="VEF-=----A-"></value>
+        <value from="VEPA=[SP][CN][DI][ARU]-U"></value>
+        <value from="XA"></value>
+        <value from="XF"></value>
+        <value from="XP"></value>
+        <value from="XR"></value>
+        <value from="XS"></value>
+        <value from="XX"></value>
+      </feature>
+      <feature from="head" to=""/>
+      <feature from="deprel" to="edgelabel">
+        <value from="ROOT" to="--"></value>
+        <value from="&lt;avobj&gt;">adverbial object of gapped conjunct</value>
+        <value from="&lt;dobj&gt;">direct object of gapped conjunct</value>
+        <value from="&lt;lobj&gt;">locative object of gapped conjunct</value>
+        <value from="&lt;mod&gt;">modifier of gapped head</value>
+        <value from="&lt;nobj&gt;">nominal object of gapped conjunct</value>
+		<value from="&lt;pobj:nobj&gt;">nominal object of
+			prepositional object of gapped conjunct</value>
+		<value from="&lt;pobj&gt;">prepositional object of gapped
+			conjunct</value>
+        <value from="&lt;possd&gt;">possessed object of gapped
+			conjunct</value>
+        <value from="&lt;pred&gt;">predicative of gapped conjunct</value>
+        <value from="&lt;qobj&gt;">quotational object of gapped
+			conjunct</value>
+        <value from="&lt;subj:pobj&gt;">prepositional object of
+			subject of gapped conjunct</value>
+        <value from="&lt;subj&gt;">subject of gapped conjunct</value>
+        <value from="&lt;vobj&gt;">verbal object of gapped conjunct</value>
+        <value from="&lt;xpl&gt;">explification object of gapped
+			conjunct</value>
+        <value from="aobj">adjectival object</value>
+        <value from="appa">parenthetical apposition</value>
+        <value from="appr">restrictive apposition</value>
+        <value from="avobj">adverbial object</value>
+        <value from="conj">conjunct</value>
+        <value from="coord">coordinator</value>
+        <value from="dobj">direct object</value>
+        <value from="err">ungrammatical dependent</value>
+        <value from="expl">expletive</value>
+        <value from="iobj">indirect object</value>
+        <value from="list">next element in list</value>
+        <value from="lobj">locative object</value>
+        <value from="mod">modifier</value>
+        <value from="modo">object-oriented modifier</value>
+        <value from="modp">parenthetical modifier</value>
+        <value from="modr">restrictive modifier</value>
+        <value from="mods">subject-oriented modifier</value>
+        <value from="name">name modifier</value>
+        <value from="namef">first name modifier</value>
+        <value from="namel">last name modifier</value>
+        <value from="nobj">nominal object</value>
+        <value from="numa">additive numeral complement</value>
+        <value from="numm">multiplicative numeral complement</value>
+        <value from="obl">obligatory modifier</value>
+        <value from="part">particle</value>
+        <value from="pnct">punctuation</value>
+        <value from="pobj">prepositional object</value>
+        <value from="possd">possessed object</value>
+        <value from="pred">predicative</value>
+        <value from="qobj">quotational object</value>
+        <value from="rel">relative clause</value>
+        <value from="rep">repaired phrase in speech error</value>
+        <value from="subj">subject</value>
+        <value from="title">title modifier</value>
+        <value from="tobj">temporal object</value>
+        <value from="vobj">verbal object</value>
+        <value from="voc">vocative</value>
+        <value from="xpl">explification</value>
+        <value from="xtop">external topic</value>   
+      </feature>
+   </annotation>
+</mapping>
