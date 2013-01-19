@@ -415,28 +415,28 @@ Two class of hybrid algorithms used in this section:
 
 Implements a linear interpolation of several baseline parsing models.
 
--i <input baseline parsers file (separate by comma)>
-	name of baseline parsers
-
--g <gold file>
-	gold file contain error free data
-
--o <output file>
-	name of output file after ensemble
-
--method <method (majority|attardi|eisner|chu_liu_edmond) [default: majority]>
-	methd of combining baseline parser:
-		majority: simple combining by applying majority vote
-		attardi: gready top-down approach to combining parser results
-		eisner: reparsing algorithm that generate projective tree
-		chu_liu_edmond: reparsing algorithm that generate non-projective 
-		tree
+<table>
+<tr><td>-i &lt;input baseline parsers file (separate by comma)&gt;</td><td>name of baseline parsers</td></tr>
+<tr><td>-g &lt;gold file&gt;</td><td>gold file contain error free data</td></tr>
+<tr><td>-o &lt;output file&gt;</td><td>name of output file after ensemble</td></tr>
+<tr>
+	<td>-method &lt;method (majority|attardi|eisner|chu_liu_edmond) [default: majority]&gt;</td>
+	<td>
+		methd of combining baseline parser:
+		<ul>
+			<li>majority: simple combining by applying majority vote</li>
+			<li>attardi: gready top-down approach to combining parser results</li>
+			<li>eisner: reparsing algorithm that generate projective tree</li>
+			<li>chu_liu_edmond: reparsing algorithm that generate non-projective tree</li>
+		</ul>
+	</td>
+</tr>
+</table>
 	
 For example:
 
-> java -jar DependencyParser.jar -v 0 -mode ensemble \
-  -i malt.conll,clear.conll,mst.conll,mate.conll -g gold.conll \
-  -o ensemble.conll -method attardi
+> java -jar DependencyParser.jar -v 0 -mode ensemble -i malt.conll,clear.conll,mst.conll,mate.conll -g gold.conll 
+-o ensemble.conll -method attardi
 
 Requirements:
 * "[Ensemble.jar] (http://www.surdeanu.name/mihai/ensemble/)" [8] for voting, attardi and eisner.
@@ -451,70 +451,52 @@ improve the performance of the first, used to approximate rich non-local
 features in the second parser, without sacrificing efficient, model-optimal 
 prediction.
 
--i <input train file>
-	input file for train level0 parser (-t 0 or -t *) or level1 parser (-t 1)
-	
--t <input test file>
-	input file for parse level0 parser (-t 0 or -t *) or level1 parser (-t 1)
-
--l <level (0|1|*) [default: * for running both level]>
-	run level0, level1 or both level
-
--l0_part <level0 augmented parts [default: 5]>
-	number of part for augment train and test with predictions of level0 
-	parser
-
--l0_out_train <level0 output augmented train>
-	name of augmented train file after level0
-	
--l0_out_parse <level0 output ougmented parse>
-	name of augmented test file after level0
-
--l0_parser <level0 parser-type (malt|mst) [default: mst]>
-    >> malt parameters:
-        -l0_option <level0 option-file>
-        -l0_guide <level0 guide-file>
-    >> mst parameters:
-        -l0_decode <level0 decode-type (proj|non-proj) [default: non-proj]>
-        -l0_loss <level0 loss-type (punc|nopunc) [default: punc]>
-        -l0_order <level0 order (1|2) [default: 2]>
-        -l0_k <level0 training k-best [default: 1]>
-        -l0_iter <level0 training iterations [default: 10]>
-		
--l1_pe <level1 use predicted edge (0|1) [default: 1]>
-	indicates whether the candidate edge was present, and what was its label
-
--l1_ps <level1 use previous sibling (0|1) [default: 1]>
-	Lemma, POS, link label, distance and direction of attachment of the 
-	previous predicted siblings
-
--l1_ns <level1 use next sibling (0|1) [default: 1]>
-	Lemma, POS, link label, distance and direction of attachment of the next 
-	predicted siblings
-
--l1_gp <level1 use grandparent (0|1) [default: 1]>
-	Lemma, POS, link label, distance and direction of attachment of the 
-	grandparent of the current modifier
-
--l1_ac <level1 use all childs (0|1) [default: 1]>
-	sequence of POS and link labels of all the predicted children of the 
-	candidate head
-	
--l1_ph <level1 use predicted head (0|1) [default: 1]>
-	predicted head of the candidate modifier (if PredEdge=0)
-	
--l1_v <level1 use valency (0|1) [default: 1]>
-	predicted childs of the candidate modifier
-	
--l1_parser <level1 parser-type (mst) [default: mst]>
-    >> mst parameters:
-        -l1_decode <level1 decode-type (proj|non-proj) [default: non-proj]>
-        -l1_loss <level1 loss-type (punc|nopunc) [default: punc]>
-        -l1_order <level1 order (1|2) [default: 2]>
-        -l1_k <level1 training k-best [default: 1]>
-        -l1_iter <level1 training iterations [default: 10]>
--l1_output <level1 parsed output>
-	final output parse file after level1
+<table>
+<tr><td>-i &lt;input train file&gt;</td><td>input file for train level0 parser (-l 0 or -l all) or level1 parser (-l 1)</td></tr>
+<tr><td>-t &lt;input test file&gt;</td><td>input file for parse level0 parser (-l 0 or -l all) or level1 parser (-l 1)</td></tr>
+<tr><td>-l &lt;level (0|1|all) [default: all for running both level]&gt;</td><td>run level0, level1 or both level</td></tr>
+<tr><td>-l0_part &lt;level0 augmented parts [default: 5]&gt;</td><td>number of part for augment train and test with predictions of level0 parser</td></tr>
+<tr><td>-l0_out_train &lt;level0 output augmented train&gt;</td><td>name of augmented train file after level0</td></tr>
+<tr><td>-l0_out_parse &lt;level0 output ougmented parse&gt;</td><td>name of augmented test file after level0</td></tr>
+<tr>
+	<td>-l0_parser &lt;level0 parser-type (malt|mst) [default: mst]&gt;</td>
+	<td>
+		malt parameters:
+		<table>
+			<tr><td>-l0_option &lt;level0 option-file&gt;</td></tr>
+			<tr><td>-l0_guide &lt;level0 guide-file&gt;</td></tr>
+		</table>
+		mst parameters:
+		<table>
+			<tr><td>-l0_decode &lt;level0 decode-type (proj|non-proj) [default: non-proj]&gt;</td></tr>
+			<tr><td>-l0_loss &lt;level0 loss-type (punc|nopunc) [default: punc]&gt;</td></tr>
+			<tr><td>-l0_order &lt;level0 order (1|2) [default: 2]&gt;</td></tr>
+			<tr><td>-l0_k &lt;level0 training k-best [default: 1]&gt;</td></tr>
+			<tr><td>-l0_iter &lt;level0 training iterations [default: 10]&gt;</td></tr>
+		</table>
+	</td>
+</tr>
+<tr><td>-l1_pe &lt;level1 use predicted edge (0|1) [default: 1]&gt;</td><td>indicates whether the candidate edge was present, and what was its label</td></tr>
+<tr><td>-l1_ps &lt;level1 use previous sibling (0|1) [default: 1]&gt;</td><td>Lemma, POS, link label, distance and direction of attachment of the previous predicted siblings</td></tr>
+<tr><td>-l1_ns &lt;level1 use next sibling (0|1) [default: 1]&gt;</td><td>Lemma, POS, link label, distance and direction of attachment of the next predicted siblings</td></tr>
+<tr><td>-l1_gp &lt;level1 use grandparent (0|1) [default: 1]&gt;</td><td>Lemma, POS, link label, distance and direction of attachment of the grandparent of the current modifier</td></tr>
+<tr><td>-l1_ac &lt;level1 use all childs (0|1) [default: 1]&gt;</td><td>sequence of POS and link labels of all the predicted children of the candidate head</td></tr>
+<tr><td>-l1_ph &lt;level1 use predicted head (0|1) [default: 1]&gt;</td><td>predicted head of the candidate modifier (if PredEdge=0)</td></tr>
+<tr><td>-l1_v &lt;level1 use valency (0|1) [default: 1]&gt;</td><td>predicted childs of the candidate modifier</td></tr>
+<tr>
+	<td>-l1_parser &lt;level1 parser-type (mst) [default: mst]&gt;</td>
+	<td>mst parameters:
+		<table>
+			<tr><td>-l1_decode &lt;level1 decode-type (proj|non-proj) [default: non-proj]&gt;</td></tr>
+			<tr><td>-l1_loss &lt;level1 loss-type (punc|nopunc) [default: punc]&gt;</td></tr>
+			<tr><td>-l1_order &lt;level1 order (1|2) [default: 2]&gt;</td></tr>
+			<tr><td>-l1_k &lt;level1 training k-best [default: 1]&gt;</td></tr>
+			<tr><td>-l1_iter &lt;level1 training iterations [default: 10]&gt;</td></tr>
+        	</table>
+	</td>
+</tr>
+<tr><td>-l1_output &lt;level1 parsed output&gt;</td><td>final output parse file after level1</td></tr>
+</table>
 	
 For example:
 
@@ -557,15 +539,15 @@ The 23rd International Conference on Computational Linguistics (COLING 2010),
 Beijing, China, 2010.
 	
 [8]	M. Surdeanu and C. D. Manning, "Ensemble models for dependency parsing: 
-    cheap and good?", in Proceedings of the North American Chapter of the 
-    Association for Computational Linguistics Conference (NAACL-2010), 
-    pp. 649-652, 2010.
+cheap and good?", in Proceedings of the North American Chapter of the 
+Association for Computational Linguistics Conference (NAACL-2010), 
+pp. 649-652, 2010.
 	
 [9]	J. Hall, et al., "Single malt or blended? A study in multilingual parser 
-    optimization", in Proceedings of the Conference on Empirical Methods in 
-    Natural Language Processing and Conference on Computational Natural Language 
-    Learning (EMNLP-CoNLL), Prauge, Czech Republic, pp. 933-939, 2007.
+optimization", in Proceedings of the Conference on Empirical Methods in 
+Natural Language Processing and Conference on Computational Natural Language 
+Learning (EMNLP-CoNLL), Prauge, Czech Republic, pp. 933-939, 2007.
 	
 [10]	A. F. T. Martins, et al., "Stacking dependency parsers", in Proceedings 
-	of the Conference on Empirical Methods in Natural Language Processing (EMNLP), 
-    pp. 157-166, 2008.
+of the Conference on Empirical Methods in Natural Language Processing (EMNLP), 
+pp. 157-166, 2008.
