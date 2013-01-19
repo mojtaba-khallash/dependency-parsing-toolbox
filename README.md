@@ -1,78 +1,71 @@
 In the name of Allah
 
------------------------------
-DependencyParser version 1.0
-      8 December 2012
------------------------------
 
-This is the README for the "DependencyParser" toolbox that integrates different 
+DependencyParser version 1.0
+===================
+      8 December 2012
+
+This is the README for the *"DependencyParser" toolbox* that integrates different 
 algorithms related to dependency parsing in one place. This toolbox has been 
-developed by Mojtaba Khallash (mkhallash@gmail.com) from Iran University of 
-Science and Technology (IUST).
+developed by [Mojtaba Khallash] (mailto: mkhallash@gmail.com) from _Iran University of 
+Science and Technology (IUST)_.
 
 The home page for the project is:
   http://www.nlp.iust.ac.ir
-
-The code is available on Github at:
-	https://github.com/mojtaba-khallash/dependency-parsing-toolbox
 	
 If you want to use this software for research, please refer to this web address 
 in your papers.
-
--------------------------
 
 The toolbox can be used freely for non-commercial research and educational 
 purposes. It comes with no warranty, but we welcome all comments, bug reports, 
 and suggestions for improvements.
 
-------------------
 Table of contents
 ------------------
 
 1. Compiling
-
 2. Example of usage
-
 3. Running the toolbox
-   a. Read From Treebank
-   b. Create Dependency Graph
-   c. Projectivize tree
-   d. Deprojectivize tree
-   e. Optimizer
-   f. Training
-   g. Parsing
-   h. Evaluation
-   i. Hybrid
-   i1. Ensemble
-   i2. Stacking
-
+   <ul>
+	a. Read From Treebank<br/>
+	b. Create Dependency Graph<br/>
+   	c. Projectivize tree<br/>
+   	d. Deprojectivize tree<br/>
+   	e. Optimizer<br/>
+   	f. Training<br/>
+   	g. Parsing<br/>
+   	h. Evaluation<br/>
+     	i. Hybrid
+     	<ul>
+		i1. Ensemble<br/>
+     		i2. Stacking
+	</ul>
+   <ul>
 4. References
 
-----------------
 1. Compiling
 ----------------
 
 Requirements:
-* Version 1.7 or later of the Java 2 SDK (http://java.sun.com)
-  You must add java binary file to system path. In linux, your
-  can open ~/.bashrc file and append this line:
-    PATH=$PATH:/<address-of-bin-folder-of-JRE>
-* Perl 5 or later (http://www.perl.org/) for "MaltBlender" tools
+* Version 1.7 or later of the [Java 2 SDK] (http://java.sun.com)
+You must add java binary file to system path. <br/>In linux, your
+can open `~/.bashrc` file and append this line:
+`PATH=$PATH:/<address-of-bin-folder-of-JRE>`
+* [Perl 5] (http://www.perl.org/) or later for *"MaltBlender"* tools
 
 To compile the code, first decompress the package:
 
 in linux:
-$ tar -xvzf DependencyParser.tgz
-$ cd DependencyParser
-$ sh compile_all.sh
+> tar -xvzf DependencyParser.tgz<br/>
+> cd DependencyParser<br/>
+> sh compile_all.sh
 
 in windows:
-- decompress the DependencyParser.zip
-- compile_all.bat
+> decompress the DependencyParser.zip<br/>
+> compile_all.bat
 
 You can open the all projects in NetBeans 7.1 (or maybe later) too.
 
----------------------
 2. Example of Usage
 ---------------------
 
@@ -80,32 +73,29 @@ For any tools in the DependencyParser package a sample Persian treebank exist in
 "Treebank" folder. 
 (the full treebank can be download freely from http://dadegan.ir/en).
 
--------------------------
 3. Running the toolbox
 -------------------------
 
 This toolbox run in two mode: 
 
-* gui [default mode]
+* gui [default mode]<br/>
 Simply double click on jar file or run the following command:
 
 > java -jar DependencyParser.jar
 
-* command-line
+* command-line<br/>
 In order to running toolbox in command-line mode must be set -v flag (visible) 
 to 0:
 
 > java -jar DependencyParser.jar -v 0
 
-for determining of operational mode, must be set -mode flag to one the following 
-values:
-	- proj|deproj|optimizer|train|parse|eval|ensemble|stack
+for determining of operational mode, must be set `-mode` flag to one the following 
+values: `proj|deproj|optimizer|train|parse|eval|ensemble|stack`<br/>
 details of each operaional mode describe in the next sections. for obtain more 
-information about specific parameters of each operational mode, use -help flag:
+information about specific parameters of each operational mode, use `-help` flag:
 
 > java -jar DependencyParser.jar -v 0 -help <operational-mode>
 
--------------------------
 3a. Reading From Treebank
 -------------------------
 
@@ -114,20 +104,18 @@ dependency tree of each sentence and length distribution plot of a CoNLL format
 corpus can be shown.
 
 Requirements:
-** "Chart2D.jar" (http://chart2d.sourceforge.net/index.php) for drawing plots.
-** "MaltEval.jar" [1] (http://w3.msi.vxu.se/users/jni/malteval/) for drawing 
+* "[Chart2D.jar] (http://chart2d.sourceforge.net/index.php)" for drawing plots.
+* "[MaltEval.jar] (http://w3.msi.vxu.se/users/jni/malteval/)" [1] for drawing 
    dependency trees.
 
-----------------------------
 3b. Create Dependency Graph
 ----------------------------
 
 This operational mode is only available in gui mode. In this mode you can enter 
 a sentence word by word. For each word you must specify POS tag. After adding 
 each word, you can manipulate dependency relations between words. You can save 
-the generated tree in conll format.
+the generated tree in *CoNLL format*.
 
------------------------
 3c. Projectivize tree
 -----------------------
 
@@ -135,55 +123,39 @@ In order to convert non-projective dependency parsing before training the corpus
 you can use this toolbox. this toolbox have six parameters (for more details 
 see [2]):
 
--i <input conll file>
-	input file which you want to projectivize
-	
--o <projectivized output>
-	name of output file
-	
--m <projectivizing model name>
-	name of model which will be created by deprojective process
-	
--mark <marking-strategy (None|Baseline|Head|Path|Head+Path)>
-	marking strategy (default: Head)
-	
--covered <covered-root (None|Ignore|Left|Right|Head)>
-	convered root (default: Head)
-	
--lift_order <lifting-order (Shortest|Deepest)>
-	lifting order (default: Shortest)
+<table>
+<tr><td>-i &lt;input conll file&gt;</td><td>input file which you want to projectivize</td></tr>
+<tr><td>-o &lt;projectivized output&gt;</td><td>name of output file</td></tr>
+<tr><td>-m &lt;projectivizing model name&gt;</td><td>name of model which will be created by deprojective process</td></tr>
+<tr><td>-mark &lt;marking-strategy (None|Baseline|Head|Path|Head+Path)&gt;</td><td>marking strategy (default: Head)</td></tr>
+<tr><td>-covered &lt;covered-root (None|Ignore|Left|Right|Head)&gt;</td><td>convered root (default: Head)</td></tr>
+<tr><td>-lift_order &lt;lifting-order (Shortest|Deepest)&gt;</td><td>lifting order (default: Shortest)</td></tr>
+</table>
 
 For example:
 
-> java -jar DependencyParser.jar -v 0 -mode proj -i input.conll -o \
-  output.conll -m langModel.mco
+> java -jar DependencyParser.jar -v 0 -mode proj -i input.conll -o output.conll -m langModel.mco
 
 Requirements:
-** "maltParser.jar" [3] (http://www.maltparser.org/index.html) for projectivize 
+* "[maltParser.jar] (http://www.maltparser.org/index.html)" [3] for projectivize 
    tree.
 	
--------------------------
 3d. Deprojectivize tree
 -------------------------
 
 This operational mode is used for de-projective dependency parsing after parsing 
 test corpus that need projectivized model created by the section 3c.
 
--i <input conll file>");
-	projectivized parse file
-	
--m <existing projectivizing model name>
-	model that created after projectivizing
-	
--o <deprojectivizing output>
-	name of output file
+<table>
+<tr><td>-i &lt;input conll file&gt;</td><td>projectivized parse file</td></tr>
+<tr><td>-m &lt;existing projectivizing model name&gt;</td><td>model that created after projectivizing</td></tr>
+<tr><td>-o &lt;deprojectivizing output&gt;</td><td>name of output file</td></tr>
+</table>
 
 For example:
 
-> java -jar DependencyParser.jar -v 0 -mode deproj -i input.conll \
-  -m langModel.mco -o output.conll
+> java -jar DependencyParser.jar -v 0 -mode deproj -i input.conll -m langModel.mco -o output.conll
 
----------------
 3e. Optimizer
 ---------------
 
@@ -216,10 +188,9 @@ For example:
   -parser malt -phase *
 
 Requirements:
-** "MaltOptimizer.jar" [4] (http://nil.fdi.ucm.es/maltoptimizer/install.html) 
+* "[MaltOptimizer.jar] (http://nil.fdi.ucm.es/maltoptimizer/install.html)" [4] 
    for optimizer.
 
----------------
 3f. Training
 ---------------
 
@@ -300,42 +271,33 @@ graph-based ("MSTParser" and Mate-Tools).
 
 For example:
 
-** MaltParser
-> java -jar DependencyParser.jar -v 0 -mode train -i input.conll \
-  -m langModel.mco -parser malt -option options.xml -guide guides.xml
+> // MaltParser<br/>
+> java -jar DependencyParser.jar -v 0 -mode train -i input.conll -m langModel.mco -parser malt -option options.xml -guide guides.xml
 
 Requirements:
-** "maltParser.jar" [3] (http://www.maltparser.org/index.html) for training 
-   MaltParser.
+* "[maltParser.jar] (http://www.maltparser.org/index.html) for training" [3] MaltParser.
 
-** ClearParser
-> java -jar DependencyParser.jar -v 0 -mode train -i input.conll \
-  -m langModel.mco -parser clear -option config.xml -guide feature.xml \
-  -bootstrap 2
+> // ClearParser<br/>
+> java -jar DependencyParser.jar -v 0 -mode train -i input.conll -m langModel.mco -parser clear -option config.xml 
+-guide feature.xml -bootstrap 2
 
 Requirements:
-** "ClearParser.jar" [5] (http://code.google.com/p/clearparser) for training 
-   ClearParser.
+* "[ClearParser.jar] (http://code.google.com/p/clearparser)" [5] for training ClearParser.
 
-** MSTParser
-> java -jar DependencyParser.jar -v 0 -mode train -i input.conll \
-  -m langModel.mco -parser mst -decode non-proj -loss punc -order 2 -k 1 \
-  -iter 10
+> MSTParser<br/>
+> java -jar DependencyParser.jar -v 0 -mode train -i input.conll -m langModel.mco -parser mst -decode non-proj 
+-loss punc -order 2 -k 1 -iter 10
 
 Requirements:
-** "MSTParser.jar" [6] 
-   (http://www.seas.upenn.edu/~strctlrn/MSTParser/MSTParser.html) for training 
-   MSTParser.
+* "[MSTParser.jar] (http://www.seas.upenn.edu/~strctlrn/MSTParser/MSTParser.html)" [6] for training MSTParser.
 
-** Mate-Tools
-> java -jar DependencyParser.jar -v 0 -mode train -i input.conll \
-  -m langModel.mco -parser mst -decode non-proj -threshold 0.3 -core 4 -iter 10
+> Mate-Tools<br/>
+> java -jar DependencyParser.jar -v 0 -mode train -i input.conll -m langModel.mco -parser mst -decode non-proj 
+-threshold 0.3 -core 4 -iter 10
 
 Requirements:
-** "mate-tools.jar" [7] (http://code.google.com/p/mate-tools/) for training 
-   Mate-Tools.
+* "[mate-tools.jar] (http://code.google.com/p/mate-tools/)" [7] for training Mate-Tools.
 
----------------
 3g. Parsing
 ---------------
 
@@ -384,27 +346,24 @@ algorithms, you must use same value as training phase.
 
 For example:
 
-** MaltParser
-> java -jar DependencyParser.jar -v 0 -mode parse -i input.conll \
-  -m langModel.mco -o output.conll -parser malt
+> MaltParser<br/>
+> java -jar DependencyParser.jar -v 0 -mode parse -i input.conll -m langModel.mco -o output.conll -parser malt
 
-** ClearParser
-> java -jar DependencyParser.jar -v 0 -mode parse -i input.conll \
-  -m langModel.mco -o output.conll -parser clear -option config.xml
+> ClearParser<br/>
+> java -jar DependencyParser.jar -v 0 -mode parse -i input.conll -m langModel.mco -o output.conll -parser clear 
+-option config.xml
 
-** MSTParser
-> java -jar DependencyParser.jar -v 0 -mode parse -i input.conll \
-  -m langModel.mco -o output.conll -parser mst -decode non-proj -order 2
+> MSTParser<br/>
+> java -jar DependencyParser.jar -v 0 -mode parse -i input.conll -m langModel.mco -o output.conll -parser mst 
+-decode non-proj -order 2
 
-** Mate-Tools
-> java -jar DependencyParser.jar -v 0 -mode parse -i input.conll \
-  -m langModel.mco -o output.conll -parser mst -decode non-proj -threshold 0.3 \
-  -core 4
+> Mate-Tools<br/>
+> java -jar DependencyParser.jar -v 0 -mode parse -i input.conll -m langModel.mco -o output.conll -parser mst 
+-decode non-proj -threshold 0.3 -core 4
 
 Requirements:
-Same as previous section.
+* Same as previous section.
 
-----------------
 3h. Evaluation
 ----------------
 
@@ -442,9 +401,8 @@ For example:
   -o output.conll -metric LAS,UAS -group Token
 
 Requirements:
-** "MaltEval.jar" [1] (http://w3.msi.vxu.se/users/jni/malteval/).
+* "[MaltEval.jar] (http://w3.msi.vxu.se/users/jni/malteval/)" [1].
 
-------------
 3i. Hybrid
 ------------
 
@@ -452,7 +410,6 @@ Two class of hybrid algorithms used in this section:
 * Ensemble: combine baseline parsers in parse time.
 * Stacking: combine baseline parsers in train time.
 
----------------
 3i1. Ensemble
 ---------------
 
@@ -482,12 +439,9 @@ For example:
   -o ensemble.conll -method attardi
 
 Requirements:
-** "Ensemble.jar" [8] (http://www.surdeanu.name/mihai/ensemble/) for voting, 
-   attardi and eisner.
-** "MaltBlender.jar" [9] (http://w3.msi.vxu.se/users/jni/blend/) for 
-   chu_liu_edmond.
+* "[Ensemble.jar] (http://www.surdeanu.name/mihai/ensemble/)" [8] for voting, attardi and eisner.
+* "[MaltBlender.jar] (http://w3.msi.vxu.se/users/jni/blend/)" [9] for chu-liu-edmonds.
 
----------------
 3i2. Stacking
 ---------------
 
@@ -564,46 +518,43 @@ prediction.
 	
 For example:
 
-> java -jar DependencyParser.jar -v 0 -mode stack -i l0_train.conll \
-  -t l0_test.conll -l 0 -l0_out_train aug_train.conll \
-  -l0_out_parse aug_test.conll -l0_parser mst
-> java -jar DependencyParser.jar -v 0 -mode stack -i aug_train.conll \
-  -t aug_test.conll -l 1 -l1_parser mst -l1_output output.conll
+> java -jar DependencyParser.jar -v 0 -mode stack -i l0_train.conll -t l0_test.conll -l 0 -l0_out_train aug_train.conll  -l0_out_parse aug_test.conll -l0_parser mst
+
+> java -jar DependencyParser.jar -v 0 -mode stack -i aug_train.conll -t aug_test.conll -l 1 -l1_parser mst -l1_output output.conll
 
 Requirements:
-** Extention of "MSTParser.jar" [10] (http://www.ark.cs.cmu.edu/MSTParserStacked/) for stacking.
+* [Extention of "MSTParser.jar"] (http://www.ark.cs.cmu.edu/MSTParserStacked/) [10] for stacking.
 
-------------
 References
 ------------
 [1]	J. Nilsson and J. Nivre, "Malteval: An evaluation and visualization tool 
-    for dependency parsing", in Proceedings of the Sixth International Language 
-    Resources and Evaluation, Marrakech, Morocco, May. LREC, Marrakech, Morocco, 
-    2008.
+for dependency parsing", in Proceedings of the Sixth International Language 
+Resources and Evaluation, Marrakech, Morocco, May. LREC, Marrakech, Morocco, 
+2008.
 	
 [2]	J. Nivre and J. Nilsson, "Pseudo-projective dependency parsing", in 
-    Proceedings of the 43rd Annual Meeting of the Association for Computational 
-    Linguistics (ACL '05), Ann Arbor, Michigan, pp. 99-106, 2005.
+Proceedings of the 43rd Annual Meeting of the Association for Computational 
+Linguistics (ACL '05), Ann Arbor, Michigan, pp. 99-106, 2005.
 	
 [3] J. Nivre, et al., "MaltParser: A language-independent system for data-driven 
-    dependency parsing", Natural Language Engineering, vol. 13, pp. 95-135, 2007.
+dependency parsing", Natural Language Engineering, vol. 13, pp. 95-135, 2007.
 
 [4]	M. Ballesteros and J. Nivre, "MaltOptimizer: A System for MaltParser 
-    Optimization", in Proceedings of the Eighth International Conference on 
-    Language Resources and Evaluation (LREC 2012), Istanbul, Turkey, pp. 23-27, 
-    2012.
+Optimization", in Proceedings of the Eighth International Conference on 
+Language Resources and Evaluation (LREC 2012), Istanbul, Turkey, pp. 23-27, 
+2012.
 	
 [5]	J. D. Choi and M. Palmer, "Getting the most out of transition-based 
-    dependency parsing", in Proceedings of the 49th Annual Meeting of the 
-    Association for Computational Linguistics: Human Language Technologies, 
-    Portland, Oregon, USA, pp. 687-692, 2011.
+dependency parsing", in Proceedings of the 49th Annual Meeting of the 
+Association for Computational Linguistics: Human Language Technologies, 
+Portland, Oregon, USA, pp. 687-692, 2011.
 	
 [6]	R. McDonald, et al., "Non-projective dependency parsing using spanning 
-    tree algorithms", in Proceedings of HLT/EMNLP, pp. 523-530, 2005.
+tree algorithms", in Proceedings of HLT/EMNLP, pp. 523-530, 2005.
 	
 [7] B. Bohnet, "Top Accuracy and Fast Dependency Parsing is not a Contradiction", 
-    The 23rd International Conference on Computational Linguistics (COLING 2010), 
-    Beijing, China, 2010.
+The 23rd International Conference on Computational Linguistics (COLING 2010), 
+Beijing, China, 2010.
 	
 [8]	M. Surdeanu and C. D. Manning, "Ensemble models for dependency parsing: 
     cheap and good?", in Proceedings of the North American Chapter of the 
