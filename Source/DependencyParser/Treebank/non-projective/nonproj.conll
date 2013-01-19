@@ -1,0 +1,9 @@
+1	وقتی	وقتی	SUBR	SUBR	separation=ISO	8	AJUCL	_	_
+2	که	که	SUBR	SUBR	separation=ISO	1	POSDEP	_	_
+3	غذا	غذا	N	IANM	separation=ISO|number=SING	5	SBJ	_	_
+4	حاضر	حاضر	ADJ	POST	separation=ISO	5	MOS	_	_
+5	می‌شد	کرد#کن	V	PASS	person=3|separation=ISO|number=SING|tma=GES	2	PRD	_	_
+6	ما	ما	SPR	SPR	person=1|separation=ISO|number=PLUR	8	SBJ	_	_
+7	صحبت	صحبت	N	IANM	separation=ISO|number=SING	8	NVE	_	_
+8	می‌کردیم	کرد#کن	V	ACT	person=3|separation=ISO|number=PLUR|tma=GES	0	ROOT	_	_
+9	.	.	PUNC	PUNC	separation=ISO	1	PUNC	_	_

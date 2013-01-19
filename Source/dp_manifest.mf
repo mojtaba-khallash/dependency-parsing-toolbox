@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.8.2
+Created-By: 1.7.1 (Sun Microsystems Inc.)
+Class-Path: lib/args4j-2.0.12.jar lib/edu.mit.jwi_2.1.5.jar lib/libsvm.jar lib/MaltConverter.jar lib/MSTParser.jar lib/xercesImpl.jar lib/Chart2D.jar lib/Ensemble.jar lib/log4j.jar lib/MaltEval.jar lib/opennlp-maxent-3.0.1-incubating.jar lib/ClearParser.jar lib/hppc-0.4.0.jar
+ lib/mallet-deps.jar lib/MaltOptimizer.jar lib/opennlp-tools-1.5.1.jar lib/commons-compress-1.1.jar lib/jython.jar lib/mallet.jar lib/maltParser.jar lib/Penn2Malt.jar lib/commons-io-2.3.jar lib/liblinear-1.8.jar lib/MaltBlender.jar lib/mate-tools.jar lib/trove.jar
+Main-Class: ir.ac.iust.nlp.dependencyparser.DependencyParser
+Implementation-Title: DependencyParser
+Implementation-Version: 1.7.1
+Implementation-Vendor: Mojtaba Khallash
+Build-Date: January 1 2013

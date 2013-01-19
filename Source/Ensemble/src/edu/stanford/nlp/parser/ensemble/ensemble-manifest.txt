@@ -1,0 +1,1 @@
+Main-class: edu.stanford.nlp.parser.ensemble.Ensemble

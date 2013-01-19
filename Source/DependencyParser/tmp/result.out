@@ -1,0 +1,18 @@
+Evaluation arguments: -g D:\Programming\Java\DependencyParsing\DependencyParser\tmp\test.conll -s D:\Programming\Java\DependencyParsing\DependencyParser\tmp\parse.conll --output D:\Programming\Java\DependencyParsing\DependencyParser\tmp\result.out --Metric LAS --GroupBy Token --ExcludeWordforms . --ExcludeCpostags V --confusion-matrix 0 --details 0 --header-info 1 --row-header 1 --merge-tables 1 --tab 0 --pattern 0.000
+====================================================
+Gold:   D:\Programming\Java\DependencyParsing\DependencyParser\tmp\test.conll
+Parsed: D:\Programming\Java\DependencyParsing\DependencyParser\tmp\parse.conll
+====================================================
+ExcludeCpostags-> V
+Metric-> LAS
+ExcludeWordforms-> .
+GroupBy-> Token
+
+====================================================
+
+accuracy /    Token
+-----------------------
+0.789         Row mean
+5340          Row count
+-----------------------
+

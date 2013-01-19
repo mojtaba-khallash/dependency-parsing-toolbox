@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblDecodeType" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblLossType" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="lblOrder" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="cboOrder" alignment="1" max="32767" attributes="0"/>
+                  <Component id="cboDecodeType" alignment="0" max="32767" attributes="0"/>
+                  <Component id="cboLossType" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="34" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblTrainingIter" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblTrainigK" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblType" alignment="1" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="spTrainingIter" alignment="0" max="32767" attributes="0"/>
+                  <Component id="spTrainigK" alignment="0" pref="86" max="32767" attributes="0"/>
+                  <Component id="cboType" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblDecodeType" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cboDecodeType" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblLossType" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cboLossType" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cboOrder" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblOrder" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblType" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cboType" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblTrainigK" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="spTrainigK" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblTrainingIter" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="spTrainingIter" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="lblDecodeType">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Decode Type:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cboDecodeType">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="2">
+            <StringItem index="0" value="proj"/>
+            <StringItem index="1" value="non-proj"/>
+          </StringArray>
+        </Property>
+        <Property name="selectedIndex" type="int" value="1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblLossType">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Loss Type:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cboLossType">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="2">
+            <StringItem index="0" value="punc"/>
+            <StringItem index="1" value="nopunc"/>
+          </StringArray>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblOrder">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Order:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cboOrder">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="2">
+            <StringItem index="0" value="1"/>
+            <StringItem index="1" value="2"/>
+          </StringArray>
+        </Property>
+        <Property name="selectedIndex" type="int" value="1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblTrainigK">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Training K:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JSpinner" name="spTrainigK">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblTrainingIter">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Training Iterations:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JSpinner" name="spTrainingIter">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblType">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Type:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cboType">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="2">
+            <StringItem index="0" value="CoNLL"/>
+            <StringItem index="1" value="MST"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cboType_itemStateChanged"/>
+      </Events>
+    </Component>
+  </SubComponents>
+</Form>

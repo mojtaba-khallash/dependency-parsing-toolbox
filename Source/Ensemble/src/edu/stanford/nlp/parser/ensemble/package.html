@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<body>
+<h1>What is it?</h1>
+<p>
+This code implements a linear interpolation of several linear-time parsing models (all based on <a href="http://www.maltparser.org">MaltParser</a>).
+Each individual parser runs in its own thread, which means that, if a sufficient number of cores are available, 
+the overall runtime is essentially similar to a single Malt parser. 
+The resulting parser has state of the art performance yet it remains very fast. 
+For example, we parse Stanford dependencies slightly better than the Stanford parser and about 100 times faster -- i.e., we parse approximately 100 sentences/second.
+
+<p>
+We provide models for parsing both <a href="http://nlp.stanford.edu/software/lex-parser.shtml">Stanford dependencies</a> and <a href="http://barcelona.research.yahoo.net/conll2008/">CoNLL-2008 dependencies</a>.
+Our current scores in these two domains, using the traditional Section 23 of the Penn Treebank for testing, are:
+<p>
+CoNLL-2008 (with predicted POS tags):
+<ul>
+<li>Labeled Attachment Score (LAS): 87.43%</li> 
+<li>Unlabeled Attachment Score (UAS): 90.20%</li> 
+</ul>
+<p>
+Stanford (with gold POS tags):
+<ul>
+<li>Labeled Attachment Score (LAS): 88.49%</li> 
+<li>Unlabeled Attachment Score (UAS): 90.20%</li> 
+</ul>
+
+<h1>Changes</h1>
+4/14/2010:
+<ul>
+<li>Initial release.</li>
+</ul>
+
+<h1>Authors</h1>
+<p>
+<a href="http://www.surdeanu.name/mihai/">Mihai Surdeanu</a>, <a href="http://www.cs.brown.edu/people/dmcc/">David McClosky</a>, <a href="http://nlp.stanford.edu/manning/">Christopher Manning</a>
+<p>
+If you use this code for a research publication, please cite this paper:<br>
+Mihai Surdeanu and Christopher D. Manning. <i>Ensemble Models for Dependency Parsing: Cheap and Good?</i>
+Proceedings of the North American Chapter of the Association for Computational Linguistics Conference (NAACL-2010), 2010.
+
+<h1>Acknowledgments</h1>
+We thank Johan Hall and Joakim Nivre for their work on MaltParser and also for patiently answering our many questions.<br>
+We would also like to thank Daniel Cer for his bug fixes and improvements of MaltParser and for the motivating discussions.
+
+<h1>Licensing</h1>
+<p>
+Copyright (c) 2009-2010 The Board of Trustees of 
+The Leland Stanford Junior University. All Rights Reserved.
+<p>
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+<p>
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+<p>
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+<p>
+The MaltParser, which is used to generate all individual parsing models, is distributed with its own "as is" license (LICENSE.MaltParser).
+
+<h1>Downloads</h1>
+
+<ul>
+<li><a href="http://www.surdeanu.name/mihai/ensemble/ensemble.tar.gz">Code</a></li>
+<li><a href="http://www.surdeanu.name/mihai/ensemble/models.tar.gz">Models for CoNLL-2008 and Stanford dependencies</a>. Uncompress this archive inside the ensemble/ directory.</li>
+</ul>
+ 
+<h1>Usage</h1>
+<p>
+The easiest way to run the ensemble parser is to using the included properties files. 
+We provide one file for CoNLL-2008 dependencies (conll08.properties) and one for Stanford dependencies (stanford.dependencies).
+Please read these files to see the available parameters.  
+<p>
+For example, to parse a corpus with CoNLL-2008 dependencies, use this command:
+<p>
+<code>
+java edu.stanford.nlp.parser.ensemble.Ensemble --arguments conll08.properties --run test --testCorpus &lt;YOUR-TEST-CORPUS&gt;
+</code>
+<p>
+or use the included <code>ensemble.sh</code> shell script (probably simpler because it includes all necessary jar files):
+<p>
+<code>
+sh ensemble.sh conll08.properties &lt;YOUR-TEST-CORPUS&gt;
+</code>
+<p>
+To re-train the CoNLL-2008 models (useful only to developers!), use this command:
+<p>
+<code>
+java edu.stanford.nlp.parser.ensemble.Ensemble --arguments conll08.properties --run train --trainCorpus &lt;YOUR-TRAINING-CORPUS&gt;
+</code>
+</p>
+
+<h1>File formats</h1>
+We currently support projective dependencies stored in the <a href="http://nextens.uvt.nl/depparse-wiki/DataFormat">CoNLL-2007 format</a>.<br>
+Some observations: for English, the CPOSTAG and POSTAG values are identical and equal to the usual Pen Treebank POS tags. 
+We do not use the LEMMA column, so feel free to fill it with any string you want (no spaces).
+We do not use the PHEAD and PDEPREL columns; feel free to skip them all together.
+Finally, if the HEAD and DEPREL columns are present (i.e., if you know the "gold" syntactic annotations) the software will compute and report LAS and UAS scores for all base models and the overall ensemble.
+HEAD and DEPREL can also be skipped when parsing text without known "gold" annotations.
+
+<p>
+Take a look at the input* files in the samples/ directory for examples of input files correctly formatted. 
+ 
+</body>
+</html>

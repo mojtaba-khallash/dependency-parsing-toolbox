@@ -1,0 +1,43 @@
+Normal Command
+_______________
+
+java -cp MSTParser.jar mstparser.DependencyParser train train-file:train.conll model-name:Persian_MST.model iters:10 decode-type:non-proj training-k:1 loss-type:punc order:2 format:CONLL
+java -cp MSTParser.jar mstparser.DependencyParser test test-file:test.conll output-file:parse.conll model-name:Persian_MST.model decode-type:non-proj order:2 format:CONLL
+java -cp MSTParser.jar mstparser.DependencyParser eval gold-file:test.conll output-file:parse.conll format:CONLL
+
+
+
+
+
+
+
+
+
+Stack Command:
+________________
+
+>> Run1 MST2 - MST2
+java -cp MSTParser.jar mstparser.DependencyParser train train-file:train.conll model-name:trainModelLevel0.model iters:10 decode-type:non-proj training-k:1 loss-type:punc order:2 stacked-level0 augment-nparts:5 output-file:train_pred.conll format:CONLL
+java -cp MSTParser.jar mstparser.DependencyParser test test-file:test.conll output-file:test_pred.conll model-name:trainModelLevel0.model decode-type:non-proj order:2 stacked-level0 format:CONLL
+java -cp MSTParser.jar mstparser.DependencyParser eval gold-file:test.conll output-file:test_pred.conll format:CONLL
+java -cp MSTParser.jar mstparser.DependencyParser train train-file:train_pred.conll model-name:trainModelLevel1.model iters:10 decode-type:non-proj training-k:1 loss-type:punc order:2 stacked-level1 stackedfeat-pred-edge:1 stackedfeat-prev-sibl:1 stackedfeat-next-sibl:1 stackedfeat-grandparents:1 stackedfeat-allchildren:1 stackedfeat-pred-head:1 stackedfeat-valency:1 format:CONLL
+java -cp MSTParser.jar mstparser.DependencyParser test test-file:test_pred.conll output-file:parse.conll model-name:trainModelLevel1.model decode-type:non-proj order:2 stacked-level1 stackedfeat-pred-edge:1 stackedfeat-prev-sibl:1 stackedfeat-next-sibl:1 stackedfeat-grandparents:1 stackedfeat-allchildren:1 stackedfeat-pred-head:1 stackedfeat-valency:1 format:CONLL
+java -cp MSTParser.jar mstparser.DependencyParser eval gold-file:test.conll output-file:parse.conll format:CONLL
+
+
+>> Run1 MST1 - MST2
+java -cp MSTParser.jar mstparser.DependencyParser train train-file:train.conll model-name:trainModelLevel0.model iters:10 decode-type:non-proj training-k:1 loss-type:punc order:1 stacked-level0 augment-nparts:5 output-file:train_pred.conll format:CONLL
+java -cp MSTParser.jar mstparser.DependencyParser test test-file:test.conll output-file:test_pred.conll model-name:trainModelLevel0.model decode-type:non-proj order:1 stacked-level0 format:CONLL
+java -cp MSTParser.jar mstparser.DependencyParser eval gold-file:test.conll output-file:test_pred.conll format:CONLL
+java -cp MSTParser.jar mstparser.DependencyParser train train-file:train_pred.conll model-name:trainModelLevel1.model iters:10 decode-type:non-proj training-k:1 loss-type:punc order:2 stacked-level1 stackedfeat-pred-edge:1 stackedfeat-prev-sibl:1 stackedfeat-next-sibl:1 stackedfeat-grandparents:1 stackedfeat-allchildren:1 stackedfeat-pred-head:1 stackedfeat-valency:1 format:CONLL
+java -cp MSTParser.jar mstparser.DependencyParser test test-file:test_pred.conll output-file:parse.conll model-name:trainModelLevel1.model decode-type:non-proj order:2 stacked-level1 stackedfeat-pred-edge:1 stackedfeat-prev-sibl:1 stackedfeat-next-sibl:1 stackedfeat-grandparents:1 stackedfeat-allchildren:1 stackedfeat-pred-head:1 stackedfeat-valency:1 format:CONLL
+java -cp MSTParser.jar mstparser.DependencyParser eval gold-file:test.conll output-file:parse.conll format:CONLL
+
+
+>> Run1 MST2 - MST1
+java -cp MSTParser.jar mstparser.DependencyParser train train-file:train.conll model-name:trainModelLevel0.model iters:10 decode-type:non-proj training-k:1 loss-type:punc order:2 stacked-level0 augment-nparts:5 output-file:train_pred.conll format:CONLL
+java -cp MSTParser.jar mstparser.DependencyParser test test-file:test.conll output-file:test_pred.conll model-name:trainModelLevel0.model decode-type:non-proj order:2 stacked-level0 format:CONLL
+java -cp MSTParser.jar mstparser.DependencyParser eval gold-file:test.conll output-file:test_pred.conll format:CONLL
+java -cp MSTParser.jar mstparser.DependencyParser train train-file:train_pred.conll model-name:trainModelLevel1.model iters:10 decode-type:non-proj training-k:1 loss-type:punc order:1 stacked-level1 stackedfeat-pred-edge:1 stackedfeat-prev-sibl:1 stackedfeat-next-sibl:1 stackedfeat-grandparents:1 stackedfeat-allchildren:1 stackedfeat-pred-head:1 stackedfeat-valency:1 format:CONLL
+java -cp MSTParser.jar mstparser.DependencyParser test test-file:test_pred.conll output-file:parse.conll model-name:trainModelLevel1.model decode-type:non-proj order:1 stacked-level1 stackedfeat-pred-edge:1 stackedfeat-prev-sibl:1 stackedfeat-next-sibl:1 stackedfeat-grandparents:1 stackedfeat-allchildren:1 stackedfeat-pred-head:1 stackedfeat-valency:1 format:CONLL
+java -cp MSTParser.jar mstparser.DependencyParser eval gold-file:test.conll output-file:parse.conll format:CONLL

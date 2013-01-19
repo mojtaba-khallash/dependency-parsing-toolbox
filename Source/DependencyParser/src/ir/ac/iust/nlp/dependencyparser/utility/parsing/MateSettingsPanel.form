@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblFeatureCreation" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblDecodeType" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="cboDecodeType" min="-2" pref="94" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="lblNPThreshold" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="spNPThreshold" min="-2" pref="76" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="cboFeatureCreation" min="-2" pref="97" max="-2" attributes="0"/>
+                      <EmptySpace pref="32" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblTrainingIter" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCoreNo" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="spTrainingIter" alignment="1" min="-2" pref="76" max="-2" attributes="0"/>
+                          <Component id="spCoreNo" alignment="1" min="-2" pref="76" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Component id="lblNPThreshold" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="spNPThreshold" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblDecodeType" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cboDecodeType" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblFeatureCreation" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cboFeatureCreation" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblTrainingIter" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="spTrainingIter" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblCoreNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="spCoreNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="lblDecodeType">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Decode Type:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cboDecodeType">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="2">
+            <StringItem index="0" value="proj"/>
+            <StringItem index="1" value="non-proj"/>
+          </StringArray>
+        </Property>
+        <Property name="selectedIndex" type="int" value="1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblTrainingIter">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Training Iterations:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JSpinner" name="spTrainingIter">
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cboFeatureCreation">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="2">
+            <StringItem index="0" value="multiplicative"/>
+            <StringItem index="1" value="shift"/>
+          </StringArray>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblFeatureCreation">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Feature Creation:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblCoreNo">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Number of Cores:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JSpinner" name="spCoreNo">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblNPThreshold">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Non-Projective Threshold:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JSpinner" name="spNPThreshold">
+    </Component>
+  </SubComponents>
+</Form>

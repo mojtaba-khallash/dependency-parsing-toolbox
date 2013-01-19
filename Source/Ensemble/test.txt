@@ -1,0 +1,30 @@
+            // Ensemble
+            /**
+            edu.stanford.nlp.parser.ensemble.Ensemble.main(new String[] {
+                "--arguments",
+                "stanford.properties",
+//                "conll08.properties",
+                "--run",
+                "train",
+                "--trainCorpus",
+//                "testtemp.conll"
+                "train.conll"
+            });
+            /**
+            edu.stanford.nlp.parser.ensemble.Ensemble.main(new String[] {
+                "--arguments",
+                "stanford.properties",
+                
+                "--reparseAlgorithm",
+                "attardi",
+//                "eisner",
+//                "majority",
+//                "chu_liu_edmond",
+//                "conll08.properties",
+                "--run",
+                "test",
+                "--testCorpus",
+//                "tempres.conll"
+                "test.conll"
+            });
+            /**/

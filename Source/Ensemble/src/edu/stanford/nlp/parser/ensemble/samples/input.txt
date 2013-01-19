@@ -1,0 +1,6 @@
+1	Ms.	ms.	NNP	NNP	-
+2	Haag	haag	NNP	NNP	-
+3	plays	play	VBZ	VBZ	-
+4	Elianti	elianti	NNP	NNP	-
+5	.	.	.	.	-
+

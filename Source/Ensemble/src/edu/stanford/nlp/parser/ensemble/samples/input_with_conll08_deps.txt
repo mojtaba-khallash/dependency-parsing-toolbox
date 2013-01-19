@@ -1,0 +1,6 @@
+1	Ms.	Ms.	NNP	NNP	-	2	title
+2	Haag	Haag	NNP	NNP	-	3	sbj
+3	plays	plays	VBZ	VBZ	-	0	root
+4	Elianti	Elianti	NNP	NNP	-	3	obj
+5	.	.	.	.	-	3	p
+

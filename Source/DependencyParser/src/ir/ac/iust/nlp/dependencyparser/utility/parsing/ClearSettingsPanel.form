@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblConfigFile" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblFeatureTemplateFile" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblBootstrapLevel" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="txtFeatureTemplateFile" alignment="0" pref="377" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="spBootstrapLevel" min="-2" pref="57" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="txtConfigFile" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="btnConfigFileBrowse" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="btnFeatureTemplateFileBrowse" alignment="0" pref="0" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblConfigFile" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtConfigFile" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnConfigFileBrowse" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblFeatureTemplateFile" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtFeatureTemplateFile" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnFeatureTemplateFileBrowse" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblBootstrapLevel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="spBootstrapLevel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="lblConfigFile">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Configs File:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblFeatureTemplateFile">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Feature Template File:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblBootstrapLevel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Bootstrapping Level:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtConfigFile">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtFeatureTemplateFile">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JSpinner" name="spBootstrapLevel">
+    </Component>
+    <Component class="javax.swing.JButton" name="btnConfigFileBrowse">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="..."/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConfigFileBrowseActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnFeatureTemplateFileBrowse">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="..."/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFeatureTemplateFileBrowseActionPerformed"/>
+      </Events>
+    </Component>
+  </SubComponents>
+</Form>

@@ -1,0 +1,135 @@
+<!--Default Czech feature set -->
+<feature_template>
+	<cutoff label="4" ngram="2"/>
+
+	<ngram n="1" f0="l:f"/>
+	<ngram n="1" f0="b:f"/>
+	<ngram n="1" f0="l:m"/>
+	<ngram n="1" f0="b:m"/>
+	<ngram n="1" f0="l:p"/>
+	<ngram n="1" f0="b:p"/>
+
+	<ngram n="2" t="upm" f0="l:p" f1="l:m"/>
+	<ngram n="2" t="upm" f0="b:p" f1="b:m"/>
+		
+	<ngram n="2" f0="l:p" f1="b:p"/>
+	<ngram n="2" f0="l:p" f1="b:m"/>
+	<ngram n="2" f0="l:m" f1="b:p"/>
+	<ngram n="2" f0="l:m" f1="b:m"/>
+
+	<ngram n="1" f0="l-2:f"/>
+	<ngram n="1" f0="l-1:f"/>
+	<ngram n="1" f0="l+1:f"/>
+	<ngram n="1" f0="b-2:f"/>
+	<ngram n="1" f0="b-1:f"/>
+	<ngram n="1" f0="b+1:f"/>
+	<ngram n="1" f0="b+2:f"/>
+	<ngram n="1" f0="l+2:f" visible="false"/>
+
+	<ngram n="2" f0="l-1:ft=SubPOS" f1="l:ft=SubPOS"/>
+	<ngram n="2" f0="l:ft=SubPOS"   f1="l+1:ft=SubPOS"/>
+	<ngram n="2" f0="l+1:ft=SubPOS" f1="b:ft=SubPOS"/>
+	<ngram n="2" f0="l-1:ft=SubPOS" f1="b:ft=SubPOS"   visible="false"/>
+	<ngram n="2" f0="l:ft=SubPOS"   f1="b-1:ft=SubPOS" visible="false"/>
+	<ngram n="2" f0="b-1:ft=SubPOS" f1="b:ft=SubPOS"   visible="false"/>
+	<ngram n="2" f0="l:ft=SubPOS"   f1="b+1:ft=SubPOS" visible="false"/>
+	<ngram n="2" f0="b:ft=SubPOS"   f1="b+1:ft=SubPOS" visible="false"/>
+
+	<ngram n="2" f0="l:m"           f1="l+1:ft=SubPOS"/>
+	<ngram n="2" f0="l:m"           f1="b-1:ft=SubPOS"/>
+	<ngram n="2" f0="l:m"           f1="b+1:ft=SubPOS"/>
+	<ngram n="2" f0="l-1:ft=SubPOS" f1="l:m" visible="false"/>
+	
+	<ngram n="2" f0="l-1:ft=SubPOS" f1="b:m"/>
+	<ngram n="2" f0="l+1:ft=SubPOS" f1="b:m"/>
+	<ngram n="2" f0="b-1:ft=SubPOS" f1="b:m"/>
+	<ngram n="2" f0="b:m"           f1="b+1:ft=SubPOS"/>
+
+	<ngram n="2" f0="l-1:m"       f1="b:ft=SubPOS"/>
+	<ngram n="2" f0="l+1:m"       f1="b:ft=SubPOS"/>
+	<ngram n="2" f0="l:ft=SubPOS" f1="b+1:m"/>
+	<ngram n="2" f0="l-1:m"       f1="l:ft=SubPOS" visible="false"/>
+	<ngram n="2" f0="l:ft=SubPOS" f1="l+1:m"       visible="false"/>
+	<ngram n="2" f0="l:ft=SubPOS" f1="b-1:m"       visible="false"/>
+	<ngram n="2" f0="b-1:m"       f1="b:ft=SubPOS" visible="false"/>
+	<ngram n="2" f0="b:ft=SubPOS" f1="b+1:m"       visible="false"/>
+	
+	<ngram n="2" f0="l-1:m" f1="l:m"/>
+	<ngram n="2" f0="l+1:m" f1="b:m"/>
+	<ngram n="2" f0="b:m"   f1="b+1:m"/>
+	<ngram n="2" f0="l-1:m" f1="b:m"    visible="false"/>
+	<ngram n="2" f0="l:m"   f1="l+1:m"  visible="false"/>
+	<ngram n="2" f0="l:m"   f1="b-1:m"  visible="false"/>
+	<ngram n="2" f0="l:m"   f1="b_lm:m" visible="false"/>
+	<ngram n="2" f0="b-1:m" f1="b:m"    visible="false"/>
+	<ngram n="2" f0="l:m"   f1="b+1:m"  visible="false"/>
+	
+	<ngram n="3" f0="l-2:ft=SubPOS" f1="l-1:ft=SubPOS" f2="l:ft=SubPOS"/>
+	<ngram n="3" f0="l-1:ft=SubPOS" f1="l:ft=SubPOS"   f2="l+1:ft=SubPOS"/>
+	<ngram n="3" f0="l:ft=SubPOS"   f1="l+1:ft=SubPOS" f2="l+2:ft=SubPOS"/>
+	<ngram n="3" f0="l-3:ft=SubPOS" f1="l:ft=SubPOS"   f2="b:ft=SubPOS"/>
+	<ngram n="3" f0="l-2:ft=SubPOS" f1="l:ft=SubPOS"   f2="b:ft=SubPOS"/>
+	<ngram n="3" f0="l-1:ft=SubPOS" f1="l:ft=SubPOS"   f2="b:ft=SubPOS"/>
+	<ngram n="3" f0="l:ft=SubPOS"   f1="l+1:ft=SubPOS" f2="b:ft=SubPOS"/>
+	<ngram n="3" f0="l:ft=SubPOS"   f1="l+2:ft=SubPOS" f2="b:ft=SubPOS"/>
+	<ngram n="3" f0="l:ft=SubPOS"   f1="b-1:ft=SubPOS" f2="b:ft=SubPOS"/>
+	<ngram n="3" f0="l:ft=SubPOS"   f1="b:ft=SubPOS"   f2="b+1:ft=SubPOS"/>
+	<ngram n="3" f0="l:ft=SubPOS"   f1="b:ft=SubPOS"   f2="b+3:ft=SubPOS"/>
+	<ngram n="3" f0="b-1:ft=SubPOS" f1="b:ft=SubPOS"   f2="b+1:ft=SubPOS"/>
+	<ngram n="3" f0="b:ft=SubPOS"   f1="b+1:ft=SubPOS" f2="b+2:ft=SubPOS"/>
+	<ngram n="3" f0="l:ft=SubPOS"   f1="b-2:ft=SubPOS" f2="b:ft=SubPOS"   visible="false"/>
+	<ngram n="3" f0="l:ft=SubPOS"   f1="b:ft=SubPOS"   f2="b+2:ft=SubPOS" visible="false"/>
+	<ngram n="3" f0="b-2:ft=SubPOS" f1="b-1:ft=SubPOS" f2="b:ft=SubPOS"   visible="false"/>
+
+	<ngram n="1" f0="l:d"/>
+	<ngram n="1" f0="b:d"/>
+	<ngram n="1" f0="l_lm:d"/>
+	<ngram n="1" f0="l_rm:d" visible="false"/>
+	<ngram n="1" f0="b_lm:d" visible="false"/>
+
+	<ngram n="2" f0="l_hd:m" f1="l:ft=SubPOS"/>
+	<ngram n="2" f0="l_hd:m" f1="b:ft=SubPOS" visible="false"/>
+
+	<ngram n="3" f0="l_hd:ft=SubPOS" f1="l:ft=SubPOS"    f2="b:ft=SubPOS"/>
+	<ngram n="3" f0="l_lm:ft=SubPOS" f1="l:ft=SubPOS"    f2="b:ft=SubPOS"/>
+	<ngram n="3" f0="l:ft=SubPOS"    f1="b_lm:ft=SubPOS" f2="b:ft=SubPOS"/>
+	<ngram n="3" f0="l:ft=SubPOS"    f1="l_rm:ft=SubPOS" f2="b:ft=SubPOS" visible="false"/>
+	<ngram n="3" f0="l:ft=SubPOS"    f1="b_hd:ft=SubPOS" f2="b:ft=SubPOS" visible="false" />
+
+	<ngram n="2" f0="b_lm:d"         f1="b:ft=Cas"/>
+	<ngram n="2" f0="l:ft=Cas"       f1="b_rm:ft=Cas"/>
+	<ngram n="2" f0="l:ft=SubPOS"    f1="b_rm:ft=SubPOS"/>
+	<ngram n="2" f0="l:ft=SubPOS"    f1="b_lm:ft=SubPOS"/>
+	<ngram n="2" f0="l:ft=SubPOS"    f1="l_rm:ft=SubPOS" visible="false"/>
+	<ngram n="2" f0="l_lm:ft=SubPOS" f1="l:ft=SubPOS"    visible="false"/>
+
+	<ngram n="1" f0="l:ft=Cas"/>
+	<ngram n="1" f0="b:ft=Cas"/>
+	<ngram n="1" f0="l:ft=Gen"/>
+	<ngram n="1" f0="b:ft=Gen"/>
+	<ngram n="1" f0="l:ft=Gra"/>
+	<ngram n="1" f0="b:ft=Gra"/>
+	<ngram n="1" f0="l:ft=Neg" visible="false"/>
+	<ngram n="1" f0="b:ft=Neg" visible="false"/>
+	<ngram n="1" f0="l:ft=Num"/>
+	<ngram n="1" f0="b:ft=Num"/>
+	<ngram n="1" f0="l:ft=PGe" visible="false"/>
+	<ngram n="1" f0="b:ft=PGe" visible="false"/>
+	<ngram n="1" f0="l:ft=PNu" visible="false"/>
+	<ngram n="1" f0="b:ft=PNu" visible="false"/>
+	<ngram n="1" f0="l:ft=Per" visible="false"/>
+	<ngram n="1" f0="b:ft=Per" visible="false"/>
+	<ngram n="1" f0="l:ft=Sem" visible="false"/>
+	<ngram n="1" f0="b:ft=Sem" visible="false"/>
+	<ngram n="1" f0="l:ft=Ten"/>
+	<ngram n="1" f0="b:ft=Ten"/>
+	<ngram n="1" f0="l:ft=Var"/>
+	<ngram n="1" f0="b:ft=Var"/>
+	<ngram n="1" f0="l:ft=Voi" visible="false"/>
+	<ngram n="1" f0="b:ft=Voi" visible="false"/>
+
+	<ngram n="1" f0="b:tr0"/>
+	<ngram n="1" f0="b:tr1"/>
+	<ngram n="2" f0="b:tr0" f1="b:ft=SubPOS"/>
+	<ngram n="3" f0="b:tr0" f1="b:tr1" f2="b:ft=SubPOS"/>
+</feature_template>

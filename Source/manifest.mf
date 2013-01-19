@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.8.2
+Created-By: Majid Asgari
+Class-Path: lib/*
+X-COMMENT: No Main Class is defined 
