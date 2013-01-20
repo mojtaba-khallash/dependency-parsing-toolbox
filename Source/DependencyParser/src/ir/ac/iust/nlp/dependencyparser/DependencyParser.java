@@ -516,7 +516,7 @@ public class DependencyParser {
                             maltL0.Model = mstL0.Model = "ModelL0.mco";
                             mstL1.Model = "ModelL1.mco";
                             switch (level) {
-                                case "*":
+                                case "all":
                                     run = new RunnableHybrid(null, null, 
                                             parserL0, 
                                             settingsL0);
@@ -678,7 +678,7 @@ public class DependencyParser {
                 System.out.println("        >> stack: Stacking for combining base parsers in train time");
                 System.out.println("        -i <input train file>");
                 System.out.println("        -t <input test file>");
-                System.out.println("        -l <level (0|1|*) [default: * for running both level]>");
+                System.out.println("        -l <level (0|1|all) [default: all for running both level]>");
                 System.out.println("        -l0_part <level0 augmented parts [default: 5]>");
                 System.out.println("        -l0_out_train <level0 output augmented train>");
                 System.out.println("        -l0_out_parse <level0 output ougmented parse>");

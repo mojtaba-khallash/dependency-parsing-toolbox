@@ -169,7 +169,7 @@ Requirements:
 This operational mode is used for de-projective dependency parsing after parsing 
 test corpus that need projectivized model created by the section 3c.
 
--i <input conll file>");
+-i <input conll file>
 	projectivized parse file
 	
 -m <existing projectivizing model name>
@@ -213,7 +213,7 @@ then optimizing their parameters and feature model.
 For example:
 
 > java -jar DependencyParser.jar -v 0 -mode optimizer -i input.conll \
-  -parser malt -phase *
+  -parser malt -phase all
 
 Requirements:
 ** "MaltOptimizer.jar" [4] (http://nil.fdi.ucm.es/maltoptimizer/install.html) 
@@ -290,7 +290,7 @@ graph-based ("MSTParser" and Mate-Tools).
 			Czech as a very good choice.
 		-creation <feature-creation (multiplicative|shift) 
                             [default: multiplicative]>
-			two way of creation of features
+			two ways of creation of features
 		-core <number-of-core [default: max-exiting-cores]>
 			mate-tools support multicore to speedup training time. 
 			this parameter determine number of core that want to use 
@@ -376,7 +376,7 @@ algorithms, you must use same value as training phase.
 			Czech as a very good choice.
 		-creation <feature-creation (multiplicative|shift) 
                             [default: multiplicative]>
-			two way of creation of features
+			two ways of creation of features
 		-core <number-of-core [default: max-exiting-cores]>
 			determine number of core that want to use in parsing
 			
@@ -498,12 +498,12 @@ features in the second parser, without sacrificing efficient, model-optimal
 prediction.
 
 -i <input train file>
-	input file for train level0 parser (-t 0 or -t *) or level1 parser (-t 1)
+	input file for train level0 parser (-l 0 or -l all) or level1 parser (-l 1)
 	
 -t <input test file>
-	input file for parse level0 parser (-t 0 or -t *) or level1 parser (-t 1)
+	input file for parse level0 parser (-l 0 or -l all) or level1 parser (-l 1)
 
--l <level (0|1|*) [default: * for running both level]>
+-l <level (0|1|all) [default: all for running both level]>
 	run level0, level1 or both level
 
 -l0_part <level0 augmented parts [default: 5]>
