@@ -162,34 +162,28 @@ For example:
 Goal of this section is choosing best algorithm for giving training corpus and 
 then optimizing their parameters and feature model.
 
--i <training-corput>
-	training corpus that used for optimization
-	
--parser <parser-type (malt)>
-	only supports maltparser currently
-	
--phase <optimizing phase (1|2|3|all) [default: all for running all phases]>
-	optimization involves three phases:
-		1. Data Characteristics: gathers information about the following 
-		   properties of the training set.
-		2. Parsing Algorithm: explores a subset of the parsing 
-		   algorithms implemented in MaltParser, based on the results of 
-		   the data analysis.
-		3. Features of Model and Learning Algorithm: tries to optimize 
-		   the featurea of the model given the parameters chosen so far
-	
--cross_val <using 5-fold cross-validation (0|1) [default: 0]>
-	using "cross-validation" for small training set, or "development set" 
-	for big training set.
+<table>
+<tr><td>-i &lt;training-corput&gt;</td><td>training corpus that used for optimization</td></tr>
+<tr><td>-parser &lt;parser-type (malt)&gt;</td><td>only supports maltparser currently</td></tr>
+<tr>
+	<td>-phase &lt;optimizing phase (1|2|3|all) [default: all for running all phases]&gt;</td>
+	<td>optimization involves three phases:
+		<ol>
+			<li>Data Characteristics: gathers information about the following properties of the training set.</li>
+			<li>Parsing Algorithm: explores a subset of the parsing algorithms implemented in MaltParser, based on the results of the data analysis.</li>
+			<li>Features of Model and Learning Algorithm: tries to optimize the featurea of the model given the parameters chosen so far</li>
+		</ol>
+	</td>
+</tr>
+<tr><td>-cross_val &lt;using 5-fold cross-validation (0|1) [default: 0]&gt;</td><td>using "cross-validation" for small training set, or "development set" for big training set.</td></tr>
+</table>
 
 For example:
 
-> java -jar DependencyParser.jar -v 0 -mode optimizer -i input.conll \
-  -parser malt -phase *
+> java -jar DependencyParser.jar -v 0 -mode optimizer -i input.conll -parser malt -phase all
 
 Requirements:
-* "[MaltOptimizer.jar] (http://nil.fdi.ucm.es/maltoptimizer/install.html)" [4] 
-   for optimizer.
+* "[MaltOptimizer.jar] (http://nil.fdi.ucm.es/maltoptimizer/install.html)" [4] for optimizer.
 
 3f. Training
 ---------------
@@ -198,76 +192,69 @@ Until now four data-driven dependency parsers is supporting in this part. Two of
 them are transtion-based ("MaltParser" and "ClearParser") and others are 
 graph-based ("MSTParser" and Mate-Tools).
 
--i <input training corpus>
-	use data in training corpus to train the parser
-
--m <name of training model>
-	name of training model that will be made after training phase
-
--parser <parser-type (malt|clear|mst|mate) [default: malt]>
-	>> malt parameters:
-		-option <option-file>
-			maltparser have 10 parsing and 2 learning algorithms 
-			that can be express in option file with xml format
-        -guide <guide-file>
-			each of parsing algorithms in maltparser have many 
-			parameters that can be express in guide file with xml 
-			format
-        
-	>> clear parameters:
-		-option <option-file>
-			clearparser have 2 parsing algorithm and one learning 
-			algorithm that can be express in option file with xml 
-			format
-        -guide <guide-file>
-			each of parsing algorithms in clearparser have many 
-			parameters that can be express in guide file with xml 
-			format
-        -bootstrap <bootstrapping-level [default: 2]>
-			number of iteration to repeat training phase and improve 
-			results
-		
-	>> mst parameters:
-		-decode <decode-type (proj|non-proj) [default: non-proj]>
-			type of dependency tree that want to learn
-			"proj" use the projective parsing algorithm during 
-			training (Eisner algorithm)
-			"non-proj" use the non-projective parsing algorithm 
-			during training (Chu-Liu-Edmonds algorithm)
-        -loss <loss-type (punc|nopunc) [default: punc]>
-			"punc" include punctuation in hamming loss calculation
-			"nopunc" do not include punctuation in hamming loss 
-			calculation
-        -order <order (1|2) [default: 2]>
-			specifies the order/scope of features.
-			- order 1: pairwise feature between head and dependent 
-			(over single edges)
-			- order 2: feature between siblings or between child and 
-			grandparent or both (pairs of adjacent edges)
-        -k <training k-best [default: 1]>
-			specifies the k-best parse set size to create 
-			constraints during training (For non-projective parsing 
-			algorithm, k-best decoding is approximate)
-        -iter <training iterations [default: 10]>
-			number of iteration to stop training
-		
-	>> mate parameters:
-		-decode <decode-type (proj|non-proj) [default: non-proj]>
-			type of dependency tree that want to learn
-		-threshold <nonprojective-threshold (0-1) [default: 0.3]>
-			threshold of the non-projective approximation. A higher 
-			threshold does causes less non-projective links.  A 
-			threshold of 0.3 has proven for English, German, and 
-			Czech as a very good choice.
-		-creation <feature-creation (multiplicative|shift) 
-                            [default: multiplicative]>
-			two way of creation of features
-		-core <number-of-core [default: max-exiting-cores]>
-			mate-tools support multicore to speedup training time. 
-			this parameter determine number of core that want to use 
-			in training
-		-iter <training iterations [default: 10]>
-			number of iteration to stop training
+<table>
+<tr><td>-i &lt;input training corpus&gt;</td><td>use data in training corpus to train the parser</td></tr>
+<tr><td>-m &lt;name of training model&gt;</td><td>name of training model that will be made after training phase</td></tr>
+<tr>
+	<td>-parser &lt;parser-type (malt|clear|mst|mate) [default: malt]&gt;</td>
+	<td>	<b>malt</b> parameters:
+		<table>
+			<tr><td>-option &lt;option-file&gt;</td><td>maltparser have 10 parsing and 2 learning algorithms that can be express in option file with xml format</td></tr>
+			<tr><td>-guide &lt;guide-file&gt;</td><td>each of parsing algorithms in maltparser have many parameters that can be express in guide file with xml format</td></tr>
+		</table>
+		<b>clear</b> parameters:
+		<table>
+			<tr><td>-option &lt;option-file&gt;</td><td>clearparser have 2 parsing algorithm and one learning algorithm that can be express in option file with xml format</td></tr>
+			<tr><td>-guide &lt;guide-file&gt;</td><td>each of parsing algorithms in clearparser have many parameters that can be express in guide file with xml format</td></tr>
+			<tr><td>-bootstrap &lt;bootstrapping-level [default: 2]&gt;</td><td>number of iteration to repeat training phase and improve results</td></tr>
+		</table>
+		<b>mst</b> parameters:
+		<table>
+			<tr>
+				<td>-decode &lt;decode-type (proj|non-proj) [default: non-proj]&gt;</td>
+				<td>type of dependency tree that want to learn"proj" use the projective parsing algorithm during training (Eisner algorithm)
+				"non-proj" use the non-projective parsing algorithm during training (Chu-Liu-Edmonds algorithm)</td>
+			</tr>
+			<tr><td>-loss &lt;loss-type (punc|nopunc) [default: punc]&gt;</td><td>"punc" include punctuation in hamming loss calculation "nopunc" do not include punctuation in hamming loss calculation</td></tr>
+			<tr>
+				<td>-order &lt;order (1|2) [default: 2]&gt;</td>
+				<td>specifies the order/scope of features.
+					<ul>
+						<li>order 1: pairwise feature between head and dependent  (over single edges)</li>
+						<li>order 2: feature between siblings or between child and grandparent or both (pairs of adjacent edges)</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>-k &lt;training k-best [default: 1]&gt;</td>
+				<td>
+					specifies the k-best parse set size to create 
+					constraints during training (For non-projective parsing 
+					algorithm, k-best decoding is approximate)
+				</td>
+			</tr>
+			<tr><td>-iter &lt;training iterations [default: 10]&gt;</td><td>number of iteration to stop training</td></tr>
+		</table>
+		<b>mate</b> parameters:
+		<table>
+			<tr><td>-decode &lt;decode-type (proj|non-proj) [default: non-proj]&gt;</td><td>type of dependency tree that want to learn</td></tr>
+			<tr>
+				<td>-threshold &lt;nonprojective-threshold (0-1) [default: 0.3]&gt;</td>
+				<td>
+					threshold of the non-projective approximation. A higher 
+					threshold does causes less non-projective links.  A 
+					threshold of 0.3 has proven for English, German, and 
+					Czech as a very good choice.
+				</td>
+			</tr>
+			<tr><td>-creation &lt;feature-creation (multiplicative|shift) [default: multiplicative]&gt;</td><td>two ways of creation of features</td></tr>
+			<tr><td>-core &lt;number-of-core [default: max-exiting-cores]&gt;</td><td>mate-tools support multicore to speedup training time. this parameter determine number of core that want to use in training</td></tr>
+			<tr><td>-iter &lt;training iterations [default: 10]&gt;</td><td>number of iteration to stop training</td></tr>
+		</table>
+	
+	</td>
+</tr>
+</table>
 
 For example:
 
@@ -304,45 +291,44 @@ Requirements:
 This section is also includes 4 dependency parsers described above. For all of 
 algorithms, you must use same value as training phase.
 
--i <input parsing file>
-	input parse file
-
--m <name of trined model>
-	name of pre-trained model
-
--o <output parsed name>
-	name of output parse file
-
--parser <parser-type (malt|clear|mst|mate) [default: malt]>
-	>> malt parameters: [None]
-		any parameter need for parse can be read from informations 
-		writen to model during training.
-	
-	>> clear parameters:
-		-option <option-file>
-			configuration file need during parsing in xml format
-		
-	>> mst parameters:
-		-decode <decode-type (proj|non-proj) [default: non-proj]>
-			type of dependency tree that want to parse
-		-order <order (1|2) [default: 2]>
-			order of feature that use for parsing
-			
-	>> mate parameters:
-		-decode <decode-type (proj|non-proj) [default: non-proj]>
-			type of dependency tree that want to parse
-		-threshold <nonprojective-threshold (0-1) [default: 0.3]>
-			threshold of the non-projective approximation. A higher 
-			threshold does causes less non-projective links. A 
-			threshold of 0.3 has proven for English, German, and 
-			Czech as a very good choice.
-		-creation <feature-creation (multiplicative|shift) 
-                            [default: multiplicative]>
-			two way of creation of features
-		-core <number-of-core [default: max-exiting-cores]>
-			determine number of core that want to use in parsing
-			
-	[NEEDS TO HAVE THE SAME VALUE OF THE TRAINED MODEL]
+<table>
+<tr><td>-i &lt;input parsing file&gt;</td><td>input parse file</td></tr>
+<tr><td>-m &lt;name of trined model&gt;</td><td>name of pre-trained model</td></tr>
+<tr><td>-o &lt;output parsed name&gt;</td><td>name of output parse file</td></tr>
+<tr>
+	<td>-parser &lt;parser-type (malt|clear|mst|mate) [default: malt]&gt;</td>
+	<td>	<b>malt</b> parameters:
+		<table>
+			<tr><td>[None]</td><td>any parameter need for parse can be read from informations writen to model during training.</td></tr>
+		</table>
+		<b>clear</b> parameters:
+		<table>
+			<tr><td>-option &lt;option-file&gt;</td><td>configuration file need during parsing in xml format</td></tr>
+		</table>
+		<b>mst</b> parameters:
+		<table>
+			<tr><td>-decode &lt;decode-type (proj|non-proj) [default: non-proj]&gt;</td><td>type of dependency tree that want to parse</td></tr>
+			<tr><td>-order &lt;order (1|2) [default: 2]&gt;</td><td>order of feature that use for parsing</td></tr>
+		</table>
+		<b>mate</b> parameters:
+		<table>
+			<tr><td>-decode &lt;decode-type (proj|non-proj) [default: non-proj]&gt;</td><td>type of dependency tree that want to parse</td></tr>
+			<tr>
+				<td>-threshold &lt;nonprojective-threshold (0-1) [default: 0.3]&gt;</td>
+				<td>
+					threshold of the non-projective approximation. A higher 
+					threshold does causes less non-projective links. A 
+					threshold of 0.3 has proven for English, German, and 
+					Czech as a very good choice.
+				</td>
+			</tr>
+			<tr><td>-creation &lt;feature-creation (multiplicative|shift) [default: multiplicative]&gt;</td><td>two ways of creation of features</td></tr>
+			<tr><td>-core &lt;number-of-core [default: max-exiting-cores]&gt;</td><td>determine number of core that want to use in parsing</td></tr>
+		</table>
+		<b>[NEEDS TO HAVE THE SAME VALUE OF THE TRAINED MODEL]</b>
+	</td>
+</tr>
+</table>
 
 For example:
 
@@ -374,31 +360,23 @@ Two type of evaluations can be done in dependency parsing.
   has the ability to highlight discrepancies between the gold-standard files and 
   the parsed files
 
--i <input parsed file>
-	input parsed file that want to evaluate
+<table>
+<tr><td>-i &lt;input parsed file&gt;</td><td>input parsed file that want to evaluate</td></tr>
+<tr><td>-g &lt;gold file&gt;</td><td>input gold standard file that use to compare with parsed file</td></tr>
+<tr><td>-o &lt;output eval log&gt;</td><td>name of file that write logs and results in it</td></tr>
+<tr><td>-metric &lt;metric 
+			(LAS|LA|UAS|AnyRight|AnyWrong|BothRight|BothWrong|HeadRight|
+			 HeadWrong|LabelRight|LabelWrong|DirectionRight|GroupedHeadToChildDistanceRight|
+			 HeadToChildDistanceRight) [default: LAS]&gt;</td><td>evaluation metric that used for evaluation. NOTE: for selecting multiple metrics, separate them by comma.</td></tr>
+<tr><td>-group &lt;group-by 
+			(Token|Wordform|Lemma|Cpostag|Postag|Feats|Deprel|
+			 Sentence|RelationLength|GroupedRelationLength|SentenceLength|StartWordPosition|EndWordPosition|
+			 ArcDirection|ArcDepth|BranchingFactor|ArcProjectivity|Frame) [default: Token]&gt;</td><td>type grouping for express evaluation results.</td></tr>
+</table>
 
--g <gold file>
-	input gold standard file that use to compare with parsed file
-
--o <output eval log>
-	name of file that write logs and results in it
-
--metric <metric (LAS|LA|UAS|AnyRight|AnyWrong|BothRight|BothWrong|HeadRight|
-                 HeadWrong|LabelRight|LabelWrong|DirectionRight|
-                 GroupedHeadToChildDistanceRight|HeadToChildDistanceRight) 
-                 [default: LAS]>
-	evaluation metric that used for evaluation. NOTE: for selecting multiple 
-	metrics, separate them by comma.
--group <group-by (Token|Wordform|Lemma|Cpostag|Postag|Feats|Deprel|Sentence|
-                  RelationLength|GroupedRelationLength|SentenceLength|
-                  StartWordPosition|EndWordPosition|ArcDirection|ArcDepth|
-                  BranchingFactor|ArcProjectivity|Frame) [default: Token]>
-	type grouping for express evaluation results.
-	
 For example:
 
-> java -jar DependencyParser.jar -v 0 -mode eval -i input.conll -g gold.conll \
-  -o output.conll -metric LAS,UAS -group Token
+> java -jar DependencyParser.jar -v 0 -mode eval -i input.conll -g gold.conll -o output.conll -metric LAS,UAS -group Token
 
 Requirements:
 * "[MaltEval.jar] (http://w3.msi.vxu.se/users/jni/malteval/)" [1].
