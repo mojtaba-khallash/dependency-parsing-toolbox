@@ -19,8 +19,8 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="tpLevels" max="32767" attributes="0"/>
-                  <Component id="separator" alignment="0" pref="481" max="32767" attributes="0"/>
+                  <Component id="tpLevels" pref="617" max="32767" attributes="0"/>
+                  <Component id="separator" alignment="0" pref="617" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -97,7 +97,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jTabbedPane2" max="32767" attributes="0"/>
+                          <Component id="jTabbedPane2" pref="592" max="32767" attributes="0"/>
                           <Component id="pnlSettingL0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -169,6 +169,14 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="pnlMoreL0" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="chkMaxRam" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="txtMaxRam" min="-2" pref="59" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="chkMinRam" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="txtMinRam" min="-2" pref="59" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnRunL0" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -207,7 +215,15 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="pnlMoreL0" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnRunL0" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="btnRunL0" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                                      <Component id="chkMaxRam" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtMaxRam" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="chkMinRam" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtMinRam" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="pnlAdvancedParameterL0" min="-2" max="-2" attributes="0"/>
@@ -446,7 +462,7 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblMSTSettingsL0Place" alignment="0" pref="419" max="32767" attributes="0"/>
+                                  <Component id="lblMSTSettingsL0Place" alignment="0" pref="555" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
@@ -479,7 +495,7 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblMaltSettingsPlace" alignment="0" pref="419" max="32767" attributes="0"/>
+                                  <Component id="lblMaltSettingsPlace" alignment="0" pref="555" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
@@ -501,6 +517,32 @@
                     </Container>
                   </SubComponents>
                 </Container>
+                <Component class="javax.swing.JTextField" name="txtMaxRam">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="chkMaxRam">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Max Ram"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkMaxRam_Click"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="chkMinRam">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Min Ram"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkMinRam_Click"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtMinRam">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JTabbedPane" name="jTabbedPane2">
@@ -519,7 +561,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane2" alignment="0" pref="451" max="32767" attributes="0"/>
+                          <Component id="jScrollPane2" alignment="0" pref="587" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
@@ -566,7 +608,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jTabbedPane1" max="32767" attributes="0"/>
+                          <Component id="jTabbedPane1" pref="592" max="32767" attributes="0"/>
                           <Component id="pnlSettingL1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -936,7 +978,7 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblMSTSettingsL1Place" alignment="0" pref="419" max="32767" attributes="0"/>
+                                  <Component id="lblMSTSettingsL1Place" alignment="0" pref="555" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
@@ -976,7 +1018,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane1" alignment="0" pref="451" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" alignment="0" pref="587" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">

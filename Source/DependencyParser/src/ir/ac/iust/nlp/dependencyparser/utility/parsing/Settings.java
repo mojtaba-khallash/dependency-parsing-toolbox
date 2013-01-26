@@ -1,6 +1,11 @@
 package ir.ac.iust.nlp.dependencyparser.utility.parsing;
 
 import ir.ac.iust.nlp.dependencyparser.utility.enumeration.Flowchart;
+import java.io.File;
+import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
+import org.apache.commons.io.FileUtils;
 
 /**
  *
@@ -24,6 +29,37 @@ public abstract class Settings {
         this.Model = settings.Model;
     }
     
-    public abstract String[] getTrainParameters();
-    public abstract String[] getTestParameters();
+    public String[] getParameters() {
+        switch (Chart) {
+            case Train:
+                return getTrainParameters();
+            case Parse:
+                return getTestParameters();
+            case Eval:
+                return getEvalParameters();
+        }
+        
+        return null;
+    }
+    protected abstract String[] getTrainParameters();
+    protected abstract String[] getTestParameters();
+    
+    private String[] getEvalParameters() {
+        List<String> pars = new LinkedList<>();
+        
+        pars.add("eval");
+        pars.add("gold-file:" + Gold);
+        pars.add("output-file:" + Output);
+        pars.add("format:CONLL");
+        
+        return pars.toArray(new String[0]);
+    }
+        
+    protected void copyToDestination(String source, String destination) {
+        File from = new File(source).getAbsoluteFile();
+        File to = new File(destination);
+        if (!from.equals(to)) {
+            try { FileUtils.copyFile(from, to); } catch (IOException e) {}
+        }
+    }
 }

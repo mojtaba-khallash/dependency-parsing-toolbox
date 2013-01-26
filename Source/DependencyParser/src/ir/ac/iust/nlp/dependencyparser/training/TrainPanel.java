@@ -1,6 +1,7 @@
 package ir.ac.iust.nlp.dependencyparser.training;
 
 import ir.ac.iust.nlp.dependencyparser.BasePanel;
+import ir.ac.iust.nlp.dependencyparser.DependencyParser;
 import ir.ac.iust.nlp.dependencyparser.utility.ExampleFileFilter;
 import ir.ac.iust.nlp.dependencyparser.utility.enumeration.Flowchart;
 import ir.ac.iust.nlp.dependencyparser.utility.enumeration.ParserType;
@@ -14,7 +15,6 @@ import java.io.PrintStream;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
-import org.apache.commons.io.FileUtils;
 
 /**
  *
@@ -60,6 +60,9 @@ public class TrainPanel extends BasePanel {
         
         tabSettings.removeAll();
         tabSettings.add(pnlMaltSettings, "MaltParser Settings");
+        
+        txtMaxRam.setText(getRam(true));
+        txtMinRam.setText(getRam(false));
     }
     
     private void setDrop() {
@@ -86,35 +89,6 @@ public class TrainPanel extends BasePanel {
     @Override
     public void threadFinished() {
         btnStartTraining.setEnabled(true);
-        
-        if (type == ParserType.MaltParser) {
-            // Model
-            String modelFile = txtModelPath.getText()
-                    + "trained_model.mco";
-            // Ensure have an absolute path
-            File model_to = new File(modelFile).getAbsoluteFile();
-            File model_from = new File(workingDir + File.separator + model_to.getName());
-
-            // Copy model to destination file
-            if (!model_from.equals(model_to)) {
-                try {
-                    FileUtils.copyFile(model_from, model_to);
-                    FileUtils.forceDelete(model_from);
-                } catch (IOException ex) {
-                }
-            }
-
-            // Ensure have an absolute path
-            File from = new File(txtCorpusFile.getText()).getAbsoluteFile();
-            File to = new File(workingDir + File.separator + from.getName());
-            // Copy input file to working directory
-            if (!from.equals(to)) {
-                try {
-                    FileUtils.forceDelete(to);
-                } catch (IOException ex) {
-                }
-            }
-        }
     }
 
     /**
@@ -149,6 +123,10 @@ public class TrainPanel extends BasePanel {
         lblMaltSettingsPlace = new javax.swing.JLabel();
         pnlClearSettings = new javax.swing.JPanel();
         lblClearSettingsPlace = new javax.swing.JLabel();
+        chkMaxRam = new javax.swing.JCheckBox();
+        txtMaxRam = new javax.swing.JTextField();
+        txtMinRam = new javax.swing.JTextField();
+        chkMinRam = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         tabDependencyInfo = new javax.swing.JTabbedPane();
@@ -255,7 +233,7 @@ public class TrainPanel extends BasePanel {
         pnlMSTSettings.setLayout(pnlMSTSettingsLayout);
         pnlMSTSettingsLayout.setHorizontalGroup(
             pnlMSTSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblMSTSettingsL0Place, javax.swing.GroupLayout.DEFAULT_SIZE, 649, Short.MAX_VALUE)
+            .addComponent(lblMSTSettingsL0Place, javax.swing.GroupLayout.DEFAULT_SIZE, 705, Short.MAX_VALUE)
         );
         pnlMSTSettingsLayout.setVerticalGroup(
             pnlMSTSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,7 +253,7 @@ public class TrainPanel extends BasePanel {
         pnlMateSettings.setLayout(pnlMateSettingsLayout);
         pnlMateSettingsLayout.setHorizontalGroup(
             pnlMateSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblMSTSettingsL0Place1, javax.swing.GroupLayout.DEFAULT_SIZE, 649, Short.MAX_VALUE)
+            .addComponent(lblMSTSettingsL0Place1, javax.swing.GroupLayout.DEFAULT_SIZE, 705, Short.MAX_VALUE)
         );
         pnlMateSettingsLayout.setVerticalGroup(
             pnlMateSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -295,7 +273,7 @@ public class TrainPanel extends BasePanel {
         pnlMaltSettings.setLayout(pnlMaltSettingsLayout);
         pnlMaltSettingsLayout.setHorizontalGroup(
             pnlMaltSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblMaltSettingsPlace, javax.swing.GroupLayout.DEFAULT_SIZE, 649, Short.MAX_VALUE)
+            .addComponent(lblMaltSettingsPlace, javax.swing.GroupLayout.DEFAULT_SIZE, 705, Short.MAX_VALUE)
         );
         pnlMaltSettingsLayout.setVerticalGroup(
             pnlMaltSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,7 +293,7 @@ public class TrainPanel extends BasePanel {
         pnlClearSettings.setLayout(pnlClearSettingsLayout);
         pnlClearSettingsLayout.setHorizontalGroup(
             pnlClearSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblClearSettingsPlace, javax.swing.GroupLayout.DEFAULT_SIZE, 649, Short.MAX_VALUE)
+            .addComponent(lblClearSettingsPlace, javax.swing.GroupLayout.DEFAULT_SIZE, 705, Short.MAX_VALUE)
         );
         pnlClearSettingsLayout.setVerticalGroup(
             pnlClearSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -332,12 +310,30 @@ public class TrainPanel extends BasePanel {
         pnlAdvancedParameter.setLayout(pnlAdvancedParameterLayout);
         pnlAdvancedParameterLayout.setHorizontalGroup(
             pnlAdvancedParameterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(tabSettings)
         );
         pnlAdvancedParameterLayout.setVerticalGroup(
             pnlAdvancedParameterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(tabSettings)
         );
+
+        chkMaxRam.setText("Max Ram");
+        chkMaxRam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkMaxRam_Click(evt);
+            }
+        });
+
+        txtMaxRam.setEditable(false);
+
+        txtMinRam.setEditable(false);
+
+        chkMinRam.setText("Min Ram");
+        chkMinRam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkMinRam_Click(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlParameterLayout = new javax.swing.GroupLayout(pnlParameter);
         pnlParameter.setLayout(pnlParameterLayout);
@@ -366,6 +362,14 @@ public class TrainPanel extends BasePanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cboParser, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(chkMaxRam)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtMaxRam, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(chkMinRam)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtMinRam, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnStartTraining)))
                 .addContainerGap())
         );
@@ -387,7 +391,12 @@ public class TrainPanel extends BasePanel {
                     .addGroup(pnlParameterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnStartTraining)
                         .addComponent(lblParser)
-                        .addComponent(cboParser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cboParser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(chkMaxRam)
+                        .addComponent(txtMaxRam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(pnlParameterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(chkMinRam)
+                            .addComponent(txtMinRam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(pnlMore, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlAdvancedParameter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -420,7 +429,7 @@ public class TrainPanel extends BasePanel {
         pnlLog.setLayout(pnlLogLayout);
         pnlLogLayout.setHorizontalGroup(
             pnlLogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 737, Short.MAX_VALUE)
         );
         pnlLogLayout.setVerticalGroup(
             pnlLogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -437,7 +446,7 @@ public class TrainPanel extends BasePanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlParameter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 686, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 742, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -484,31 +493,9 @@ public class TrainPanel extends BasePanel {
                         MaltSettings malt = new MaltSettings();
                         // Working Directory
                         malt.WorkingDirectory = "tmp" + File.separator;
-                        // Options
-                        File optionFile = new File(pnlMalt.getOptionsFile()).getAbsoluteFile();
-                        malt.OptionsFile = optionFile.getName();
-                        File optionFileTo = new File(malt.WorkingDirectory + malt.OptionsFile);
-                        if (!optionFile.equals(optionFileTo)) {
-                            FileUtils.copyFile(optionFile, optionFileTo);
-                        }
-                        // Guide
-                        File guideFile = new File(pnlMalt.getGuidesFile()).getAbsoluteFile();
-                        malt.GuidesFile = guideFile.getName();
-                        File guideFileTo = new File(malt.WorkingDirectory + malt.GuidesFile);
-                        if (!guideFile.equals(guideFileTo)) {
-                            FileUtils.copyFile(guideFile, guideFileTo);
-                        }
+                        malt.OptionsFile = pnlMalt.getOptionsFile();
+                        malt.GuidesFile = pnlMalt.getGuidesFile();
                         settings = malt;
-                        // Ensure have an absolute path
-                        File from = new File(inputFile).getAbsoluteFile();
-                        inputFile = from.getName();
-                        File to = new File(workingDir + File.separator + inputFile);
-                        // Copy input file to working directory
-                        if (!from.equals(to)) {
-                            FileUtils.copyFile(from, to);
-                        }
-                        // Ensure have an absolute path
-                        modelFile = new File(modelFile).getName();
                         break;
                     case MSTParser:
                         MSTSettings mst = new MSTSettings();
@@ -554,6 +541,20 @@ public class TrainPanel extends BasePanel {
                         txtLog.setCaretPosition(txtLog.getDocument().getLength() - 1);
                     }
                 });
+                
+                if (chkMaxRam.isSelected()) {
+                    DependencyParser.maxRam = txtMaxRam.getText();
+                }
+                else {
+                    DependencyParser.maxRam = "";
+                }
+
+                if (chkMinRam.isSelected()) {
+                    DependencyParser.minRam = txtMinRam.getText();
+                }
+                else {
+                    DependencyParser.minRam = "";
+                }
 
                 // Run in a new thread
                 Runnable job = new RunnableTrain(this, type, out, settings);
@@ -633,11 +634,21 @@ public class TrainPanel extends BasePanel {
         }
     }//GEN-LAST:event_cboParser_stateChanged
 
+    private void chkMaxRam_Click(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMaxRam_Click
+        txtMaxRam.setEditable(chkMaxRam.isSelected());
+    }//GEN-LAST:event_chkMaxRam_Click
+
+    private void chkMinRam_Click(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMinRam_Click
+        txtMinRam.setEditable(chkMinRam.isSelected());
+    }//GEN-LAST:event_chkMinRam_Click
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBrowseCorpusFile;
     private javax.swing.JButton btnBrowseModelPath;
     private javax.swing.JButton btnStartTraining;
     private javax.swing.JComboBox cboParser;
+    private javax.swing.JCheckBox chkMaxRam;
+    private javax.swing.JCheckBox chkMinRam;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane3;
@@ -662,6 +673,8 @@ public class TrainPanel extends BasePanel {
     private javax.swing.JTabbedPane tabSettings;
     private javax.swing.JTextField txtCorpusFile;
     private javax.swing.JTextArea txtLog;
+    private javax.swing.JTextField txtMaxRam;
+    private javax.swing.JTextField txtMinRam;
     private javax.swing.JTextField txtModelPath;
     // End of variables declaration//GEN-END:variables
 }

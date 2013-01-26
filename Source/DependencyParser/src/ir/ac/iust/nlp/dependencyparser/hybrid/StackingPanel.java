@@ -1,6 +1,7 @@
 package ir.ac.iust.nlp.dependencyparser.hybrid;
 
 import ir.ac.iust.nlp.dependencyparser.BasePanel;
+import ir.ac.iust.nlp.dependencyparser.DependencyParser;
 import ir.ac.iust.nlp.dependencyparser.utility.ExampleFileFilter;
 import ir.ac.iust.nlp.dependencyparser.utility.enumeration.Flowchart;
 import ir.ac.iust.nlp.dependencyparser.utility.enumeration.ParserType;
@@ -49,6 +50,9 @@ public class StackingPanel extends BasePanel {
         spAugmentNParts.setModel(num_model);
         
         tabSettings.remove(pnlMaltSettings);
+        
+        txtMaxRam.setText(getRam(true));
+        txtMinRam.setText(getRam(false));
     }
 
     private void setDrop() {
@@ -168,6 +172,10 @@ public class StackingPanel extends BasePanel {
         lblMSTSettingsL0Place = new javax.swing.JLabel();
         pnlMaltSettings = new javax.swing.JPanel();
         lblMaltSettingsPlace = new javax.swing.JLabel();
+        txtMaxRam = new javax.swing.JTextField();
+        chkMaxRam = new javax.swing.JCheckBox();
+        chkMinRam = new javax.swing.JCheckBox();
+        txtMinRam = new javax.swing.JTextField();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -343,7 +351,7 @@ public class StackingPanel extends BasePanel {
         pnlMSTSettingsL0.setLayout(pnlMSTSettingsL0Layout);
         pnlMSTSettingsL0Layout.setHorizontalGroup(
             pnlMSTSettingsL0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblMSTSettingsL0Place, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
+            .addComponent(lblMSTSettingsL0Place, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
         );
         pnlMSTSettingsL0Layout.setVerticalGroup(
             pnlMSTSettingsL0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -363,7 +371,7 @@ public class StackingPanel extends BasePanel {
         pnlMaltSettings.setLayout(pnlMaltSettingsLayout);
         pnlMaltSettingsLayout.setHorizontalGroup(
             pnlMaltSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblMaltSettingsPlace, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
+            .addComponent(lblMaltSettingsPlace, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
         );
         pnlMaltSettingsLayout.setVerticalGroup(
             pnlMaltSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -402,6 +410,24 @@ public class StackingPanel extends BasePanel {
                 .addComponent(tabSettings))
         );
 
+        txtMaxRam.setEditable(false);
+
+        chkMaxRam.setText("Max Ram");
+        chkMaxRam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkMaxRam_Click(evt);
+            }
+        });
+
+        chkMinRam.setText("Min Ram");
+        chkMinRam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkMinRam_Click(evt);
+            }
+        });
+
+        txtMinRam.setEditable(false);
+
         javax.swing.GroupLayout pnlSettingL0Layout = new javax.swing.GroupLayout(pnlSettingL0);
         pnlSettingL0.setLayout(pnlSettingL0Layout);
         pnlSettingL0Layout.setHorizontalGroup(
@@ -437,6 +463,14 @@ public class StackingPanel extends BasePanel {
                     .addGroup(pnlSettingL0Layout.createSequentialGroup()
                         .addComponent(pnlMoreL0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(chkMaxRam)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtMaxRam, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(chkMinRam)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtMinRam, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnRunL0)))
                 .addContainerGap())
         );
@@ -466,7 +500,13 @@ public class StackingPanel extends BasePanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlSettingL0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(pnlMoreL0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRunL0))
+                    .addGroup(pnlSettingL0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnRunL0)
+                        .addGroup(pnlSettingL0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(chkMaxRam)
+                            .addComponent(txtMaxRam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chkMinRam)
+                            .addComponent(txtMinRam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnlAdvancedParameterL0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -480,7 +520,7 @@ public class StackingPanel extends BasePanel {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -496,7 +536,7 @@ public class StackingPanel extends BasePanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLevel0Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlLevel0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTabbedPane2)
+                    .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 592, Short.MAX_VALUE)
                     .addComponent(pnlSettingL0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -669,7 +709,7 @@ public class StackingPanel extends BasePanel {
         pnlMSTSettingsL1.setLayout(pnlMSTSettingsL1Layout);
         pnlMSTSettingsL1Layout.setHorizontalGroup(
             pnlMSTSettingsL1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblMSTSettingsL1Place, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
+            .addComponent(lblMSTSettingsL1Place, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
         );
         pnlMSTSettingsL1Layout.setVerticalGroup(
             pnlMSTSettingsL1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -764,7 +804,7 @@ public class StackingPanel extends BasePanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -780,7 +820,7 @@ public class StackingPanel extends BasePanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLevel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlLevel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTabbedPane1)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 592, Short.MAX_VALUE)
                     .addComponent(pnlSettingL1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -803,8 +843,8 @@ public class StackingPanel extends BasePanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(tpLevels)
-                    .addComponent(separator, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE)
+                    .addComponent(tpLevels, javax.swing.GroupLayout.DEFAULT_SIZE, 617, Short.MAX_VALUE)
+                    .addComponent(separator, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 617, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(lblTitle)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -926,6 +966,20 @@ public class StackingPanel extends BasePanel {
                 txtLogL0.setCaretPosition(txtLogL0.getDocument().getLength() - 1);
             }
         });
+                
+        if (chkMaxRam.isSelected()) {
+            DependencyParser.maxRam = txtMaxRam.getText();
+        }
+        else {
+            DependencyParser.maxRam = "";
+        }
+
+        if (chkMinRam.isSelected()) {
+            DependencyParser.minRam = txtMinRam.getText();
+        }
+        else {
+            DependencyParser.minRam = "";
+        }
 
         // Run in a new thread
         Runnable job = new RunnableHybrid(this, out, type, settings);
@@ -1062,6 +1116,14 @@ public class StackingPanel extends BasePanel {
         }
     }//GEN-LAST:event_cboParserL0_stateChanged
 
+    private void chkMinRam_Click(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMinRam_Click
+        txtMinRam.setEditable(chkMinRam.isSelected());
+    }//GEN-LAST:event_chkMinRam_Click
+
+    private void chkMaxRam_Click(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMaxRam_Click
+        txtMaxRam.setEditable(chkMaxRam.isSelected());
+    }//GEN-LAST:event_chkMaxRam_Click
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAugmentedTestBrowse;
     private javax.swing.JButton btnAugmentedTrainBrowse;
@@ -1075,6 +1137,8 @@ public class StackingPanel extends BasePanel {
     private javax.swing.JComboBox cboParserL0;
     private javax.swing.JCheckBox chkAllchildren;
     private javax.swing.JCheckBox chkGrandparents;
+    private javax.swing.JCheckBox chkMaxRam;
+    private javax.swing.JCheckBox chkMinRam;
     private javax.swing.JCheckBox chkNextSibl;
     private javax.swing.JCheckBox chkPredEdge;
     private javax.swing.JCheckBox chkPredHead;
@@ -1123,6 +1187,8 @@ public class StackingPanel extends BasePanel {
     private javax.swing.JTextField txtAugmentedTrain;
     private javax.swing.JTextArea txtLogL0;
     private javax.swing.JTextArea txtLogL1;
+    private javax.swing.JTextField txtMaxRam;
+    private javax.swing.JTextField txtMinRam;
     private javax.swing.JTextField txtParsePathL1;
     private javax.swing.JTextField txtTestFileL0;
     private javax.swing.JTextField txtTestFileL1;

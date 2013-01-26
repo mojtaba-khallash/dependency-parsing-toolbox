@@ -6,6 +6,8 @@ import ir.ac.iust.nlp.dependencyparser.enumeration.SearchIn;
 import ir.ac.iust.nlp.dependencyparser.utility.ExampleFileFilter;
 import ir.ac.iust.nlp.dependencyparser.utility.FilePreviewer;
 import java.io.*;
+import java.lang.management.ManagementFactory;
+import java.lang.management.OperatingSystemMXBean;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -360,4 +362,29 @@ public abstract class BasePanel extends javax.swing.JPanel {
     }
     
     public abstract void threadFinished();
+    
+    protected String getRam(boolean maximum) {
+        OperatingSystemMXBean mxbean = ManagementFactory.getOperatingSystemMXBean();
+        com.sun.management.OperatingSystemMXBean sunmxbean = 
+                (com.sun.management.OperatingSystemMXBean) mxbean;
+        double ram;
+        if (maximum == true)
+            ram = sunmxbean.getTotalPhysicalMemorySize();
+        else
+            ram = sunmxbean.getFreePhysicalMemorySize();
+        ram = ram / 1024d;
+        if (ram < 1024) {
+            return (int)Math.round(ram) + "b";
+        }
+        ram = ram / 1024d;
+        if (ram < 1024) {
+            return (int)Math.round(ram) + "m";
+        }
+        ram = ram / 1024d;
+        if (ram < 1024) {
+            return (int)Math.round(ram) + "g";
+        }
+        
+        return "";
+    }
 }

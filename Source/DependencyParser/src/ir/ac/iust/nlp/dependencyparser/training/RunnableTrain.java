@@ -1,6 +1,8 @@
 package ir.ac.iust.nlp.dependencyparser.training;
 
 import ir.ac.iust.nlp.dependencyparser.BasePanel;
+import ir.ac.iust.nlp.dependencyparser.DependencyParser;
+import ir.ac.iust.nlp.dependencyparser.utility.enumeration.Flowchart;
 import ir.ac.iust.nlp.dependencyparser.utility.enumeration.ParserType;
 import ir.ac.iust.nlp.dependencyparser.utility.parsing.*;
 import java.io.BufferedReader;
@@ -32,6 +34,7 @@ public class RunnableTrain implements Runnable {
     
     @Override
     public void run() {
+        settings.Chart = Flowchart.Train;
         try {
             switch(type) {
                 case MaltParser:
@@ -57,37 +60,56 @@ public class RunnableTrain implements Runnable {
     }
     
     private void runMalt() throws Exception {
-        MaltSettings st = (MaltSettings)settings;
-        Process p = Runtime.getRuntime().exec("java -Xmx8000m -jar lib" + File.separator + "maltParser.jar " + st.getTrainParameters1());
+        MaltSettings st = new MaltSettings((MaltSettings)settings);
+        Process p = null;
+        try
+        {
+            st.preProcess();
 
-        BufferedReader stdError = new BufferedReader(new InputStreamReader(
-                p.getErrorStream()));
-        
-        String s;
-        while ((s = stdError.readLine()) != null) {
-            out.println(s);
+            String ram = "";
+            if (DependencyParser.maxRam.length() > 0) ram += "-Xmx" + DependencyParser.maxRam + " ";
+            if (DependencyParser.minRam.length() > 0) ram += "-Xms" + DependencyParser.minRam + " ";
+            p = Runtime.getRuntime().exec("java " + ram + "-jar lib" + File.separator + "maltParser.jar " + st.getTrainParameters1());
+
+            BufferedReader stdError = new BufferedReader(new InputStreamReader(
+                    p.getErrorStream()));
+            BufferedReader stdIn = new BufferedReader(new InputStreamReader(
+                    p.getInputStream()));
+
+            String s;
+            while ((s = stdError.readLine()) != null) {
+                out.println(s);
+            }
+            while ((s = stdIn.readLine()) != null) {
+                out.println(s);
+            }
         }
-        p.destroy();
+        finally {
+            if (p != null)
+                p.destroy();
+            
+            st.postProcess();
+        }
     }
     
     private void runMST() throws Exception {
-        MSTSettings st = (MSTSettings)settings;
+        MSTSettings st = new MSTSettings((MSTSettings)settings);
         
         mstparser.DependencyParser.out = out;
-        mstparser.DependencyParser.main(st.getTrainParameters());
+        mstparser.DependencyParser.main(st.getParameters());
     }
     
     private void runMate() throws Exception {
         MateSettings st = (MateSettings)settings;
         
         is2.parser.Parser.out = out;
-        is2.parser.Parser.main(st.getTrainParameters());
+        is2.parser.Parser.main(st.getParameters());
     }
     
     private void runClear() throws Exception {
         ClearSettings st = (ClearSettings)settings;
         
         clear.engine.DepTrain.out = out;
-        clear.engine.DepTrain.main(st.getTrainParameters());
+        clear.engine.DepTrain.main(st.getParameters());
     }
 }

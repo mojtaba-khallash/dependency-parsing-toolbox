@@ -1,6 +1,7 @@
 package ir.ac.iust.nlp.dependencyparser.parsing;
 
 import ir.ac.iust.nlp.dependencyparser.BasePanel;
+import ir.ac.iust.nlp.dependencyparser.DependencyParser;
 import ir.ac.iust.nlp.dependencyparser.utility.ExampleFileFilter;
 import ir.ac.iust.nlp.dependencyparser.utility.enumeration.Flowchart;
 import ir.ac.iust.nlp.dependencyparser.utility.enumeration.ParserType;
@@ -11,13 +12,11 @@ import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
-import java.util.Calendar;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import javax.swing.JOptionPane;
 import javax.swing.JSplitPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import org.apache.commons.io.FileUtils;
 import org.maltparser.core.exception.MaltChainedException;
 import se.vxu.msi.malteval.treeviewer.MaltTreeViewerGui;
 import se.vxu.msi.malteval.treeviewer.gui.TreeViewer;
@@ -63,6 +62,9 @@ public final class ParsePanel extends BasePanel {
         
         tabSettings.removeAll();
         tabSettings.setVisible(false);
+        
+        txtMaxRam.setText(getRam(true));
+        txtMinRam.setText(getRam(false));
     }
     
     private void setDrop() {
@@ -123,6 +125,10 @@ public final class ParsePanel extends BasePanel {
         lblOutputPath = new javax.swing.JLabel();
         txtOutputPath = new javax.swing.JTextField();
         btnBrowseOutputPath = new javax.swing.JButton();
+        txtMinRam = new javax.swing.JTextField();
+        chkMinRam = new javax.swing.JCheckBox();
+        txtMaxRam = new javax.swing.JTextField();
+        chkMaxRam = new javax.swing.JCheckBox();
         tabDependencyInfo = new javax.swing.JTabbedPane();
         pnlLog = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -345,6 +351,24 @@ public final class ParsePanel extends BasePanel {
             }
         });
 
+        txtMinRam.setEditable(false);
+
+        chkMinRam.setText("Min Ram");
+        chkMinRam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkMinRam_Click(evt);
+            }
+        });
+
+        txtMaxRam.setEditable(false);
+
+        chkMaxRam.setText("Max Ram");
+        chkMaxRam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkMaxRam_Click(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlParameterLayout = new javax.swing.GroupLayout(pnlParameter);
         pnlParameter.setLayout(pnlParameterLayout);
         pnlParameterLayout.setHorizontalGroup(
@@ -360,6 +384,14 @@ public final class ParsePanel extends BasePanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cboParser, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(chkMaxRam)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtMaxRam, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(chkMinRam)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtMinRam, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnStartParse))
                     .addGroup(pnlParameterLayout.createSequentialGroup()
                         .addGroup(pnlParameterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -403,7 +435,12 @@ public final class ParsePanel extends BasePanel {
                     .addGroup(pnlParameterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnStartParse)
                         .addComponent(lblParser)
-                        .addComponent(cboParser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cboParser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(pnlParameterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(chkMaxRam)
+                            .addComponent(txtMaxRam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chkMinRam)
+                            .addComponent(txtMinRam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(pnlMore, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlAdvancedParameter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -753,8 +790,6 @@ public final class ParsePanel extends BasePanel {
 
         makeFormReady();        
         
-        currentTempFolder = String.valueOf(Calendar.getInstance().getTimeInMillis());
-        String wd = "tmp" + File.separator + currentTempFolder;
         try {
             if (isInit == false) {
                 isInit = true;
@@ -775,34 +810,8 @@ public final class ParsePanel extends BasePanel {
                     case MaltParser:
                         MaltSettings malt = new MaltSettings();
                         // Working Directory
-                        malt.WorkingDirectory = wd + File.separator;
+                        malt.WorkingDirectory = "tmp" + File.separator;
                         settings = malt;
-                        // Ensure have an absolute path
-                        File from = new File(inputFile).getAbsoluteFile();
-                        String input = from.getName();
-                        File to = new File(wd + File.separator + input);
-                        // Copy input file to working directory
-                        if (!from.equals(to)) {
-                            FileUtils.copyFile(from, to);
-                        }
-                        inputName = currentTempFolder + File.separator + from.getName();
-                        // Ensure have an absolute path
-                        dest_to = new File(outputFile).getAbsoluteFile();
-                        String output = dest_to.getName();
-                        dest_from = new File(wd + File.separator + output);
-                        outputName = currentTempFolder + File.separator + output;
-                        // Copy input file to working directory
-                        if (!from.equals(to)) {
-                            FileUtils.copyFile(from, to);
-                        }
-                        // Ensure have an absolute path
-                        String inputModelFile = txtParserModelFile.getText();
-                        File model_from = new File(inputModelFile).getAbsoluteFile();
-                        modelFile = model_from.getName();
-                        model_to = new File(wd + File.separator + modelFile);
-                        // Copy model to working directory
-                        if (!model_from.equals(model_to))
-                            FileUtils.copyFile(model_from, model_to);
                         break;
                     case MSTParser:
                         MSTSettings mst = new MSTSettings();
@@ -844,6 +853,20 @@ public final class ParsePanel extends BasePanel {
                 settings.Input = inputName;
                 settings.Output = outputName;
                 
+                if (chkMaxRam.isSelected()) {
+                    DependencyParser.maxRam = txtMaxRam.getText();
+                }
+                else {
+                    DependencyParser.maxRam = "";
+                }
+
+                if (chkMinRam.isSelected()) {
+                    DependencyParser.minRam = txtMinRam.getText();
+                }
+                else {
+                    DependencyParser.minRam = "";
+                }
+                
                 // Run in a new thread
                 Runnable job = new RunnableParse(this, type, out, settings);
                 ExecutorService threadPool = Executors.newFixedThreadPool(1);
@@ -857,13 +880,6 @@ public final class ParsePanel extends BasePanel {
                     "Reading Error",
                     JOptionPane.ERROR_MESSAGE);
             
-            try
-            {
-                File dir = new File(wd + File.separator);
-                dir.deleteOnExit();
-            }
-            catch (Exception e) {}
-            
             isInit = false;
         }
     }//GEN-LAST:event_btnStartParse_Click
@@ -876,10 +892,6 @@ public final class ParsePanel extends BasePanel {
             }
             btnStartParse.setEnabled(true);
             cboParser.setEnabled(true);
-
-            // Copy result to destination file
-            if (!dest_from.equals(dest_to))
-                FileUtils.copyFile(dest_from, dest_to);
         } catch (Exception e) {
         }
         finally {
@@ -1067,6 +1079,14 @@ public final class ParsePanel extends BasePanel {
         }
     }//GEN-LAST:event_cboParser_stateChanged
 
+    private void chkMinRam_Click(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMinRam_Click
+        txtMinRam.setEditable(chkMinRam.isSelected());
+    }//GEN-LAST:event_chkMinRam_Click
+
+    private void chkMaxRam_Click(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMaxRam_Click
+        txtMaxRam.setEditable(chkMaxRam.isSelected());
+    }//GEN-LAST:event_chkMaxRam_Click
+
     private void startGUI() throws Exception {
         String extension = inputFile.substring(inputFile.lastIndexOf(".") + 1, inputFile.length());
 
@@ -1174,6 +1194,8 @@ public final class ParsePanel extends BasePanel {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox cboParser;
     private javax.swing.JComboBox cboViewMode;
+    private javax.swing.JCheckBox chkMaxRam;
+    private javax.swing.JCheckBox chkMinRam;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblClearSettingsPlace;
     private javax.swing.JLabel lblCurrentTotal;
@@ -1213,6 +1235,8 @@ public final class ParsePanel extends BasePanel {
     private javax.swing.JTabbedPane tabSettings;
     private javax.swing.JTextField txtInputFile;
     private javax.swing.JTextArea txtLog;
+    private javax.swing.JTextField txtMaxRam;
+    private javax.swing.JTextField txtMinRam;
     private javax.swing.JTextField txtOutputPath;
     private javax.swing.JTextField txtParserModelFile;
     // End of variables declaration//GEN-END:variables

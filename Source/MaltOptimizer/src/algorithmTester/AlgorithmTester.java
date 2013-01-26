@@ -167,8 +167,9 @@ public class AlgorithmTester {
             }
             p.destroy();
 
+            String outName = new File(outFile).getName();
             command = "java -jar " + maltPath + " -c " + language + 
-                "Model -i " + testCorpus + " -o \"" + outFile + "\" -m parse";
+                "Model -i " + testCorpus + " -o " + outName + " -m parse";
             Process p2 = Runtime.getRuntime().exec(command);
             BufferedReader stdInput2 = new BufferedReader(new InputStreamReader(
                     p2.getInputStream()));

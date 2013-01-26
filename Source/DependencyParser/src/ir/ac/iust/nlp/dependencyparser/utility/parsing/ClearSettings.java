@@ -23,7 +23,7 @@ public class ClearSettings extends Settings {
     }
     
     @Override
-    public String[] getTrainParameters() {
+    protected String[] getTrainParameters() {
         List<String> pars = new LinkedList<>();
         
         pars.add("-m");
@@ -41,7 +41,7 @@ public class ClearSettings extends Settings {
     }
 
     @Override
-    public String[] getTestParameters() {
+    protected String[] getTestParameters() {
          List<String> pars = new LinkedList<>();
          
         pars.add("-m");

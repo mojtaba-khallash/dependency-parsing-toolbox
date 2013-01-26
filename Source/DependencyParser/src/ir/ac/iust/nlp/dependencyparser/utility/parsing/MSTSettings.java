@@ -40,7 +40,7 @@ public class MSTSettings extends Settings {
     }
     
     @Override
-    public String[] getTrainParameters() {
+    protected String[] getTrainParameters() {
         List<String> pars = new LinkedList<>();
 
         pars.add("format:" + FileType);
@@ -64,7 +64,7 @@ public class MSTSettings extends Settings {
     }
     
     @Override
-    public String[] getTestParameters() {
+    protected String[] getTestParameters() {
          List<String> pars = new LinkedList<>();
          
         pars.add("format:" + FileType);

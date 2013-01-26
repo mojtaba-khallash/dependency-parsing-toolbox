@@ -28,6 +28,9 @@ import se.vxu.msi.malteval.MaltEvalConsole;
  */
 public class DependencyParser {
 
+    public static String maxRam = "";
+    public static String minRam = "";
+    
     /**
      * @param args the command line arguments
      */
@@ -96,6 +99,14 @@ public class DependencyParser {
         try {
             for (int i = 0; i< args.length; i++) {
                 switch (args[i]) {
+                    case "-Xmx":
+                        i++;
+                        maxRam = args[i];
+                        break;
+                    case "-Xms":
+                        i++;
+                        minRam = args[i];
+                        break;
                     case "-v":
                         i++;
                         String val = args[i];
@@ -119,7 +130,7 @@ public class DependencyParser {
                     // -- proj, deproj, optimizer, train, parse, eval, ensemble, stack param --//
                     case "-i":
                         i++;
-                        maltL0.Input = mstL0.Input = input = args[i];
+                        input = args[i];
                         break;
                         
                     // -- proj, deproj, parse, eval, ensemble param --//
@@ -363,6 +374,7 @@ public class DependencyParser {
             Settings settings = null;
             switch (parser) {
                 case MaltParser:
+                    malt.WorkingDirectory = "tmp" + File.separator;
                     settings = malt;
                     break;
                 case ClearParser:
@@ -375,6 +387,10 @@ public class DependencyParser {
                     settings = mate;
                     break;
             }
+            settings.Input = input;
+            settings.Model = model;
+            settings.Output = output;
+            
             Settings settingsL0 = null;
             switch (parserL0) {
                 case MaltParser:
@@ -384,6 +400,7 @@ public class DependencyParser {
                     settingsL0 = mstL0;
                     break;
             }
+            settingsL0.Input = input;
             
             if (visisble == false) {
                 if (exception == true) {

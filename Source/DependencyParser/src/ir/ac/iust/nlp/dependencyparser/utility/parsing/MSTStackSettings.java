@@ -1,8 +1,11 @@
 package ir.ac.iust.nlp.dependencyparser.utility.parsing;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import org.apache.commons.io.FileUtils;
 
 /**
  *
@@ -43,7 +46,7 @@ public class MSTStackSettings extends MSTSettings {
     }
     
     @Override
-    public String[] getTrainParameters() {
+    protected String[] getTrainParameters() {
         List<String> pars = new LinkedList<>(Arrays.asList(super.getTrainParameters()));
         
         pars.add("stacked-level" + Level);
@@ -65,7 +68,7 @@ public class MSTStackSettings extends MSTSettings {
     }
     
     @Override
-    public String[] getTestParameters() {
+    protected String[] getTestParameters() {
         List<String> pars = new LinkedList<>(Arrays.asList(super.getTestParameters()));
         
         pars.add("stacked-level" + Level);
@@ -80,5 +83,24 @@ public class MSTStackSettings extends MSTSettings {
         }
         
         return pars.toArray(new String[0]);
+    }
+    
+    public void preProcess() throws IOException {
+        switch (Chart) {
+            case Parse:
+                Input = Gold;
+                break;
+        }
+    }
+    
+    public void postProcess() throws IOException {
+        switch (Chart) {
+            case Parse:
+                File model = new File(Model);
+                if (model != null) {
+                    FileUtils.forceDelete(model);
+                }
+                break;
+        }
     }
 }

@@ -8856,7 +8856,7 @@ public class Optimizer {
             bwPhaseHiddenLogFile.write("Training set path:" + trainingCorpus + "\n");
             bwPhaseHiddenLogFile.write("Size (tokens):" + getNumbTokens() + "\n");
             bwPhaseHiddenLogFile.write("Size (sentences):" + getNumbSentences() + "\n");
-            bwPhaseHiddenLogFile.write("Non projective:" + percentage + "\n");
+            bwPhaseHiddenLogFile.write("Non projective:" + String.format(pattern, percentage) + "\n");
             bwPhaseHiddenLogFile.write("Dangling Punctuation:" + numbDanglingCases + "\n");
             bwPhaseHiddenLogFile.write("LAS:" + String.format(pattern, bestResult) + "\n");
             bwPhaseHiddenLogFile.write("Default:" + String.format(pattern, defaultBaseline) + "\n");

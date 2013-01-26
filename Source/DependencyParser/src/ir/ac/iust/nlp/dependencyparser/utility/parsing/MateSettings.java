@@ -32,7 +32,7 @@ public class MateSettings extends Settings {
     }
     
     @Override
-    public String[] getTrainParameters() {
+    protected String[] getTrainParameters() {
         List<String> pars = new LinkedList<>();
         
         pars.add("-model");
@@ -56,7 +56,7 @@ public class MateSettings extends Settings {
     }
     
     @Override
-    public String[] getTestParameters() {
+    protected String[] getTestParameters() {
         List<String> pars = new LinkedList<>();
         
         pars.add("-model");
