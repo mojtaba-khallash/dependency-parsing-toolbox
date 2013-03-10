@@ -11,7 +11,7 @@ developed by [Mojtaba Khallash] (mailto: mkhallash@gmail.com) from _Iran Univers
 Science and Technology (IUST)_.
 
 The home page for the project is:
-  http://www.nlp.iust.ac.ir
+  http://nlp.iust.ac.ir
 	
 If you want to use this software for research, please refer to this web address 
 in your papers.
