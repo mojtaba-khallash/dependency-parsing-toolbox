@@ -1,5 +1,20 @@
 package ir.ac.iust.nlp.dependencyparser;
 
+/*
+* Copyright (C) 2013 Iran University of Science and Technology
+*
+* This file is part of "Dependency Parsing Toolbox" Project, as available 
+* from http://nlp.iust.ac.ir This file is free software;
+* you can redistribute it and/or modify it under the terms of the GNU General 
+* Public License (GPL) as published by the Free Software Foundation, in 
+* version 2 as it comes in the "COPYING" file of the VirtualBox OSE 
+* distribution. VirtualBox OSE is distributed in the hope that it will be 
+* useful, but WITHOUT ANY WARRANTY of any kind.
+*
+* You may elect to license modified versions of this file under the terms 
+* and conditions of either the GPL.
+*/
+
 import ir.ac.iust.nlp.dependencyparser.evaluation.EvalSettings;
 import ir.ac.iust.nlp.dependencyparser.hybrid.RunnableHybrid;
 import ir.ac.iust.nlp.dependencyparser.optomization.RunnableOptimizer;
@@ -110,8 +125,9 @@ public class DependencyParser {
                     case "-v":
                         i++;
                         String val = args[i];
-                        if (!(val.equals("0") || val.equals("1")))
+                        if (!(val.equals("0") || val.equals("1"))) {
                             throw new Exception("Only 0 or 1 is valid for -v parameter.");
+                        }
                         visisble = val.equals("1");
                         break;
                     case "-mode":
@@ -562,8 +578,9 @@ public class DependencyParser {
                 }
                 System.exit(0);
             }
-            else
+            else {
                 showHelp(helpChart);
+            }
         }
         
         application.setVisible(visisble);

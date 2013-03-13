@@ -11,7 +11,7 @@ developed by Mojtaba Khallash (mkhallash@gmail.com) from Iran University of
 Science and Technology (IUST).
 
 The home page for the project is:
-	http://www.nlp.iust.ac.ir
+	http://nlp.iust.ac.ir
 
 The code is available on Github at:
 	https://github.com/mojtaba-khallash/dependency-parsing-toolbox
