@@ -102,15 +102,7 @@ public class DependencyParser {
         mstL1.Level = 1;
 
         showIntroduction();
-        
-        DependencyParserApp application = new DependencyParserApp();
-        try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            SwingUtilities.updateComponentTreeUI(application);
-            application.pack();
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
-        }
-        
+                
         try {
             for (int i = 0; i< args.length; i++) {
                 switch (args[i]) {
@@ -583,6 +575,13 @@ public class DependencyParser {
             }
         }
         
+        DependencyParserApp application = new DependencyParserApp();
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            SwingUtilities.updateComponentTreeUI(application);
+            application.pack();
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+        }
         application.setVisible(visisble);
     }
     
