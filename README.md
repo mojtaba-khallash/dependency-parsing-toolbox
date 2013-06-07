@@ -271,14 +271,14 @@ Requirements:
 Requirements:
 * "[ClearParser.jar] (http://code.google.com/p/clearparser)" [5] for training ClearParser.
 
-> MSTParser<br/>
+> // MSTParser<br/>
 > java -jar DependencyParser.jar -v 0 -mode train -i input.conll -m langModel.mco -parser mst -decode non-proj 
 -loss punc -order 2 -k 1 -iter 10
 
 Requirements:
 * "[MSTParser.jar] (http://www.seas.upenn.edu/~strctlrn/MSTParser/MSTParser.html)" [6] for training MSTParser.
 
-> Mate-Tools<br/>
+> // Mate-Tools<br/>
 > java -jar DependencyParser.jar -v 0 -mode train -i input.conll -m langModel.mco -parser mst -decode non-proj 
 -threshold 0.3 -core 4 -iter 10
 
@@ -332,18 +332,18 @@ algorithms, you must use same value as training phase.
 
 For example:
 
-> MaltParser<br/>
+> // MaltParser<br/>
 > java -jar DependencyParser.jar -v 0 -mode parse -i input.conll -m langModel.mco -o output.conll -parser malt
 
-> ClearParser<br/>
+> // ClearParser<br/>
 > java -jar DependencyParser.jar -v 0 -mode parse -i input.conll -m langModel.mco -o output.conll -parser clear 
 -option config.xml
 
-> MSTParser<br/>
+> // MSTParser<br/>
 > java -jar DependencyParser.jar -v 0 -mode parse -i input.conll -m langModel.mco -o output.conll -parser mst 
 -decode non-proj -order 2
 
-> Mate-Tools<br/>
+> // Mate-Tools<br/>
 > java -jar DependencyParser.jar -v 0 -mode parse -i input.conll -m langModel.mco -o output.conll -parser mst 
 -decode non-proj -threshold 0.3 -core 4
 
@@ -367,7 +367,7 @@ Two type of evaluations can be done in dependency parsing.
 <tr><td>-metric &lt;metric 
 			(LAS|LA|UAS|AnyRight|AnyWrong|BothRight|BothWrong|HeadRight|
 			 HeadWrong|LabelRight|LabelWrong|DirectionRight|GroupedHeadToChildDistanceRight|
-			 HeadToChildDistanceRight) [default: LAS]&gt;</td><td>evaluation metric that used for evaluation. NOTE: for selecting multiple metrics, separate them by comma.</td></tr>
+			 HeadToChildDistanceRight) [default: LAS]&gt;</td><td>evaluation metric that used for evaluation. <b>NOTE:</b> for selecting multiple metrics, separate them by comma.</td></tr>
 <tr><td>-group &lt;group-by 
 			(Token|Wordform|Lemma|Cpostag|Postag|Feats|Deprel|
 			 Sentence|RelationLength|GroupedRelationLength|SentenceLength|StartWordPosition|EndWordPosition|
