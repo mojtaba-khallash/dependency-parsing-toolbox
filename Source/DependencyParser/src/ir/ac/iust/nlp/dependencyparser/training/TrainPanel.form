@@ -117,15 +117,17 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnStartTraining" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblParser" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cboParser" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chkMaxRam" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtMaxRam" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                               <Component id="chkMinRam" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtMinRam" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="btnStartTraining" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblParser" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cboParser" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="chkMaxRam" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtMaxRam" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="pnlMore" min="-2" max="-2" attributes="0"/>

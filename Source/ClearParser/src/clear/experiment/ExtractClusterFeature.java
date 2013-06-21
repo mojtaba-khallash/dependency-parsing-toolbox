@@ -20,21 +20,20 @@ public class ExtractClusterFeature {
     public ExtractClusterFeature(String dicFile, String inputFile, String outputFile) {
         MorphEnAnalyzer morph = new MorphEnAnalyzer(dicFile);
         SRLReader reader = new SRLReader(inputFile, true);
-        PrintStream fout = IOUtil.createPrintFileStream(outputFile);
-        DepTree tree;
-        DepNode node;
+        try (PrintStream fout = IOUtil.createPrintFileStream(outputFile)) {
+            DepTree tree;
+            DepNode node;
 
-        while ((tree = reader.nextTree()) != null) {
-            for (int i = 1; i < tree.size(); i++) {
-                node = tree.get(i);
+            while ((tree = reader.nextTree()) != null) {
+                for (int i = 1; i < tree.size(); i++) {
+                    node = tree.get(i);
 
-                if (node.isPredicate()) {
-                    fout.println(getFeatures(morph, tree, node));
+                    if (node.isPredicate()) {
+                        fout.println(getFeatures(morph, tree, node));
+                    }
                 }
             }
         }
-
-        fout.close();
     }
 
     String getFeatures(MorphEnAnalyzer morph, DepTree tree, DepNode pred) {
@@ -131,7 +130,7 @@ public class ExtractClusterFeature {
         String dicFile = args[0];
         String inputFile = args[1];
         String outputFile = args[2];
-
-        new ExtractClusterFeature(dicFile, inputFile, outputFile);
+        ExtractClusterFeature extractClusterFeature = 
+                new ExtractClusterFeature(dicFile, inputFile, outputFile);
     }
 }

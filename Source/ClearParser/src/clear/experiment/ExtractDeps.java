@@ -76,6 +76,6 @@ public class ExtractDeps {
     }
 
     public static void main(String[] args) {
-        new ExtractDeps(args[0]);
+        ExtractDeps extractDeps = new ExtractDeps(args[0]);
     }
 }

@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map.Entry;
+import org.apache.commons.math.MathException;
 import org.apache.commons.math.stat.inference.TestUtils;
 
 public class Evaluator {
@@ -44,7 +45,7 @@ public class Evaluator {
             try {
                 double p = TestUtils.pairedTTest(s1, s2);
                 Parser.out.print("significant to " + p);
-            } catch (Exception e) {
+            } catch (IllegalArgumentException | MathException e) {
                 e.printStackTrace();
             }
 

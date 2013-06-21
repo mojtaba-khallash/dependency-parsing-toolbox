@@ -23,36 +23,35 @@ public class MergeDepSRL {
 
     public MergeDepSRL(String inputFile, String outputFile) {
         SRLReader reader = new SRLReader(inputFile, true);
-        PrintStream fout = IOUtil.createPrintFileStream(outputFile);
-        DepTree tree;
-        DepNode curr;
-        SRLInfo info;
-        int i;
+        try (PrintStream fout = IOUtil.createPrintFileStream(outputFile)) {
+            DepTree tree;
+            DepNode curr;
+            SRLInfo info;
+            int i;
 
-        n_fix = new int[2];
-        n_count = new int[2];
+            n_fix = new int[2];
+            n_count = new int[2];
 
-        while ((tree = reader.nextTree()) != null) {
-            tree.setHasHeads();
-            relocatePPs(tree);
-            relabelModals(tree);
-            checkTOs(tree);
+            while ((tree = reader.nextTree()) != null) {
+                tree.setHasHeads();
+                relocatePPs(tree);
+                relabelModals(tree);
+                checkTOs(tree);
 
-            /*
-             * for (i=1; i<tree.size(); i++) { curr = tree.get(i); info =
-             * curr.srlInfo;
-             *
-             * if (info.heads.isEmpty()) continue; else if (info.heads.size() ==
-             * 1) mergeSingle(tree, curr, info.heads.get(0));
-             *
-             * n_count[N_TOTAL]++;
-			}
-             */
+                /*
+                 * for (i=1; i<tree.size(); i++) { curr = tree.get(i); info =
+                 * curr.srlInfo;
+                 *
+                 * if (info.heads.isEmpty()) continue; else if (info.heads.size() ==
+                 * 1) mergeSingle(tree, curr, info.heads.get(0));
+                 *
+                 * n_count[N_TOTAL]++;
+                            }
+                 */
 
-            //	fout.println(tree+"\n");
+                //	fout.println(tree+"\n");
+            }
         }
-
-        fout.close();
     }
 
     private void relocatePPs(DepTree tree) {
@@ -215,6 +214,6 @@ public class MergeDepSRL {
     }
 
     static public void main(String[] args) {
-        new MergeDepSRL(args[0], args[1]);
+        MergeDepSRL mergeDepSRL = new MergeDepSRL(args[0], args[1]);
     }
 }

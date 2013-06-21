@@ -57,8 +57,9 @@ public class EnsemblePanel extends BasePanel {
 
     @Override
     public void save() {
-        if (tblResult.getModel().getRowCount() == 0)
+        if (tblResult.getModel().getRowCount() == 0) {
             return;
+        }
         
         // Output
         StringBuilder result = new StringBuilder("Ensemble (" + cboMethod.getSelectedItem().toString() + ")\n\n");
@@ -66,8 +67,9 @@ public class EnsemblePanel extends BasePanel {
         DefaultTableModel model = (DefaultTableModel)tblResult.getModel();
         for (int i = 0; i < model.getRowCount(); i++) {
             int len = model.getValueAt(i, 0).toString().length();
-            if (len > maxLen)
+            if (len > maxLen) {
                 maxLen = len;
+            }
         }
         int space = 5;
         maxLen+=space;

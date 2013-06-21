@@ -136,9 +136,9 @@ public class SRLTopicCluster {
         tbuild.getTopics(aTopics, "A1", 0.005, 10);
 
         try {
-            ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(outputFile));
-            outputStream.writeObject(aTopics);
-            outputStream.close();
+            try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(outputFile))) {
+                outputStream.writeObject(aTopics);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

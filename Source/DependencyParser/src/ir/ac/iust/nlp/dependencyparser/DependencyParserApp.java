@@ -110,7 +110,7 @@ public class DependencyParserApp extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Dependency Parser Toolbox");
         setMinimumSize(new java.awt.Dimension(740, 700));
-        setName("frmDependencyParsing");
+        setName("frmDependencyParsing"); // NOI18N
         setPreferredSize(new java.awt.Dimension(760, 450));
 
         javax.swing.GroupLayout pnlMainLayout = new javax.swing.GroupLayout(pnlMain);
@@ -129,10 +129,10 @@ public class DependencyParserApp extends javax.swing.JFrame {
         fileMenu.addMenuListener(new javax.swing.event.MenuListener() {
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
-            }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
                 fileMenu_Selected(evt);
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
         });
 

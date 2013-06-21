@@ -209,6 +209,6 @@ public class SRLPredict extends AbstractCommon {
     }
 
     static public void main(String[] args) {
-        new SRLPredict(args);
+        SRLPredict srlPredict = new SRLPredict(args);
     }
 }

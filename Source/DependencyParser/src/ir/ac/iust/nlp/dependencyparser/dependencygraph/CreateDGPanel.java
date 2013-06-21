@@ -540,8 +540,9 @@ public final class CreateDGPanel extends BasePanel {
     }//GEN-LAST:event_cboViewMode_ValueChanged
 
     private void txtNode_keyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNode_keyReleased
-        if(evt.getKeyCode() == 10)
+        if(evt.getKeyCode() == 10) {
             btnAddNode.doClick();
+        }
     }//GEN-LAST:event_txtNode_keyReleased
 
     private void ChangeViewMode() {
@@ -577,11 +578,13 @@ public final class CreateDGPanel extends BasePanel {
                     String word = model.getValueAt(i, 1).toString();
                     String pos = model.getValueAt(i, 2).toString();
                     String head = model.getValueAt(i, 3).toString();
-                    if (head == null || head.isEmpty())
+                    if (head == null || head.isEmpty()) {
                         head = "0";
+                    }
                     String dep_rel = model.getValueAt(i, 4).toString();
-                    if (dep_rel == null || dep_rel.isEmpty())
+                    if (dep_rel == null || dep_rel.isEmpty()) {
                         dep_rel = "ROOT";
+                    }
 
                     output.format("%d	%s	%s	%s	%s	_	%s	%s	_	_\n", 
                             (i+1),
@@ -595,8 +598,9 @@ public final class CreateDGPanel extends BasePanel {
         } 
         catch (FileNotFoundException e) { }
         
-        if(output!= null)
+        if(output!= null) {
             output.close();
+        }
     }
 
     @Override
@@ -625,11 +629,13 @@ public final class CreateDGPanel extends BasePanel {
                     String word = model.getValueAt(i, 1).toString();
                     String pos = model.getValueAt(i, 2).toString();
                     String head = model.getValueAt(i, 3).toString();
-                    if (head == null || head.isEmpty())
+                    if (head == null || head.isEmpty()) {
                         head = "0";
+                    }
                     String dep_rel = model.getValueAt(i, 4).toString();
-                    if (dep_rel == null || dep_rel.isEmpty())
+                    if (dep_rel == null || dep_rel.isEmpty()) {
                         dep_rel = "ROOT";
+                    }
 
                     body.append(String.format("%d	%s	%s	%s	%s	_	%s	%s	_	_\n", 
                             (i+1),

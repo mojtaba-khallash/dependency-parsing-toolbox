@@ -6,8 +6,10 @@ import is2.parser.Parser;
 import is2.util.DB;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 /**
@@ -30,7 +32,7 @@ public class CONLLReader08 extends CONLLReader {
         lineNumber = 0;
         try {
             inputReader = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"), 32768);
-        } catch (Exception e) {
+        } catch (FileNotFoundException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
     }
@@ -292,7 +294,7 @@ public class CONLLReader08 extends CONLLReader {
             }
             return it;
 
-        } catch (Exception e) {
+        } catch (IOException | NumberFormatException e) {
             Parser.out.println("\n!!! Error in input file sentence before line: " + lineNumber + " (in sentence line " + i + " ) " + e.toString());
             e.printStackTrace();
             System.exit(0);

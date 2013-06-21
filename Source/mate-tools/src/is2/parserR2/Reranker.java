@@ -193,53 +193,50 @@ public class Reranker implements Tool {
         // prepare zipped reader
         ZipInputStream zis = new ZipInputStream(new BufferedInputStream(new FileInputStream(modelName)));
         zis.getNextEntry();
-        DataInputStream dis = new DataInputStream(new BufferedInputStream(zis));
+        try (DataInputStream dis = new DataInputStream(new BufferedInputStream(zis))) {
+            pipe.mf.read(dis);
 
-        pipe.mf.read(dis);
+            pipe.cl = new Cluster(dis);
 
-        pipe.cl = new Cluster(dis);
+            prm.read(dis);
 
-        prm.read(dis);
+            Long2Int l2i = new Long2Int(prm.size());
+            DB.println("li size " + l2i.size());
 
-        Long2Int l2i = new Long2Int(prm.size());
-        DB.println("li size " + l2i.size());
+            pipe.extractor = new ExtractorClusterStacked[THREADS];
 
-        pipe.extractor = new ExtractorClusterStacked[THREADS];
-
-        for (int t = 0; t < THREADS; t++) {
-            pipe.extractor[t] = new ExtractorClusterStacked(l2i);
-        }
-
-        ExtractorClusterStacked.initFeatures();
-
-
-        for (int t = 0; t < THREADS; t++) {
-            pipe.extractor[t].initStat();
-            pipe.extractor[t].init();
-        }
-
-        Edges.read(dis);
-
-        options.decodeProjective = dis.readBoolean();
-
-        ExtractorClusterStacked.maxForm = dis.readInt();
-
-        boolean foundInfo = false;
-        try {
-            String info;
-            int icnt = dis.readInt();
-            for (int i = 0; i < icnt; i++) {
-                info = dis.readUTF();
-                is2.parser.Parser.out.println(info);
+            for (int t = 0; t < THREADS; t++) {
+                pipe.extractor[t] = new ExtractorClusterStacked(l2i);
             }
-        } catch (Exception e) {
-            if (!foundInfo) {
-                is2.parser.Parser.out.println("no info about training");
+
+            ExtractorClusterStacked.initFeatures();
+
+
+            for (int t = 0; t < THREADS; t++) {
+                pipe.extractor[t].initStat();
+                pipe.extractor[t].init();
+            }
+
+            Edges.read(dis);
+
+            options.decodeProjective = dis.readBoolean();
+
+            ExtractorClusterStacked.maxForm = dis.readInt();
+
+            boolean foundInfo = false;
+            try {
+                String info;
+                int icnt = dis.readInt();
+                for (int i = 0; i < icnt; i++) {
+                    info = dis.readUTF();
+                    is2.parser.Parser.out.println(info);
+                }
+            } catch (Exception e) {
+                if (!foundInfo) {
+                    is2.parser.Parser.out.println("no info about training");
+                }
             }
         }
-
-
-        dis.close();
 
         DB.println("Reading data finnished");
 
@@ -263,47 +260,44 @@ public class Reranker implements Tool {
         // prepare zipped reader
         ZipInputStream zis = new ZipInputStream(new BufferedInputStream(new FileInputStream(modelName)));
         zis.getNextEntry();
-        DataInputStream dis = new DataInputStream(new BufferedInputStream(zis));
+        try (DataInputStream dis = new DataInputStream(new BufferedInputStream(zis))) {
+            pipe.mf.read(dis);
 
-        pipe.mf.read(dis);
+            //	DB.println("reranker model "+pipe.mf.toString());
 
-        //	DB.println("reranker model "+pipe.mf.toString());
+            pipe.cl = new Cluster(dis);
 
-        pipe.cl = new Cluster(dis);
+            params.read(dis);
+            this.l2i = new Long2Int(params.size());
+            DB.println("li size " + l2i.size());
 
-        params.read(dis);
-        this.l2i = new Long2Int(params.size());
-        DB.println("li size " + l2i.size());
+            pipe.extractor = new ExtractorReranker(l2i);
 
-        pipe.extractor = new ExtractorReranker(l2i);
+            ExtractorReranker.initFeatures();
+            ExtractorReranker.initStat();
 
-        ExtractorReranker.initFeatures();
-        ExtractorReranker.initStat();
+            pipe.extractor.init();
 
-        pipe.extractor.init();
+            Edges.read(dis);
 
-        Edges.read(dis);
+            options.decodeProjective = dis.readBoolean();
 
-        options.decodeProjective = dis.readBoolean();
+            ExtractorClusterStacked.maxForm = dis.readInt();
 
-        ExtractorClusterStacked.maxForm = dis.readInt();
-
-        boolean foundInfo = false;
-        try {
-            String info;
-            int icnt = dis.readInt();
-            for (int i = 0; i < icnt; i++) {
-                info = dis.readUTF();
-                is2.parser.Parser.out.println(info);
-            }
-        } catch (Exception e) {
-            if (!foundInfo) {
-                is2.parser.Parser.out.println("no info about training");
+            boolean foundInfo = false;
+            try {
+                String info;
+                int icnt = dis.readInt();
+                for (int i = 0; i < icnt; i++) {
+                    info = dis.readUTF();
+                    is2.parser.Parser.out.println(info);
+                }
+            } catch (Exception e) {
+                if (!foundInfo) {
+                    is2.parser.Parser.out.println("no info about training");
+                }
             }
         }
-
-
-        dis.close();
 
         DB.println("Reading data finnished");
 

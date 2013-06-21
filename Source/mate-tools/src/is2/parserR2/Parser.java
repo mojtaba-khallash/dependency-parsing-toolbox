@@ -109,17 +109,16 @@ public class Parser implements Tool {
                 DB.println("Using mapping of model " + options.modelName);
                 ZipInputStream zis = new ZipInputStream(new BufferedInputStream(new FileInputStream(options.modelName)));
                 zis.getNextEntry();
-                DataInputStream dis = new DataInputStream(new BufferedInputStream(zis));
-                p.pipe.mf.read(dis);
+                try (DataInputStream dis = new DataInputStream(new BufferedInputStream(zis))) {
+                    p.pipe.mf.read(dis);
 
-                DB.println("read\n" + p.pipe.mf.toString());
+                    DB.println("read\n" + p.pipe.mf.toString());
 
-                ParametersFloat params = new ParametersFloat(0);
-                params.read(dis);
+                    ParametersFloat params = new ParametersFloat(0);
+                    params.read(dis);
 
-                Edges.read(dis);
-
-                dis.close();
+                    Edges.read(dis);
+                }
                 DB.println("end read model");
                 options.modelName = model;
             }
@@ -188,50 +187,47 @@ public class Parser implements Tool {
         // prepare zipped reader
         ZipInputStream zis = new ZipInputStream(new BufferedInputStream(new FileInputStream(options.modelName)));
         zis.getNextEntry();
-        DataInputStream dis = new DataInputStream(new BufferedInputStream(zis));
+        try (DataInputStream dis = new DataInputStream(new BufferedInputStream(zis))) {
+            pipe.mf.read(dis);
 
-        pipe.mf.read(dis);
+            pipe.cl = new Cluster(dis);
 
-        pipe.cl = new Cluster(dis);
+            params.read(dis);
+            this.l2i = new Long2Int(params.size());
+            DB.println("parsing -- li size " + l2i.size());
 
-        params.read(dis);
-        this.l2i = new Long2Int(params.size());
-        DB.println("parsing -- li size " + l2i.size());
+            pipe.extractor = new Extractor[THREADS];
 
-        pipe.extractor = new Extractor[THREADS];
-
-        for (int t = 0; t < THREADS; t++) {
-            pipe.extractor[t] = this.extractorFactory.getExtractor(l2i);
-        }
-
-        Edges.read(dis);
-
-        options.decodeProjective = dis.readBoolean();
-
-        int maxForm = dis.readInt();
-
-        for (int t = 0; t < THREADS; t++) {
-            pipe.extractor[t].setMaxForm(maxForm);
-            pipe.extractor[t].initStat();
-            pipe.extractor[t].init();
-        }
-
-        boolean foundInfo = false;
-        try {
-            String info;
-            int icnt = dis.readInt();
-            for (int i = 0; i < icnt; i++) {
-                info = dis.readUTF();
-                is2.parser.Parser.out.println(info);
+            for (int t = 0; t < THREADS; t++) {
+                pipe.extractor[t] = this.extractorFactory.getExtractor(l2i);
             }
-        } catch (Exception e) {
-            if (!foundInfo) {
-                is2.parser.Parser.out.println("no info about training");
+
+            Edges.read(dis);
+
+            options.decodeProjective = dis.readBoolean();
+
+            int maxForm = dis.readInt();
+
+            for (int t = 0; t < THREADS; t++) {
+                pipe.extractor[t].setMaxForm(maxForm);
+                pipe.extractor[t].initStat();
+                pipe.extractor[t].init();
+            }
+
+            boolean foundInfo = false;
+            try {
+                String info;
+                int icnt = dis.readInt();
+                for (int i = 0; i < icnt; i++) {
+                    info = dis.readUTF();
+                    is2.parser.Parser.out.println(info);
+                }
+            } catch (Exception e) {
+                if (!foundInfo) {
+                    is2.parser.Parser.out.println("no info about training");
+                }
             }
         }
-
-
-        dis.close();
 
         DB.println("Reading data finnished");
 
@@ -481,7 +477,8 @@ public class Parser implements Tool {
 
         int cnt = 0;
 
-        String[] types = new String[pipe.mf.getFeatureCounter().get(PipeGen.REL)];
+        String[] types;
+        types = new String[pipe.mf.getFeatureCounter().get(PipeGen.REL)];
         for (Entry<String, Integer> e : MFB.getFeatureSet().get(PipeGen.REL).entrySet()) {
             types[e.getValue()] = e.getKey();
         }
@@ -661,27 +658,26 @@ public class Parser implements Tool {
 //		Parser.out.println("Writting model: "+name);
         ZipOutputStream zos = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(name)));
         zos.putNextEntry(new ZipEntry("data"));
-        DataOutputStream dos = new DataOutputStream(new BufferedOutputStream(zos));
+        try (DataOutputStream dos = new DataOutputStream(new BufferedOutputStream(zos))) {
+            MFB.writeData(dos);
+            cs.write(dos);
 
-        MFB.writeData(dos);
-        cs.write(dos);
+            params.write(dos);
 
-        params.write(dos);
+            Edges.write(dos);
 
-        Edges.write(dos);
+            dos.writeBoolean(options.decodeProjective);
 
-        dos.writeBoolean(options.decodeProjective);
+            dos.writeInt(pipe.extractor[0].getMaxForm());
 
-        dos.writeInt(pipe.extractor[0].getMaxForm());
+            dos.writeInt(5);  // Info count
+            dos.writeUTF("Used parser   " + Parser.class.toString());
+            dos.writeUTF("Creation date " + (new SimpleDateFormat("yyyy.MM.dd HH:mm:ss")).format(new Date()));
+            dos.writeUTF("Training data " + options.trainfile);
+            dos.writeUTF("Iterations    " + options.numIters + " Used sentences " + options.count);
+            dos.writeUTF("Cluster       " + options.clusterFile);
 
-        dos.writeInt(5);  // Info count
-        dos.writeUTF("Used parser   " + Parser.class.toString());
-        dos.writeUTF("Creation date " + (new SimpleDateFormat("yyyy.MM.dd HH:mm:ss")).format(new Date()));
-        dos.writeUTF("Training data " + options.trainfile);
-        dos.writeUTF("Iterations    " + options.numIters + " Used sentences " + options.count);
-        dos.writeUTF("Cluster       " + options.clusterFile);
-
-        dos.flush();
-        dos.close();
+            dos.flush();
+        }
     }
 }

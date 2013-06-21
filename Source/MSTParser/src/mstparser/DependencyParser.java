@@ -689,19 +689,22 @@ public class DependencyParser {
         long time = (System.currentTimeMillis()-startTime)/1000;
         int hour = (int)(time / 3600);
         String hh = String.valueOf(hour);
-        if (hh.length() == 1)
+        if (hh.length() == 1) {
             hh = "0" + hh;
+        }
         
         time = time % 3600;
         int min = (int)(time / 60);
         String mm = String.valueOf(min);
-        if (mm.length() == 1)
+        if (mm.length() == 1) {
             mm = "0" + mm;
+        }
         
         int second = (int)(time % 60);
         String ss = String.valueOf(second);
-        if (ss.length() == 1)
+        if (ss.length() == 1) {
             ss = "0" + ss;
+        }
         
         return String.format("%s:%s:%s", hh, mm, ss);
     }

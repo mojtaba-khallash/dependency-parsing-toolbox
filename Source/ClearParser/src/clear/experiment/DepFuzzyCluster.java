@@ -272,7 +272,7 @@ public class DepFuzzyCluster {
     }
 
     private double maximization() {
-        double[] dist = new double[i_K];
+        double[] dist;
         double num, den, sum, m = 1d / (d_m - 1), score = 0;
         int[] vector;
         int n, k, i;
@@ -406,7 +406,6 @@ public class DepFuzzyCluster {
         String testFile = args[1];
         int K = Integer.parseInt(args[2]);
         double m = Double.parseDouble(args[3]);
-
-        new DepFuzzyCluster(trainFile, testFile, K, m);
+        DepFuzzyCluster depFuzzyCluster = new DepFuzzyCluster(trainFile, testFile, K, m);
     }
 }

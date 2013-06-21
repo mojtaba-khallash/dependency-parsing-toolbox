@@ -731,10 +731,12 @@ public final class ReadingPanel extends BasePanel {
                 
                 btnPrev.setEnabled(false);
                 int size = graphs.size();  // gui.getSentenceCount() - 1
-                if (size > 1)
+                if (size > 1) {
                     btnNext.setEnabled(true);
-                else
+                }
+                else {
                     btnNext.setEnabled(false);
+                }
                 lblCurrentTotal.setText("1 / " + size); // gui.getCurrentSentence()
                 sliderSentences.setMinimum(0);
                 sliderSentences.setMaximum(size - 1);
@@ -744,8 +746,9 @@ public final class ReadingPanel extends BasePanel {
                 txtNumbSenteces.setText(String.valueOf(size));
                 txtTotalProportion.setText(String.format("%.2f", h1.getTotalProportion()));
                 
-                if (size == 1)
+                if (size == 1) {
                     UpdateTree(0);
+                }
             }
         } catch (MaltChainedException | MaltEvalException ex) {
             JOptionPane.showMessageDialog(
@@ -884,8 +887,9 @@ public final class ReadingPanel extends BasePanel {
                 }
                 else {
                     lens.add(curLen);
-                    if (maxLen < curLen)
+                    if (maxLen < curLen) {
                         maxLen = curLen;
+                    }
                     curLen = 0;
                 }
             }
@@ -921,8 +925,8 @@ public final class ReadingPanel extends BasePanel {
             labelsAxisLabels[i] = String.valueOf(i+1);
         }
         graphChart2DProps.setLabelsAxisLabelsTexts (labelsAxisLabels);
-        graphChart2DProps.setLabelsAxisTitleText ("Number of Sentence");
-        graphChart2DProps.setNumbersAxisTitleText ("Length of Sentence");
+        graphChart2DProps.setLabelsAxisTitleText ("Length of Sentence");
+        graphChart2DProps.setNumbersAxisTitleText ("Number of Sentence");
         graphChart2DProps.setLabelsAxisTicksAlignment (GraphChart2DProperties.CENTERED);
 
         //Configure graph properties
@@ -960,7 +964,7 @@ public final class ReadingPanel extends BasePanel {
         chart2D.addMultiColorsProperties (multiColorsProps);
 
         //Optional validation:  Prints debug messages if invalid only.
-        if (!chart2D.validate (false)) chart2D.validate (true);
+        if (!chart2D.validate (false)) { chart2D.validate (true); }
 
         pnlLengthDistribution.removeAll();
         pnlLengthDistribution.setLayout(new GridLayout());
@@ -1060,15 +1064,19 @@ public final class ReadingPanel extends BasePanel {
         
         lblCurrentTotal.setText((index + 1) + " / " + graphs.size());
         
-        if (index == sliderSentences.getMaximum())
+        if (index == sliderSentences.getMaximum()) {
             btnNext.setEnabled(false);
-        else
+        }
+        else {
             btnNext.setEnabled(true);
+        }
         
-        if (index == sliderSentences.getMinimum())
+        if (index == sliderSentences.getMinimum()) {
             btnPrev.setEnabled(false);
-        else
+        }
+        else {
             btnPrev.setEnabled(true);
+        }
         
         // Plain Output
         txtPlainOutput.setText(dg.toString());

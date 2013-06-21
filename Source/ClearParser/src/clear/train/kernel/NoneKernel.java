@@ -63,56 +63,54 @@ public class NoneKernel extends AbstractKernel {
     protected void init(String instanceFile) throws Exception {
         final int NUM = 1000000;
 
-        BufferedReader fin = IOUtil.createBufferedFileReader(instanceFile);
-
-        a_ys = new IntArrayList(NUM);
-        a_xs = new ArrayList<>(NUM);
-
         IntOpenHashSet sLabels = new IntOpenHashSet();
-        String line;
-        String[] tok, tmp;
-        int y, i;
-        int[] x;
-        double[] v;
+        try (BufferedReader fin = IOUtil.createBufferedFileReader(instanceFile)) {
+            a_ys = new IntArrayList(NUM);
+            a_xs = new ArrayList<>(NUM);
 
-        for (N = 0; (line = fin.readLine()) != null; N++) {
-            if (N == 0 && line.contains(AbstractKernel.FTR_DELIM)) {
-                b_binary = false;
-                a_vs = new ArrayList<>(NUM);
-            }
+            String line;
+            String[] tok, tmp;
+            int y, i;
+            int[] x;
+            double[] v;
 
-            tok = line.split(COL_DELIM);
-            y = Integer.parseInt(tok[0]);
-            a_ys.add(y);
-
-            if (b_binary) {
-                x = DSUtil.toIntArray(tok, 1);
-                a_xs.add(x);
-            } else {
-                x = new int[tok.length - 1];
-                v = new double[tok.length - 1];
-
-                for (i = 1; i < tok.length; i++) {
-                    tmp = tok[i].split(FTR_DELIM);
-                    x[i - 1] = Integer.parseInt(tmp[0]);
-                    v[i - 1] = Double.parseDouble(tmp[1]);
+            for (N = 0; (line = fin.readLine()) != null; N++) {
+                if (N == 0 && line.contains(AbstractKernel.FTR_DELIM)) {
+                    b_binary = false;
+                    a_vs = new ArrayList<>(NUM);
                 }
 
-                a_xs.add(x);
-                a_vs.add(v);
-            }
+                tok = line.split(COL_DELIM);
+                y = Integer.parseInt(tok[0]);
+                a_ys.add(y);
 
-            // indices in feature are in ascending order
-            D = Math.max(D, x[x.length - 1]);
-            sLabels.add(y);
+                if (b_binary) {
+                    x = DSUtil.toIntArray(tok, 1);
+                    a_xs.add(x);
+                } else {
+                    x = new int[tok.length - 1];
+                    v = new double[tok.length - 1];
 
-            if (N % 100000 == 0) {
-                out.print("\r* Initializing  : " + (N / 1000) + "K");
+                    for (i = 1; i < tok.length; i++) {
+                        tmp = tok[i].split(FTR_DELIM);
+                        x[i - 1] = Integer.parseInt(tmp[0]);
+                        v[i - 1] = Double.parseDouble(tmp[1]);
+                    }
+
+                    a_xs.add(x);
+                    a_vs.add(v);
+                }
+
+                // indices in feature are in ascending order
+                D = Math.max(D, x[x.length - 1]);
+                sLabels.add(y);
+
+                if (N % 100000 == 0) {
+                    out.print("\r* Initializing  : " + (N / 1000) + "K");
+                }
             }
+            out.println("\r* Initializing  : " + instanceFile);
         }
-        out.println("\r* Initializing  : " + instanceFile);
-
-        fin.close();
         a_ys.trimToSize();
         a_xs.trimToSize();
 

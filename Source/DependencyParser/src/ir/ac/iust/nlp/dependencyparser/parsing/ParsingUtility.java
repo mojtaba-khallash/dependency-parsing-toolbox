@@ -176,17 +176,19 @@ public class ParsingUtility {
                 }
             }
         } finally {
-            if (reader != null)
+            if (reader != null) {
                 try { reader.close(); } 
                 catch(Exception ex){}
+            }
             if (writer != null) {
                 try { 
                     writer.flush();
                     writer.close();
                 } catch(Exception ex){}
             }
-            if (service != null)
+            if (service != null) {
                 service.terminateParserModel();
+            }
 
             return dss;
         }

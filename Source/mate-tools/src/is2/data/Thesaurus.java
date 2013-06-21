@@ -32,24 +32,23 @@ final public class Thesaurus {
 
         // register words
         try {
-            BufferedReader inputReader = new BufferedReader(new InputStreamReader(new FileInputStream(clusterFile), "UTF-8"), 32768);
+            try (BufferedReader inputReader = new BufferedReader(new InputStreamReader(new FileInputStream(clusterFile), "UTF-8"), 32768)) {
+                int cnt = 0;
+                String line;
+                while ((line = inputReader.readLine()) != null) {
 
-            int cnt = 0;
-            String line;
-            while ((line = inputReader.readLine()) != null) {
-
-                cnt++;
-                try {
-                    String[] split = line.split(REGEX);
-                    //		mf.register(LPATH, split[0].length()<ls?split[0]:split[0].substring(0,ls));
-                    mf.register(PipeGen.WORD, split[0]);
-                    mf.register(PipeGen.WORD, split[1]);
-                } catch (Exception e) {
-                    Parser.out.println("Error in cluster line " + cnt + " error: " + e.getMessage());
+                    cnt++;
+                    try {
+                        String[] split = line.split(REGEX);
+                        //		mf.register(LPATH, split[0].length()<ls?split[0]:split[0].substring(0,ls));
+                        mf.register(PipeGen.WORD, split[0]);
+                        mf.register(PipeGen.WORD, split[1]);
+                    } catch (Exception e) {
+                        Parser.out.println("Error in cluster line " + cnt + " error: " + e.getMessage());
+                    }
                 }
+                Parser.out.println("read number of thesaury entries " + cnt);
             }
-            Parser.out.println("read number of thesaury entries " + cnt);
-            inputReader.close();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -61,21 +60,37 @@ final public class Thesaurus {
         // insert words
         try {
             String line;
-            BufferedReader inputReader = new BufferedReader(new InputStreamReader(new FileInputStream(clusterFile), "UTF-8"), 32768);
+            try (BufferedReader inputReader = new BufferedReader(new InputStreamReader(new FileInputStream(clusterFile), "UTF-8"), 32768)) {
+                int startWd = -1;
+                ArrayList<Integer> wrds = new ArrayList<>();
+                while ((line = inputReader.readLine()) != null) {
 
-            int startWd = -1;
-            ArrayList<Integer> wrds = new ArrayList<>();
-            while ((line = inputReader.readLine()) != null) {
-
-                String[] split = line.split(REGEX);
-                int wd = mf.getValue(PipeGen.WORD, split[0]);
-                //	DB.println("wd "+wd+" "+startWd);
-                if (startWd == wd) {
-                    int thesaurusWrd = mf.getValue(PipeGen.WORD, split[1]);
-                    if (thesaurusWrd != wd) {
-                        wrds.add(thesaurusWrd);
+                    String[] split = line.split(REGEX);
+                    int wd = mf.getValue(PipeGen.WORD, split[0]);
+                    //	DB.println("wd "+wd+" "+startWd);
+                    if (startWd == wd) {
+                        int thesaurusWrd = mf.getValue(PipeGen.WORD, split[1]);
+                        if (thesaurusWrd != wd) {
+                            wrds.add(thesaurusWrd);
+                        }
+                    } else if (startWd != -1) {
+                        int[] ths = new int[wrds.size()];
+                        for (int k = 0; k < ths.length; k++) {
+                            ths[k] = wrds.get(k);
+                        }
+                        word2path[startWd] = ths;
+                        //	DB.println(""+wrds+" size "+ths.length);
+                        wrds.clear();
+                        int thesaurusWrd = mf.getValue(PipeGen.WORD, split[1]);
+                        if (thesaurusWrd != wd) {
+                            wrds.add(thesaurusWrd);
+                        }
                     }
-                } else if (startWd != -1) {
+                    startWd = wd;
+                }
+
+                if (!wrds.isEmpty()) {
+                    // put rest of the words
                     int[] ths = new int[wrds.size()];
                     for (int k = 0; k < ths.length; k++) {
                         ths[k] = wrds.get(k);
@@ -83,30 +98,12 @@ final public class Thesaurus {
                     word2path[startWd] = ths;
                     //	DB.println(""+wrds+" size "+ths.length);
                     wrds.clear();
-                    int thesaurusWrd = mf.getValue(PipeGen.WORD, split[1]);
-                    if (thesaurusWrd != wd) {
-                        wrds.add(thesaurusWrd);
-                    }
+
+
+
+
                 }
-                startWd = wd;
             }
-
-            if (!wrds.isEmpty()) {
-                // put rest of the words
-                int[] ths = new int[wrds.size()];
-                for (int k = 0; k < ths.length; k++) {
-                    ths[k] = wrds.get(k);
-                }
-                word2path[startWd] = ths;
-                //	DB.println(""+wrds+" size "+ths.length);
-                wrds.clear();
-
-
-
-
-            }
-
-            inputReader.close();
             int fill = 0;
             for (int l = 0; l < word2path.length; l++) {
                 if (word2path[l] != null) {

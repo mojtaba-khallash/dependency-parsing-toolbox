@@ -243,7 +243,7 @@ public class DepSelect {
         int K = Integer.parseInt(args[3]);
         double threshold = Double.parseDouble(args[4]);
         float portion = Float.parseFloat(args[5]);
-
-        new DepSelect(inputFile, outputFile, cutoff, K, threshold, portion);
+        DepSelect depSelect = 
+                new DepSelect(inputFile, outputFile, cutoff, K, threshold, portion);
     }
 }

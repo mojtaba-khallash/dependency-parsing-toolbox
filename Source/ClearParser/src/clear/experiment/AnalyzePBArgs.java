@@ -157,36 +157,36 @@ public class AnalyzePBArgs {
     }
 
     void printNumberedAdjunct(String outputFile) {
-        PrintStream fout = IOUtil.createPrintFileStream(outputFile);
-        ObjectIntOpenHashMap<String> map;
-        ArrayList<JObjectIntTuple<String>> list;
-        int total;
-        String key;
+        try (PrintStream fout = IOUtil.createPrintFileStream(outputFile)) {
+            ObjectIntOpenHashMap<String> map;
+            ArrayList<JObjectIntTuple<String>> list;
+            int total;
+            String key;
 
-        for (int i = 0; i < ls_numberedAdjuncts.size(); i++) {
-            map = ls_numberedAdjuncts.get(i);
-            list = new ArrayList<>();
+            for (int i = 0; i < ls_numberedAdjuncts.size(); i++) {
+                map = ls_numberedAdjuncts.get(i);
+                list = new ArrayList<>();
 
-            for (ObjectCursor<String> cur : map.keys()) {
-                key = cur.value;
-                if (key.equals(TOTAL)) {
-                    continue;
+                for (ObjectCursor<String> cur : map.keys()) {
+                    key = cur.value;
+                    if (key.equals(TOTAL)) {
+                        continue;
+                    }
+                    list.add(new JObjectIntTuple<>(key, map.get(key)));
                 }
-                list.add(new JObjectIntTuple<>(key, map.get(key)));
+
+                Collections.sort(list);
+
+                total = map.get(TOTAL);
+                fout.println("ARG" + i + "\t" + total);
+
+                for (JObjectIntTuple<String> tup : list) {
+                    fout.println(tup.object + "\t" + tup.integer + "\t" + (double) tup.integer * 100 / total);
+                }
             }
 
-            Collections.sort(list);
-
-            total = map.get(TOTAL);
-            fout.println("ARG" + i + "\t" + total);
-
-            for (JObjectIntTuple<String> tup : list) {
-                fout.println(tup.object + "\t" + tup.integer + "\t" + (double) tup.integer * 100 / total);
-            }
+            fout.flush();
         }
-
-        fout.flush();
-        fout.close();
     }
 
     // ----------------------------- VerbPrepPMI -----------------------------
@@ -289,64 +289,64 @@ public class AnalyzePBArgs {
     }
 
     void printVerbPrepPMI(String outputFile) {
-        PrintStream fout = IOUtil.createPrintFileStream(outputFile);
-        ArrayList<JObjectDoubleTuple<String>> list = new ArrayList<JObjectDoubleTuple<String>>();
-        int nVerb, nVerbTotal, nPrep, nVerbArg, nVerbArgTotal, nVerbPrep;
-        String key;
-        String[] tmp;
-        @SuppressWarnings("unused")
-        double pmi, pv, p, v, pnv, pmv;
-        double smooth = 0.000001;
+        try (PrintStream fout = IOUtil.createPrintFileStream(outputFile)) {
+            ArrayList<JObjectDoubleTuple<String>> list = new ArrayList<>();
+            int nVerb, nVerbTotal, nPrep, nVerbArg, nVerbArgTotal, nVerbPrep;
+            String key;
+            String[] tmp;
+            double smooth = 0.000001;
+            @SuppressWarnings("unused")
+            double pmi, pv, p, v, pnv, pmv;
 
-        nVerbTotal = m_verbs.get(TOTAL);
-        nVerbArgTotal = m_verbArgs.get(TOTAL);
+            nVerbTotal = m_verbs.get(TOTAL);
+            nVerbArgTotal = m_verbArgs.get(TOTAL);
 
-        for (ObjectCursor<String> cur : m_verbPreps.keys()) {
-            key = cur.value;
-            tmp = key.split("_");
+            for (ObjectCursor<String> cur : m_verbPreps.keys()) {
+                key = cur.value;
+                tmp = key.split("_");
 
-            nVerbPrep = m_verbPreps.get(key);
-            if (nVerbPrep == 0) {
-                continue;
+                nVerbPrep = m_verbPreps.get(key);
+                if (nVerbPrep == 0) {
+                    continue;
+                }
+                nVerb = m_verbs.get(tmp[0]);
+                nVerbArg = m_verbArgs.get(tmp[0]);
+                nPrep = m_preps.get(tmp[1]);
+
+                pv = (double) nVerbPrep / nVerbArg;
+                p = (double) nPrep / nVerbArgTotal;
+                v = (double) nVerb / nVerbTotal;
+
+                pnv = smooth + (double) m_verbPrepNs.get(key) / m_verbArgNs.get(tmp[0]);
+                pmv = smooth + (double) m_verbPrepMs.get(key) / m_verbArgMs.get(tmp[0]);
+                if (m_verbArgMs.get(tmp[0]) == 0) {
+                    pmv = smooth;
+                }
+                pmi = Math.log(pnv / pmv);
+
+                //	pmi = getPMI(pv, p);
+                //	pmi /= -(Math.log(pv) + Math.log(v));
+
+                list.add(new JObjectDoubleTuple<>(key, pmi));
             }
-            nVerb = m_verbs.get(tmp[0]);
-            nVerbArg = m_verbArgs.get(tmp[0]);
-            nPrep = m_preps.get(tmp[1]);
 
-            pv = (double) nVerbPrep / nVerbArg;
-            p = (double) nPrep / nVerbArgTotal;
-            v = (double) nVerb / nVerbTotal;
+            Collections.sort(list);
 
-            pnv = smooth + (double) m_verbPrepNs.get(key) / m_verbArgNs.get(tmp[0]);
-            pmv = smooth + (double) m_verbPrepMs.get(key) / m_verbArgMs.get(tmp[0]);
-            if (m_verbArgMs.get(tmp[0]) == 0) {
-                pmv = smooth;
+            for (JObjectDoubleTuple<String> tup : list) {
+                key = tup.object;
+                tmp = key.split("_");
+                pnv = smooth + (double) m_verbPrepNs.get(key) / m_verbArgNs.get(tmp[0]);
+                pmv = smooth + (double) m_verbPrepMs.get(key) / m_verbArgMs.get(tmp[0]);
+                if (m_verbArgMs.get(tmp[0]) == 0) {
+                    pmv = smooth;
+                }
+
+                fout.println(key + "\t" + pnv + "\t" + pmv + "\t" + tup.value);
+                //	fout.println(key+"\t"+m_verbPreps.get(key)+"\t"+m_preps.get(tmp[1])+"\t"+m_verbs.get(tmp[0])+"\t"+tup.value);
             }
-            pmi = Math.log(pnv / pmv);
 
-            //	pmi = getPMI(pv, p);
-            //	pmi /= -(Math.log(pv) + Math.log(v));
-
-            list.add(new JObjectDoubleTuple<>(key, pmi));
+            fout.flush();
         }
-
-        Collections.sort(list);
-
-        for (JObjectDoubleTuple<String> tup : list) {
-            key = tup.object;
-            tmp = key.split("_");
-            pnv = smooth + (double) m_verbPrepNs.get(key) / m_verbArgNs.get(tmp[0]);
-            pmv = smooth + (double) m_verbPrepMs.get(key) / m_verbArgMs.get(tmp[0]);
-            if (m_verbArgMs.get(tmp[0]) == 0) {
-                pmv = smooth;
-            }
-
-            fout.println(key + "\t" + pnv + "\t" + pmv + "\t" + tup.value);
-            //	fout.println(key+"\t"+m_verbPreps.get(key)+"\t"+m_preps.get(tmp[1])+"\t"+m_verbs.get(tmp[0])+"\t"+tup.value);
-        }
-
-        fout.flush();
-        fout.close();
     }
 
 // ----------------------------- RequiredArgument -----------------------------
@@ -397,81 +397,81 @@ public class AnalyzePBArgs {
     }
 
     void printRequiredArgument(String outputFile) {
-        PrintStream fout = IOUtil.createPrintFileStream(outputFile);
-        System.out.println(n_count);
+        try (PrintStream fout = IOUtil.createPrintFileStream(outputFile)) {
+            System.out.println(n_count);
 
-        int nVerb, nVerbTotal, nPrep, nPrepTotal, nVerbArg;
-        String key;
-        String[] tmp;
-        double pmi, pv, p, v;
-        double thresh = 0;
+            int nVerb, nVerbTotal, nPrep, nPrepTotal, nVerbArg;
+            String key;
+            String[] tmp;
+            double pmi, pv, p, v;
+            double thresh = 0;
 
-        HashMap<String, ArrayList<JObjectDoubleTuple<String>>> map = new HashMap<>();
+            HashMap<String, ArrayList<JObjectDoubleTuple<String>>> map = new HashMap<>();
 
-        for (ObjectCursor<String> cur : m_verbs.keys()) {
-            if (cur.value.equals(TOTAL)) {
-                continue;
+            for (ObjectCursor<String> cur : m_verbs.keys()) {
+                if (cur.value.equals(TOTAL)) {
+                    continue;
+                }
+                map.put(cur.value, new ArrayList<JObjectDoubleTuple<String>>());
             }
-            map.put(cur.value, new ArrayList<JObjectDoubleTuple<String>>());
-        }
 
-        ArrayList<JObjectDoubleTuple<String>> list;
+            ArrayList<JObjectDoubleTuple<String>> list;
 
-        for (ObjectCursor<String> cur : m_verbArgNs.keys()) {
-            key = cur.value;
-            tmp = key.split("_");
-            list = map.get(tmp[0]);
+            for (ObjectCursor<String> cur : m_verbArgNs.keys()) {
+                key = cur.value;
+                tmp = key.split("_");
+                list = map.get(tmp[0]);
 
-            nVerbArg = m_verbArgNs.get(key);
-            nVerb = m_verbs.get(tmp[0]);
-            pmi = (double) nVerbArg * 100 / nVerb;
+                nVerbArg = m_verbArgNs.get(key);
+                nVerb = m_verbs.get(tmp[0]);
+                pmi = (double) nVerbArg * 100 / nVerb;
 
-            if (pmi > thresh) {
-                list.add(new JObjectDoubleTuple<>(tmp[1], pmi));
+                if (pmi > thresh) {
+                    list.add(new JObjectDoubleTuple<>(tmp[1], pmi));
+                }
             }
-        }
 
-        nVerbTotal = m_verbs.get(TOTAL);
-        nPrepTotal = m_preps.get(TOTAL);
+            nVerbTotal = m_verbs.get(TOTAL);
+            nPrepTotal = m_preps.get(TOTAL);
 
-        for (ObjectCursor<String> cur : m_verbArgMs.keys()) {
-            key = cur.value;
-            tmp = key.split("_");
-            list = map.get(tmp[0]);
+            for (ObjectCursor<String> cur : m_verbArgMs.keys()) {
+                key = cur.value;
+                tmp = key.split("_");
+                list = map.get(tmp[0]);
 
-            nVerbArg = m_verbArgMs.get(key);
-            nVerb = m_verbs.get(tmp[0]);
-            nPrep = m_preps.get(tmp[1]);
-            pv = (double) nVerbArg / nVerb;
-            p = (double) nPrep / nPrepTotal;
-            v = (double) nVerb / nVerbTotal;
-            pmi = getPMI(pv, p);
-            pmi /= -(Math.log(pv) + Math.log(v));
+                nVerbArg = m_verbArgMs.get(key);
+                nVerb = m_verbs.get(tmp[0]);
+                nPrep = m_preps.get(tmp[1]);
+                pv = (double) nVerbArg / nVerb;
+                p = (double) nPrep / nPrepTotal;
+                v = (double) nVerb / nVerbTotal;
+                pmi = getPMI(pv, p);
+                pmi /= -(Math.log(pv) + Math.log(v));
 
-            if (pmi > 0) {
-                list.add(new JObjectDoubleTuple<>(tmp[1], pmi));
+                if (pmi > 0) {
+                    list.add(new JObjectDoubleTuple<>(tmp[1], pmi));
+                }
             }
-        }
 
-        for (String verb : map.keySet()) {
-            list = map.get(verb);
-            Collections.sort(list);
+            for (String verb : map.keySet()) {
+                list = map.get(verb);
+                Collections.sort(list);
 
-            StringBuilder build = new StringBuilder();
-            build.append(verb);
-            build.append("\t");
-            build.append(m_verbs.get(verb));
-
-            for (JObjectDoubleTuple<String> tup : list) {
+                StringBuilder build = new StringBuilder();
+                build.append(verb);
                 build.append("\t");
-                build.append(tup.toString());
+                build.append(m_verbs.get(verb));
+
+                for (JObjectDoubleTuple<String> tup : list) {
+                    build.append("\t");
+                    build.append(tup.toString());
+                }
+
+                fout.println(build.toString());
             }
 
-            fout.println(build.toString());
+            fout.flush();
         }
-
-        fout.flush();
-        fout.close();
     }
 
     double getPMI(double pxy, double px) {
@@ -495,6 +495,6 @@ public class AnalyzePBArgs {
     }
 
     public static void main(String[] args) {
-        new AnalyzePBArgs(args[0], args[1]);
+        AnalyzePBArgs analyzePBArgs = new AnalyzePBArgs(args[0], args[1]);
     }
 }

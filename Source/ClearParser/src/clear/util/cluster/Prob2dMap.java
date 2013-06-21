@@ -133,10 +133,9 @@ public class Prob2dMap extends HashMap<String, Prob1dMap> {
     }
 
     public void print(String filename, DecimalFormat format) {
-        PrintStream fout = IOUtil.createPrintFileStream(filename);
-
-        fout.print(toString(format));
-        fout.close();
+        try (PrintStream fout = IOUtil.createPrintFileStream(filename)) {
+            fout.print(toString(format));
+        }
     }
 
     @Override

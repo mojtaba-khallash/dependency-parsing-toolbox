@@ -3,6 +3,7 @@ package is2.tag;
 import is2.data.*;
 import is2.io.CONLLReader09;
 import is2.parser.Parser;
+import is2.tag.MFO;
 import is2.tools.IPipe;
 import is2.util.OptionsSuper;
 import java.io.DataInputStream;

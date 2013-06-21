@@ -161,35 +161,36 @@ public class DepAdapt {
     }
 
     private void select(String trainFile, String outputFile, double m) {
-        PrintStream fout = IOUtil.createPrintFileStream(outputFile);
-        DepReader reader = new DepReader(trainFile, true);
-        DepTree tree;
-        int[] vector1;
-        int size = a_vectors.size(), count = 0;
-        double sim;
+        int count = 0;
+        try (PrintStream fout = IOUtil.createPrintFileStream(outputFile)) {
+            DepReader reader = new DepReader(trainFile, true);
+            DepTree tree;
+            int[] vector1;
+            int size = a_vectors.size();
+            double sim;
 
-        System.out.print("Selecting trees: ");
+            System.out.print("Selecting trees: ");
 
-        for (int i = 1; (tree = reader.nextTree()) != null; i++) {
-            vector1 = getVectorArray(tree, true);
-            sim = 0;
+            for (int i = 1; (tree = reader.nextTree()) != null; i++) {
+                vector1 = getVectorArray(tree, true);
+                sim = 0;
 
-            for (IntOpenHashSet vector2 : a_vectors) {
-                sim += getCosineSimilarity(vector1, vector2);
+                for (IntOpenHashSet vector2 : a_vectors) {
+                    sim += getCosineSimilarity(vector1, vector2);
+                }
+
+                if (sim / size > m) {
+                    fout.println(tree + "\n");
+                    count++;
+                }
+
+                if (i % 1000 == 0) {
+                    System.out.print(".");
+                }
             }
 
-            if (sim / size > m) {
-                fout.println(tree + "\n");
-                count++;
-            }
-
-            if (i % 1000 == 0) {
-                System.out.print(".");
-            }
+            reader.close();
         }
-
-        reader.close();
-        fout.close();
         System.out.println();
         System.out.println(count);
     }
@@ -211,7 +212,6 @@ public class DepAdapt {
         String testFile = args[1];
         String outputFile = args[2];
         double m = Double.parseDouble(args[3]);
-
-        new DepAdapt(trainFile, testFile, outputFile, m);
+        DepAdapt depAdapt = new DepAdapt(trainFile, testFile, outputFile, m);
     }
 }

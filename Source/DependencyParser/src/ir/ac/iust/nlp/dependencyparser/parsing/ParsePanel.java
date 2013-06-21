@@ -432,15 +432,16 @@ public final class ParsePanel extends BasePanel {
                     .addComponent(btnBrowseOutputPath))
                 .addGap(8, 8, 8)
                 .addGroup(pnlParameterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnlParameterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnStartParse)
-                        .addComponent(lblParser)
-                        .addComponent(cboParser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlParameterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(pnlParameterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(chkMaxRam)
                             .addComponent(txtMaxRam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(chkMinRam)
-                            .addComponent(txtMinRam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtMinRam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(pnlParameterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnStartParse)
+                            .addComponent(lblParser)
+                            .addComponent(cboParser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(pnlMore, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlAdvancedParameter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -924,15 +925,17 @@ public final class ParsePanel extends BasePanel {
     private void btnNext_Click(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext_Click
         int val = sliderSentences.getValue();
         int max = sliderSentences.getMaximum();
-        if (val < max)
+        if (val < max) {
             sliderSentences.setValue(val + 1);
+        }
     }//GEN-LAST:event_btnNext_Click
 
     private void btnPrev_Click(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrev_Click
         int val = sliderSentences.getValue();
         int min = sliderSentences.getMinimum();
-        if (val > min)
+        if (val > min) {
             sliderSentences.setValue(val - 1);
+        }
     }//GEN-LAST:event_btnPrev_Click
 
     private void btnBrowseInputFile_Click(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowseInputFile_Click
@@ -986,10 +989,12 @@ public final class ParsePanel extends BasePanel {
 
     private void AdjustDividerLocation() {
         int area;
-        if (lblHorizontal.isVisible() == false)
+        if (lblHorizontal.isVisible() == false) {
             area = splitTrees.getSize().height;
-        else
+        }
+        else {
             area = splitTrees.getSize().width;
+        }
             
         int loc = area / 2;
         splitTrees.setDividerLocation(loc);
@@ -1114,8 +1119,9 @@ public final class ParsePanel extends BasePanel {
         sliderSentences.setEnabled(true);
 
         initTreeGui();
-        if (size == 1)
+        if (size == 1) {
             UpdateTree(0);
+        }
     }
 
     private void ChangeViewMode() {
@@ -1176,10 +1182,12 @@ public final class ParsePanel extends BasePanel {
             btnNext.setEnabled(true);
         }
         
-        if (index == sliderSentences.getMinimum())
+        if (index == sliderSentences.getMinimum()) {
             btnPrev.setEnabled(false);
-        else
-            btnPrev.setEnabled(true);        
+        }
+        else {
+            btnPrev.setEnabled(true);
+        }
     }
         
     // Variables declaration - do not modify//GEN-BEGIN:variables

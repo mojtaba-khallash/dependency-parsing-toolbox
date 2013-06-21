@@ -56,34 +56,38 @@ public class Convert {
 
 
         for (int k = 0; k < 20; k++) {
-            BufferedWriter br = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("split/p-" + k), "UTF-8"));
-            BufferedWriter rest = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("split/r-" + k), "UTF-8"));
-            int skip = k * partSize;
+            try (BufferedWriter br = new BufferedWriter(
+                    new OutputStreamWriter(
+                        new FileOutputStream("split/p-" + k), "UTF-8"))) {
+                try (BufferedWriter rest = new BufferedWriter(
+                        new OutputStreamWriter(
+                            new FileOutputStream("split/r-" + k), "UTF-8"))) {
+                    int skip = k * partSize;
 
-            int countSentences = 0;
-            int countSentencesWrote = 0;
-            Parser.out.println("skip from " + skip + " to " + (skip + partSize - 1));
-            for (String x : corpus) {
-                if (countSentences >= skip && (countSentences < (skip + partSize) || k == 19)) {
-                    rest.write(x);
-                    rest.newLine();
-                    if (x.length() < 8) {
-                        countSentencesWrote++;
+                    int countSentences = 0;
+                    int countSentencesWrote = 0;
+                    Parser.out.println("skip from " + skip + " to " + (skip + partSize - 1));
+                    for (String x : corpus) {
+                        if (countSentences >= skip && (countSentences < (skip + partSize) || k == 19)) {
+                            rest.write(x);
+                            rest.newLine();
+                            if (x.length() < 8) {
+                                countSentencesWrote++;
+                            }
+                        } else {
+                            br.write(x);
+                            br.newLine();
+                        }
+
+                        if (x.length() < 8) {
+                            countSentences++;
+                        }
                     }
-                } else {
-                    br.write(x);
-                    br.newLine();
+                    Parser.out.println("wrote for this part " + countSentencesWrote);
+                    rest.flush();
                 }
-
-                if (x.length() < 8) {
-                    countSentences++;
-                }
+                br.flush();
             }
-            Parser.out.println("wrote for this part " + countSentencesWrote);
-            br.flush();
-            br.close();
-            rest.flush();
-            rest.close();
         }
     }
 }

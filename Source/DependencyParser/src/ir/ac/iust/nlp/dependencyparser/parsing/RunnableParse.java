@@ -67,8 +67,8 @@ public class RunnableParse implements Runnable {
             st.preProcess();
 
             String ram = "";
-            if (DependencyParser.maxRam.length() > 0) ram += "-Xmx" + DependencyParser.maxRam + " ";
-            if (DependencyParser.minRam.length() > 0) ram += "-Xms" + DependencyParser.minRam + " ";
+            if (DependencyParser.maxRam.length() > 0) { ram += "-Xmx" + DependencyParser.maxRam + " "; }
+            if (DependencyParser.minRam.length() > 0) { ram += "-Xms" + DependencyParser.minRam + " "; }
             p = Runtime.getRuntime().exec("java " + ram + "-jar lib" + File.separator + "maltParser.jar " + st.getTestParameters1());
 
             BufferedReader stdError = new BufferedReader(new InputStreamReader(
@@ -85,8 +85,9 @@ public class RunnableParse implements Runnable {
             }
         }
         finally {
-            if (p != null)
+            if (p != null) {
                 p.destroy();
+            }
             
             st.postProcess();
         }

@@ -146,8 +146,9 @@ public class RunnableConverter implements Runnable {
                     if (s.length() == 0) {
                         i++;
                         out.print(i + " ");
-                        if (i % 21 == 0)
+                        if (i % 21 == 0) {
                             out.println();
+                        }
                     }
                     writer.write(s + "\n");
                 }

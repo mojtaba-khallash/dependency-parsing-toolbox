@@ -365,7 +365,6 @@ public class DepGMCluster {
     static public void main(String[] args) {
         String trainFile = args[0];
         int K = Integer.parseInt(args[1]);
-
-        new DepGMCluster(trainFile, K);
+        DepGMCluster depGMCluster = new DepGMCluster(trainFile, K);
     }
 }

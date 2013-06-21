@@ -418,10 +418,12 @@ public class ConverterPanel extends BasePanel {
             String output = txtOutputPath.getText() + "output." + getExtension(targetFormat);
             
             File file = new File(output);
-            if (file.exists())
+            if (file.exists()) {
                 file.delete();
-            if (!file.getParentFile().exists())
+            }
+            if (!file.getParentFile().exists()) {
                 file.getParentFile().mkdirs();
+            }
             
             String mapping = null;
             if (txtMappingFile.isVisible()) {
@@ -458,10 +460,12 @@ public class ConverterPanel extends BasePanel {
         
         if (sourceFormat == Format.CONLL ||
             sourceFormat == Format.Clear ||
-            sourceFormat == Format.MST)
+            sourceFormat == Format.MST) {
             mappingVisibility(false);
-        else
+        }
+        else {
             mappingVisibility(true);
+        }
     }//GEN-LAST:event_cboInputType_itemStateChanged
 
     private void cboOutputType_itemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboOutputType_itemStateChanged
@@ -499,8 +503,9 @@ public class ConverterPanel extends BasePanel {
                 format = Format.Clear;
                 break;
         }
-        if (cbo != null)
+        if (cbo != null) {
             cbo.setSelectedIndex(format.ordinal());
+        }
         return format;
     }
     

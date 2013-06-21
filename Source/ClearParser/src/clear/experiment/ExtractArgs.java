@@ -74,6 +74,6 @@ public class ExtractArgs {
     }
 
     static public void main(String[] args) {
-        new ExtractArgs(args[0], args[1]);
+        ExtractArgs extractArgs = new ExtractArgs(args[0], args[1]);
     }
 }
