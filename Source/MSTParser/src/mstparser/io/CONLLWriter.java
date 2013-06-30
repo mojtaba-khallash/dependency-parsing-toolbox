@@ -46,7 +46,7 @@ public class CONLLWriter extends DependencyWriter {
             
             // word form
             tmp = instance.forms[i];
-            if (tmp.equals("<num>")) {
+            if (tmp.equals("<num>") && instance.numbers.size() > 0) {
                 tmp = instance.numbers.get(numInd);
                 numInd++;
             } 
@@ -56,7 +56,7 @@ public class CONLLWriter extends DependencyWriter {
             // lemm
             if (instance.lemmas != null) {
                 tmp = instance.lemmas[i+1];
-                if (tmp.equals("<num>")) {
+                if (tmp.equals("<num>") && instance.numbers.size() > 0) {
                     tmp = instance.numbers.get(numInd);
                     numInd++;
                 } 
@@ -81,12 +81,14 @@ public class CONLLWriter extends DependencyWriter {
             StringBuilder feats = new StringBuilder();
             if (instance.feats != null) {
                 for(int j = 0; j < instance.feats[i+1].length; j++) {
-                    if (j!= 0)
+                    if (j!= 0) {
                         feats.append("|");
+                    }
                     feats.append(instance.feats[i+1][j]);
                 }
-                if (feats.length() == 0)
+                if (feats.length() == 0) {
                     feats = new StringBuilder("_");
+                }
             }
             else {
                 feats = new StringBuilder("_");

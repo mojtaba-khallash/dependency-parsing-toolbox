@@ -7,6 +7,7 @@ package ir.ac.iust.nlp.dependencyparser.utility.enumeration;
 public enum Flowchart {
     
     None,
+    Read,
     Proj,
     Deproj,
     Optimizer,

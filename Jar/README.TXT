@@ -113,6 +113,10 @@ This operational mode is only available in gui mode. In this mode, the
 dependency tree of each sentence and length distribution plot of a CoNLL format 
 corpus can be shown.
 
+For example:
+
+> java -jar DependencyParser.jar -v 0 -mode read -i input.conll
+
 Requirements:
 ** "Chart2D.jar" (http://chart2d.sourceforge.net/index.php) for drawing plots.
 ** "MaltEval.jar" [1] (http://w3.msi.vxu.se/users/jni/malteval/) for drawing 

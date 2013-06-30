@@ -17,6 +17,7 @@ package ir.ac.iust.nlp.dependencyparser;
 
 import ir.ac.iust.nlp.dependencyparser.evaluation.EvalSettings;
 import ir.ac.iust.nlp.dependencyparser.hybrid.RunnableHybrid;
+import ir.ac.iust.nlp.dependencyparser.inputoutput.ReadCorpus;
 import ir.ac.iust.nlp.dependencyparser.optomization.RunnableOptimizer;
 import ir.ac.iust.nlp.dependencyparser.parsing.RunnableParse;
 import ir.ac.iust.nlp.dependencyparser.projection.RunnableProjectivize;
@@ -27,8 +28,14 @@ import ir.ac.iust.nlp.dependencyparser.utility.enumeration.ReparseType;
 import ir.ac.iust.nlp.dependencyparser.utility.enumeration.TransformType;
 import ir.ac.iust.nlp.dependencyparser.utility.parsing.*;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -420,6 +427,13 @@ public class DependencyParser {
                     File md;
                     Runnable run = null;
                     switch(mode) {
+                        case Read:
+                            if (input.length() == 0) {
+                                System.out.println("input file not entered.");
+                                System.exit(1);
+                            }
+                            ReadCorpus.getStatistics(input);
+                            break;
                         case Proj:
                             if (input.length() == 0 || 
                                 output.length() == 0 ||
@@ -614,11 +628,15 @@ public class DependencyParser {
     private static void showHelp(Flowchart chart) {
         System.out.println("Required Arguments:");
         System.out.println("        -v <visibility (0|1)>");
-        System.out.println("        -mode <operation-mode(proj|deproj|optimizer|train|");
-        System.out.println("                              parse|eval|ensemble|stack)>\n");
+        System.out.println("        -mode <operation-mode(read|proj|deproj|optimizer|");
+        System.out.println("                              train|parse|eval|ensemble|stack)>\n");
         switch(chart) {
             case None:
                 System.out.println("        Use (-help <mode-value>) for more parameters.");
+                break;
+            case Read:
+                System.out.println("        >> read: reading corpus and get statistical info");
+                System.out.println("        -i <input conll file>");
                 break;
             case Proj:
                 System.out.println("        >> proj: Projectivizing treebank");
@@ -746,6 +764,8 @@ public class DependencyParser {
     
     private static Flowchart getChart(String mode) {
         switch(mode) {
+            case "read":
+                return Flowchart.Read;
             case "proj":
                 return Flowchart.Proj;
             case "deproj":
