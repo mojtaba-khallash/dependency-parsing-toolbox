@@ -283,6 +283,9 @@ graph-based ("MSTParser" and Mate-Tools).
 			algorithm, k-best decoding is approximate)
         -iter <training iterations [default: 10]>
 			number of iteration to stop training
+		-format <file-type (conll|mst) [default: conll]>
+			- conll: CONLL formatted files
+			- mst: MST formatted files
 		
 	>> mate parameters:
 		-decode <decode-type (proj|non-proj) [default: non-proj]>
@@ -369,6 +372,9 @@ algorithms, you must use same value as training phase.
 			type of dependency tree that want to parse
 		-order <order (1|2) [default: 2]>
 			order of feature that use for parsing
+		-format <file-type (conll|mst) [default: conll]>
+			- conll: CONLL formatted files
+			- mst: MST formatted files
 			
 	>> mate parameters:
 		-decode <decode-type (proj|non-proj) [default: non-proj]>

@@ -234,6 +234,14 @@ graph-based ("MSTParser" and Mate-Tools).
 				</td>
 			</tr>
 			<tr><td>-iter &lt;training iterations [default: 10]&gt;</td><td>number of iteration to stop training</td></tr>
+			<tr><td>-format &lt;file-type (conll|mst) [default: conll]&gt;</td>
+				<td>
+					<ul>
+						<li>conll: CONLL formatted files</li>
+						<li>mst: MST formatted files</li>
+					</ul>
+				</td>
+			</tr>
 		</table>
 		<b>mate</b> parameters:
 		<table>
@@ -309,6 +317,14 @@ algorithms, you must use same value as training phase.
 		<table>
 			<tr><td>-decode &lt;decode-type (proj|non-proj) [default: non-proj]&gt;</td><td>type of dependency tree that want to parse</td></tr>
 			<tr><td>-order &lt;order (1|2) [default: 2]&gt;</td><td>order of feature that use for parsing</td></tr>
+			<tr><td>-format &lt;file-type (conll|mst) [default: conll]&gt;</td>
+				<td>
+					<ul>
+						<li>conll: CONLL formatted files</li>
+						<li>mst: MST formatted files</li>
+					</ul>
+				</td>
+			</tr>
 		</table>
 		<b>mate</b> parameters:
 		<table>

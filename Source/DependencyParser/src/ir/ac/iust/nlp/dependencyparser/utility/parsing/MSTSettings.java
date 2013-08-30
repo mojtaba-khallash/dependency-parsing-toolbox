@@ -9,6 +9,7 @@ import java.util.List;
  */
 public class MSTSettings extends Settings {
 
+    // CONLL|MST
     public String FileType = "CONLL";
     public String DecodeType = "non-proj";
     public String LossType = "punc";
@@ -27,6 +28,7 @@ public class MSTSettings extends Settings {
     public MSTSettings(MSTSettings settings) {
         super(settings);
         
+        this.FileType = settings.FileType;
         this.DecodeType = settings.DecodeType;
         this.LossType = settings.LossType;
         this.Order = settings.Order;

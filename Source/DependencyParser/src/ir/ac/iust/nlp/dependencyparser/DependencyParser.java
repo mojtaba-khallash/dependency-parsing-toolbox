@@ -28,14 +28,8 @@ import ir.ac.iust.nlp.dependencyparser.utility.enumeration.ReparseType;
 import ir.ac.iust.nlp.dependencyparser.utility.enumeration.TransformType;
 import ir.ac.iust.nlp.dependencyparser.utility.parsing.*;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -250,6 +244,10 @@ public class DependencyParser {
                     case "-loss":
                         i++;
                         mst.LossType = args[i];
+                        break;
+                    case "-format":
+                        i++;
+                        mst.FileType = args[i].toUpperCase();
                         break;
                         
                     // -- mate parameters --//
@@ -679,6 +677,7 @@ public class DependencyParser {
                 System.out.println("                -order <order (1|2) [default: 2]>");
                 System.out.println("                -k <training k-best [default: 1]>");
                 System.out.println("                -iter <training iterations [default: 10]>");
+                System.out.println("                -format <file-type (conll|mst) [default: conll]>");
                 System.out.println("            >> mate parameters:");
                 System.out.println("                -decode <decode-type (proj|non-proj) [default: non-proj]>");
                 System.out.println("                -threshold <nonprojective-threshold (0-1) [default: 0.3]>");
@@ -698,6 +697,7 @@ public class DependencyParser {
                 System.out.println("            >> mst parameters:");
                 System.out.println("                -decode <decode-type (proj|non-proj) [default: non-proj]>");
                 System.out.println("                -order <order (1|2) [default: 2]>");
+                System.out.println("                -format <file-type (conll|mst) [default: conll]>");
                 System.out.println("            >> mate parameters:");
                 System.out.println("                -decode <decode-type (proj|non-proj) [default: non-proj]>");
                 System.out.println("                -threshold <nonprojective-threshold (0-1) [default: 0.3]>");

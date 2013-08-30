@@ -1068,8 +1068,12 @@ public class EvalPanel extends BasePanel {
 
         for (int i = 0; i < modelSelect.getSize(); i++) {
             if (inds.indexOf("#" + i + "#") == -1) {
-                modelSort.setElementAt(" ", i);
-                modelCut.setElementAt(" ", i);
+                if (i < modelSort.getSize()) {
+                    modelSort.setElementAt(" ", i);
+                }
+                if (i < modelCut.getSize()) {
+                    modelCut.setElementAt(" ", i);
+                }
             }
         }
     }//GEN-LAST:event_lstSelect_valueChanged
