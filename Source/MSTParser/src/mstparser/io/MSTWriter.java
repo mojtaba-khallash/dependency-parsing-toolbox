@@ -12,6 +12,8 @@
 package mstparser.io;
 
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 import mstparser.DependencyInstance;
 import mstparser.Util;
 
@@ -33,7 +35,12 @@ public class MSTWriter extends DependencyWriter {
     @Override
     public void write(DependencyInstance instance) throws IOException {
         writer.write(Util.join(instance.forms, '\t') + "\n");
-        writer.write(Util.join(instance.postags, '\t') + "\n");
+        StringBuilder sb = new StringBuilder();
+        sb.append(instance.postags[1]);
+        for (int i = 2; i < instance.postags.length; i++) {
+            sb.append("\t").append(instance.postags[i]);
+        }
+        writer.write(sb.toString() + "\n");
         if (labeled) {
             writer.write(Util.join(instance.deprels, '\t') + "\n");
         }
