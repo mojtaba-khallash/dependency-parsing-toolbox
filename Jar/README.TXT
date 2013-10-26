@@ -336,7 +336,7 @@ Requirements:
 
 ** Mate-Tools
 > java -jar DependencyParser.jar -v 0 -mode train -i input.conll \
-  -m langModel.mco -parser mst -decode non-proj -threshold 0.3 -core 4 -iter 10
+  -m langModel.mco -parser mate -decode non-proj -threshold 0.3 -core 4 -iter 10
 
 Requirements:
 ** "mate-tools.jar" [7] (http://code.google.com/p/mate-tools/) for training 
@@ -408,7 +408,7 @@ For example:
 
 ** Mate-Tools
 > java -jar DependencyParser.jar -v 0 -mode parse -i input.conll \
-  -m langModel.mco -o output.conll -parser mst -decode non-proj -threshold 0.3 \
+  -m langModel.mco -o output.conll -parser mate -decode non-proj -threshold 0.3 \
   -core 4
 
 Requirements:

@@ -287,7 +287,7 @@ Requirements:
 * "[MSTParser.jar] (http://www.seas.upenn.edu/~strctlrn/MSTParser/MSTParser.html)" [6] for training MSTParser.
 
 > // Mate-Tools<br/>
-> java -jar DependencyParser.jar -v 0 -mode train -i input.conll -m langModel.mco -parser mst -decode non-proj 
+> java -jar DependencyParser.jar -v 0 -mode train -i input.conll -m langModel.mco -parser mate -decode non-proj 
 -threshold 0.3 -core 4 -iter 10
 
 Requirements:
@@ -360,7 +360,7 @@ For example:
 -decode non-proj -order 2
 
 > // Mate-Tools<br/>
-> java -jar DependencyParser.jar -v 0 -mode parse -i input.conll -m langModel.mco -o output.conll -parser mst 
+> java -jar DependencyParser.jar -v 0 -mode parse -i input.conll -m langModel.mco -o output.conll -parser mate 
 -decode non-proj -threshold 0.3 -core 4
 
 Requirements:

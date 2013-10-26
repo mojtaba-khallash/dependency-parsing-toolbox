@@ -519,7 +519,7 @@ public class DpAbout extends javax.swing.JDialog {
 
         lblEvalSiteValue.setEditable(false);
         lblEvalSiteValue.setForeground(new java.awt.Color(0, 102, 204));
-        lblEvalSiteValue.setText("http://w3.msi.vxu.se/users/jni/malteval/");
+        lblEvalSiteValue.setText("http://www.maltparser.org/malteval.html");
         lblEvalSiteValue.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         lblEvalSiteValue.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblEvalSiteValue.addMouseListener(new java.awt.event.MouseAdapter() {

@@ -253,7 +253,7 @@ public class DependencyParser {
                     // -- mate parameters --//
                     case "-threshold":
                         i++;
-                        mate.NonProjectivityThreshold = Integer.parseInt(args[i]);
+                        mate.NonProjectivityThreshold = Double.parseDouble(args[i]);
                         break;
                     case "-creation":
                         i++;
@@ -476,6 +476,7 @@ public class DependencyParser {
                             break;
                         case Optimizer:
                             if (phase.equals("all")) {
+                                optimizer.Optimizer.ExitInEnd = false;
                                 run = new RunnableOptimizer(null, 1, input, crossVal);
                                 run.run();
                                 run = new RunnableOptimizer(null, 2, input, crossVal);
