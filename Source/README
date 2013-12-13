@@ -194,7 +194,7 @@ For example:
 Goal of this section is choosing best algorithm for giving training corpus and 
 then optimizing their parameters and feature model.
 
--i <training-corput>
+-i <training-corpus>
 	training corpus that used for optimization
 	
 -parser <parser-type (malt)>
