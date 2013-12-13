@@ -163,7 +163,7 @@ Goal of this section is choosing best algorithm for giving training corpus and
 then optimizing their parameters and feature model.
 
 <table>
-<tr><td>-i &lt;training-corput&gt;</td><td>training corpus that used for optimization</td></tr>
+<tr><td>-i &lt;training-corpus&gt;</td><td>training corpus that used for optimization</td></tr>
 <tr><td>-parser &lt;parser-type (malt)&gt;</td><td>only supports maltparser currently</td></tr>
 <tr>
 	<td>-phase &lt;optimizing phase (1|2|3|all) [default: all for running all phases]&gt;</td>
