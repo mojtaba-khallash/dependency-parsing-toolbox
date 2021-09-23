@@ -7,7 +7,7 @@ DependencyParser version 1.0
 
 This is the README for the *"DependencyParser" toolbox* that integrates different 
 algorithms related to dependency parsing in one place. This toolbox has been 
-developed by [Mojtaba Khallash] (mailto: mkhallash@gmail.com) from _Iran University of 
+developed by [Mojtaba Khallash](mailto:mkhallash@gmail.com) from _Iran University of 
 Science and Technology (IUST)_.
 
 The home page for the project is:
@@ -47,11 +47,11 @@ Table of contents
 ----------------
 
 Requirements:
-* Version 1.7 or later of the [Java 2 SDK] (http://java.sun.com)
+* Version 1.7 or later of the [Java 2 SDK](http://java.sun.com)
 You must add java binary file to system path. <br/>In linux, your
 can open `~/.bashrc` file and append this line:
 `PATH=$PATH:/<address-of-bin-folder-of-JRE>`
-* [Perl 5] (http://www.perl.org/) or later for *"MaltBlender"* tools
+* [Perl 5](http://www.perl.org/) or later for *"MaltBlender"* tools
 
 To compile the code, first decompress the package:
 
@@ -104,8 +104,8 @@ dependency tree of each sentence and length distribution plot of a CoNLL format
 corpus can be shown.
 
 Requirements:
-* "[Chart2D.jar] (http://chart2d.sourceforge.net/index.php)" for drawing plots.
-* "[MaltEval.jar] (http://w3.msi.vxu.se/users/jni/malteval/)" [1] for drawing 
+* "[Chart2D.jar](http://chart2d.sourceforge.net/index.php)" for drawing plots.
+* "[MaltEval.jar](http://w3.msi.vxu.se/users/jni/malteval/)" [1] for drawing 
    dependency trees.
 
 3b. Create Dependency Graph
@@ -137,7 +137,7 @@ For example:
 > java -jar DependencyParser.jar -v 0 -mode proj -i input.conll -o output.conll -m langModel.mco
 
 Requirements:
-* "[maltParser.jar] (http://www.maltparser.org/index.html)" [3] for projectivize 
+* "[maltParser.jar](http://www.maltparser.org/index.html)" [3] for projectivize 
    tree.
 	
 3d. Deprojectivize tree
@@ -183,7 +183,7 @@ For example:
 > java -jar DependencyParser.jar -v 0 -mode optimizer -i input.conll -parser malt -phase all
 
 Requirements:
-* "[MaltOptimizer.jar] (http://nil.fdi.ucm.es/maltoptimizer/install.html)" [4] for optimizer.
+* "[MaltOptimizer.jar](http://nil.fdi.ucm.es/maltoptimizer/install.html)" [4] for optimizer.
 
 3f. Training
 ---------------
@@ -270,28 +270,28 @@ For example:
 > java -jar DependencyParser.jar -v 0 -mode train -i input.conll -m langModel.mco -parser malt -option options.xml -guide guides.xml
 
 Requirements:
-* "[maltParser.jar] (http://www.maltparser.org/index.html) for training" [3] MaltParser.
+* "[maltParser.jar](http://www.maltparser.org/index.html) for training" [3] MaltParser.
 
 > // ClearParser<br/>
 > java -jar DependencyParser.jar -v 0 -mode train -i input.conll -m langModel.mco -parser clear -option config.xml 
 -guide feature.xml -bootstrap 2
 
 Requirements:
-* "[ClearParser.jar] (http://code.google.com/p/clearparser)" [5] for training ClearParser.
+* "[ClearParser.jar](http://code.google.com/p/clearparser)" [5] for training ClearParser.
 
 > // MSTParser<br/>
 > java -jar DependencyParser.jar -v 0 -mode train -i input.conll -m langModel.mco -parser mst -decode non-proj 
 -loss punc -order 2 -k 1 -iter 10
 
 Requirements:
-* "[MSTParser.jar] (http://www.seas.upenn.edu/~strctlrn/MSTParser/MSTParser.html)" [6] for training MSTParser.
+* "[MSTParser.jar](http://www.seas.upenn.edu/~strctlrn/MSTParser/MSTParser.html)" [6] for training MSTParser.
 
 > // Mate-Tools<br/>
 > java -jar DependencyParser.jar -v 0 -mode train -i input.conll -m langModel.mco -parser mate -decode non-proj 
 -threshold 0.3 -core 4 -iter 10
 
 Requirements:
-* "[mate-tools.jar] (http://code.google.com/p/mate-tools/)" [7] for training Mate-Tools.
+* "[mate-tools.jar](http://code.google.com/p/mate-tools/)" [7] for training Mate-Tools.
 
 3g. Parsing
 ---------------
@@ -395,7 +395,7 @@ For example:
 > java -jar DependencyParser.jar -v 0 -mode eval -i input.conll -g gold.conll -o output.conll -metric LAS,UAS -group Token
 
 Requirements:
-* "[MaltEval.jar] (http://w3.msi.vxu.se/users/jni/malteval/)" [1].
+* "[MaltEval.jar](http://w3.msi.vxu.se/users/jni/malteval/)" [1].
 
 3i. Hybrid
 ------------
@@ -433,8 +433,8 @@ For example:
 -o ensemble.conll -method attardi
 
 Requirements:
-* "[Ensemble.jar] (http://www.surdeanu.name/mihai/ensemble/)" [8] for voting, attardi and eisner.
-* "[MaltBlender.jar] (http://w3.msi.vxu.se/users/jni/blend/)" [9] for chu-liu-edmonds.
+* "[Ensemble.jar](http://www.surdeanu.name/mihai/ensemble/)" [8] for voting, attardi and eisner.
+* "[MaltBlender.jar](http://w3.msi.vxu.se/users/jni/blend/)" [9] for chu-liu-edmonds.
 
 3i2. Stacking
 ---------------
@@ -499,7 +499,7 @@ For example:
 > java -jar DependencyParser.jar -v 0 -mode stack -i aug_train.conll -t aug_test.conll -l 1 -l1_parser mst -l1_output output.conll
 
 Requirements:
-* [Extention of "MSTParser.jar"] (http://www.ark.cs.cmu.edu/MSTParserStacked/) [10] for stacking.
+* [Extention of "MSTParser.jar"](http://www.ark.cs.cmu.edu/MSTParserStacked/) [10] for stacking.
 
 References
 ------------
