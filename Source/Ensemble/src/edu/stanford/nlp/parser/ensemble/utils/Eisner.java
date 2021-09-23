@@ -49,6 +49,12 @@ public class Eisner {
             StringBuilder inputs = new StringBuilder();
             for (int i =0 ;i <sysFiles.size(); i++)
                 inputs.append(sysFiles.get(i)).append(" ");
+
+            String perlPath;
+            if (System.getProperty("os.name").toLowerCase().contains("win"))
+                perlPath = "C:\\Perl\\bin\\perl.exe";
+            else
+                perlPath = "/usr/bin/perl";
                 
             // Use MaltBlender
             Process p = Runtime.getRuntime().exec(
@@ -58,12 +64,12 @@ public class Eisner {
                     //------------------//
                     
                         // path to perl interpreter (default: "perl")
-                        "-DPERL=C:\\Perl\\bin\\perl.exe " + 
+                        String.format("-DPERL=%s ", perlPath)  +
                     
                         // path to perl evaluation script (default: "eval07.pl")
                         "-DEVALUATOR=eval07.pl " +
                     
-                    "-jar lib\\MaltBlender.jar " +
+                    "-jar lib" + File.separator + "MaltBlender.jar " +
                     //-------------------------//
                     // NaltBlender arguments:  //
                     //-------------------------//
@@ -94,7 +100,7 @@ public class Eisner {
                         //  is specified: sort results by accuracy (without -c: combine all input CoNLL files only)
                         // "-c " +
                     
-                        // dependency type to exclude (defalult: exclude none)
+                        // dependency type to exclude (default: exclude none)
                         // "-d " +
                     
                         // held-out test file (used for estimating weights; using gold-standard file if -h not specified)
